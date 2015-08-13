@@ -1,0 +1,350 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{tikz} 
+\usepackage{esint} 
+%\usepackage{epsfig}
+%\usepackage{graphicx}
+%\usepackage[dvips]{graphicx}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{calc}
+
+
+\usepackage[matrix,tips,graph,curve]{xy}
+
+\newcommand{\mnote}[1]{${}^*$\marginpar{\footnotesize ${}^*$#1}}
+\linespread{1.065}
+
+\makeatletter
+
+\setlength\@tempdima  {5.5in}
+\addtolength\@tempdima {-\textwidth}
+%\addtolength\hoffset{-0.5\@tempdima}
+\addtolength\hoffset{-0.6\@tempdima}
+\setlength{\textwidth}{5.5in}
+\setlength{\textheight}{8.75in}
+%\addtolength\voffset{-0.625in}
+\addtolength\voffset{-1.2in}
+
+\makeatother
+
+\makeatletter 
+\@addtoreset{equation}{section}
+\makeatother
+
+
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem{corollary}[equation]{Corollary}
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{proposition}[equation]{Proposition}
+\newtheorem{conjecture}[equation]{Conjecture}
+\newtheorem{fact}[equation]{Fact}
+\newtheorem{facts}[equation]{Facts}
+\newtheorem*{theoremA}{Theorem A}
+\newtheorem*{theoremB}{Theorem B}
+\newtheorem*{theoremC}{Theorem C}
+\newtheorem*{theoremD}{Theorem D}
+\newtheorem*{theoremE}{Theorem E}
+\newtheorem*{theoremF}{Theorem F}
+\newtheorem*{theoremG}{Theorem G}
+\newtheorem*{theoremH}{Theorem H}
+
+\theoremstyle{definition}
+\newtheorem{definition}[equation]{Definition}
+\newtheorem{definitions}[equation]{Definitions}
+%\theoremstyle{remark}
+
+\newtheorem{remark}[equation]{Remark}
+\newtheorem{remarks}[equation]{Remarks}
+\newtheorem{exercise}[equation]{Exercise}
+\newtheorem{example}[equation]{Example}
+\newtheorem{examples}[equation]{Examples}
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{question}[equation]{Question}
+\newtheorem{assumption}[equation]{Assumption}
+\newtheorem*{claim}{Claim}
+\newtheorem{answer}[equation]{Answer}
+%%%%%% letters %%%%
+
+\newcommand{\IA}{\mathbb{A}}
+\newcommand{\IB}{\mathbb{B}}
+\newcommand{\IC}{\mathbb{C}}
+\newcommand{\ID}{\mathbb{D}}
+\newcommand{\IE}{\mathbb{E}}
+\newcommand{\IF}{\mathbb{F}}
+\newcommand{\IG}{\mathbb{G}}
+\newcommand{\IH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\IK}{\mathbb{K}}
+\newcommand{\IL}{\mathbb{L}}
+\newcommand{\IM}{\mathbb{M}}
+\newcommand{\IN}{\mathbb{N}}
+\newcommand{\IO}{\mathbb{O}}
+\newcommand{\IP}{\mathbb{P}}
+\newcommand{\IQ}{\mathbb{Q}}
+\newcommand{\IR}{\mathbb{R}}
+\newcommand{\IS}{\mathbb{S}}
+\newcommand{\IT}{\mathbb{T}}
+\newcommand{\IU}{\mathbb{U}}
+\newcommand{\IV}{\mathbb{V}}
+\newcommand{\IW}{\mathbb{W}}
+\newcommand{\IX}{\mathbb{X}}
+\newcommand{\IY}{\mathbb{Y}}
+\newcommand{\IZ}{\mathbb{Z}}
+
+%%%%%%% macros %%%%%
+
+%% my definitions %%%
+
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\tr}{\mathrm{tr}}
+%\newcommand{\ind}{\mathrm{ind}}
+
+\renewcommand{\index}{\mathrm{index \,}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Trace}{\mathrm{Trace}\,}
+\newcommand{\Res}{\mathrm{Res}\,}
+%\newcommand{\rank}{\mathrm{rank}}
+%\renewcommand{\dim}{\mathrm{dim}}
+
+\renewcommand{\deg}{\mathrm{deg}}
+\newcommand{\spin}{\rm Spin}
+\newcommand{\supp}{\mathrm{supp \,}}
+\newcommand{\Spin}{\rm Spin}
+\newcommand{\erfc}{\rm erfc\,}
+\newcommand{\sgn}{\rm sgn\,}
+\newcommand{\Spec}{\rm Spec\,}
+\newcommand{\diag}{\rm diag\,}
+\newcommand{\Fix}{\mathrm{Fix}}
+\newcommand{\Ker}{\mathrm{Ker \,}}
+\newcommand{\Coker}{\mathrm{Coker \,}}
+\newcommand{\Sym}{\mathrm{Sym \,}}
+\newcommand{\Hess}{\mathrm{Hess \,}}
+\newcommand{\grad}{\mathrm{grad \,}}
+\newcommand{\Center}{\mathrm{Center}}
+\newcommand{\Lie}{\mathrm{Lie}}
+\newcommand{\coker}{\mathrm{coker}}
+
+\newcommand{\ch}{\rm ch} % Chern Character
+
+\newcommand{\rank}{\rm rank} 
+%\renewcommand{\c}{\rm c}  % Chern class
+
+\newcommand\QED{\hfill $\Box$} %{\bf QED}} 
+
+\newcommand\Pf{\nonintend{\em Proof. }}
+
+
+\newcommand\reals{{\mathbb R}} 
+\newcommand\complexes{{\mathbb C}}
+\renewcommand\i{\sqrt{-1}}
+\renewcommand\Re{\mathrm Re}
+\renewcommand\Im{\mathrm Im}
+\newcommand\integers{{\mathbb Z}}
+\newcommand\quaternions{{\mathbb H}}
+
+
+\newcommand\iso{{\cong}} 
+\newcommand\tensor{{\otimes}}
+\newcommand\Tensor{{\bigotimes}} 
+\newcommand\union{\bigcup} 
+\newcommand\onehalf{\frac{1}{2}}
+%\newcommand\Sym[1]{{Sym^{#1}(\complexes^2)}}
+
+\newcommand\lie[1]{{\mathfrak #1}} 
+\newcommand\smooth{\mathcal{C}^{\infty}}
+\newcommand\trivial{{\mathbb I}}
+\newcommand\widebar{\overline}
+
+%%%%%Delimiters%%%%
+
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+
+%\renewcommand{\(}{\left(}
+%\renewcommand{\)}{\right)}
+
+
+%%%% Different kind of derivatives %%%%%
+
+\newcommand{\delbar}{\bar{\partial}}
+\newcommand{\pdu}{\frac{\partial}{\partial u}}
+%\newcommand{\pd}[1][2]{\frac{\partial #1}{\partial #2}}
+
+%%%%% Arrows %%%%%
+%\renewcommand{\ra}{\rightarrow}                   % right arrow
+\newcommand{\lra}{\longrightarrow}              % long right arrow
+%\renewcommand{\la}{\leftarrow}                    % left arrow
+\newcommand{\lla}{\longleftarrow}               % long left arrow
+\newcommand{\ua}{\uparrow}                     % long up arrow
+\newcommand{\na}{\nearrow}                      %  NE arrow
+\newcommand{\llra}[1]{\stackrel{#1}{\lra}}      % labeled long right arrow
+\newcommand{\llla}[1]{\stackrel{#1}{\lla}}      % labeled long left arrow
+%\newcommand{\lua}[1]{\stackrel{#1}{\ua}}      % labeled  up arrow
+%\newcommand{\lna}[1]{\stackrel{#1}{\na}}      % labeled long NE arrow
+\newcommand{\xra}{\xrightarrow}
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\tto}{\longmapsto}
+\def\llra{\longleftrightarrow}
+
+\def\d/{/\mspace{-6.0mu}/}
+\newcommand{\git}[3]{#1\d/_{\mspace{-4.0mu}#2}#3}
+\newcommand\zetahilb{\zeta_{{\text{Hilb}}}}
+\def\Fy{\sF \mspace{-3.0mu} \cdot \mspace{-3.0mu} y}
+\def\tv{\tilde{v}}
+\def\tw{\tilde{w}}
+\def\wt{\widetilde}
+\def\wtilde{\widetilde}
+\def\what{\widehat}
+
+%%%%%%%%%%%%%%%%%%% Mark's definitions %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\frakg}{\mbox{\frakturfont g}}
+\newcommand{\frakk}{\mbox{\frakturfont k}}
+\newcommand{\frakp}{\mbox{\frakturfont p}}
+\newcommand{\q}{\mbox{\frakturfont q}}
+\newcommand{\frakn}{\mbox{\frakturfont n}}
+\newcommand{\frakv}{\mbox{\frakturfont v}}
+\newcommand{\fraku}{\mbox{\frakturfont u}}
+\newcommand{\frakh}{\mbox{\frakturfont h}}
+\newcommand{\frakm}{\mbox{\frakturfont m}}
+\newcommand{\frakt}{\mbox{\frakturfont t}}
+\newcommand{\G}{\Gamma}
+\newcommand{\g}{\gamma}
+\newcommand{\fraka}{\mbox{\frakturfont a}}
+\newcommand{\db}{\bar{\partial}}
+\newcommand{\dbs}{\bar{\partial}^*}
+\newcommand{\p}{\partial}
+\renewcommand{\k}{\textbf{k}}
+\newcommand{\rH}{\widetilde{H}}
+\newcommand{\cH}{H^\ast}
+\newcommand{\ccH}{\check{H}^*}
+\newcommand{\ext}{\Lambda_{\IZ}}
+\newcommand{\rp}{\IR\IP}
+\newcommand{\hz}{\IZ/2\IZ}
+\newcommand{\tf}{\wt{f}}
+\newcommand{\form}{\Omega}
+\newcommand{\dr}{H_{DR}}
+\newcommand{\cdr}{H_{c}}
+\newcommand{\plane}{\IR^2}
+\newcommand{\pplane}{\IR^2 - \{0\}}
+\newcommand{\fU}{\mathfrak{U}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\sH}{\mathcal{H}_{cv}}
+
+%% Temporary Definitions %%
+\newcommand{\noi}{dx_1 \wedge \cdots \what{dx_i} \cdots \wedge dx_n}
+\newcommand{\ctsw}{dx_1 \wedge \cdots \wedge dx_n}
+\newcommand{\w}{\omega}
+\newcommand{\cp}{\IC\IP}
+\newcommand{\cf}{f^*}
+\newcommand{\Up}{U^{\pm}_i}
+\newcommand{\Vp}{V^{\pm}_i}
+\newcommand{\ppm}{\phi^{\pm}_i}
+\newcommand{\why}{\what{y}_i}
+\newcommand{\whx}{\what{x}_i}
+\newcommand{\whz}{\what{z}_i}
+\newcommand{\Wp}{W^{\pm}_i}
+\newcommand{\wb}{\overline}
+\newcommand{\cl}{\mathrm{cl}}
+
+\newcommand{\s}{\sigma}
+\newcommand{\lb}{\lambda}
+\newcommand{\hint}{\int_{\IH^n}}
+\newcommand{\hbint}{\int_{\p \IH^n}}
+\newcommand{\sint}{\int_{-\infty}^\infty}
+\newcommand{\intr}{\mathrm{int}\,}
+
+
+%%%%%%%%%%%%% new definitions for the positive mass paper %%%%%%%%%
+
+\newcommand{\sperp}{{\scriptscriptstyle \perp}}
+\newcommand{\tG}{G_n(\IR^{n + k})}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%
+\begin{document}
+%
+
+\title{Notes on Characteristic Classes}
+\author{Ziquan Yang}
+
+
+\date{\today}
+
+\maketitle
+ 
+\tableofcontents
+%\setcounter{secnumdepth}{1} 
+
+\section{Introduction}
+\section{Algebraic Topology}
+\subsection{Grassmann Manifolds}
+\subsubsection{Universal bundle}
+We first explain the ideas in this section. Many proofs are pretty technical topological arguments and are delayed. 
+
+Given a curve $M^1 \subseteq \IR^{k + 1}$, we may define a map $$t : M^1 \to S^k$$ that sends every point in $M$ to a unit tangent vector. Of course, to do it consistently we need an orientation of $M^1$. However, when an orientation is not available or we may disregard it, it is always possible to define a map by passing to projective space, i.e. $t : M^1 \to \IP^k$ that sends a point to its tangent space. 
+
+Similarly, given a hypersurface $M^k \subseteq \IR^{k + 1}$, we may define a map $$ n : M^k \to \IP^k$$ that sends a point to the orthogonal complement of its tangent space. 
+
+More generally we would like a map for $M^n \subseteq \IR^{n + k}$, so we need to space to parametrize the $n$-dimensional subspaces of $\IR^{n + k}$. Therefore we introduce Grassmann manifolds. The underlying set $G_n(\IR^{n + k})$ is the $n$-dimensional subspaces of $\IR^{n + k}$ and we topologize it as follows: Let $$V_n(\IR^{n + k}) \subseteq \IR^{n + k} \times \cdots \times \IR^{n + k}$$ be the subset parametrizing the $n$-tuples of vectors $(v_1, \cdots, v_n)$ that are linearly independent (such tuple is called a $n$-frame). Clearly $V_n$ is a Zariski open subset. Each $n$-tuple in $V_n$ determines a $n$-dimensional subspace in $\IR^{n + k}$. Therefore there is a canonical function 
+$$ q : V_n(\IR^{n + k}) \to G_n (\IR^{n + k}) $$ 
+This map gives $G_n (\IR^{n + k})$ a quotient topology. Alternatively, we could have used the set of orthonomal $n$-frames $V^0_{n}$. $V^0_{n}$ is clearly compact, and hence $G_n (\IR^{n + k})$ is compact. We will verify later that $G_n (\IR^{n + k})$, which now is a priori only a topological space, is indeed a topological manifold. 
+
+In particular $\IP^n$ can now be viewed as a special case of Grassmann manifolds, and we may define a canonical vector bundle on $G_n(\IR^{n + k})$ in a completely analogous fashion: $$\gamma^n(\IR^{n + k}) = \{ (\text{$n$-plane in }\IR^{n + k}, \text{vectors in the plane}) \}$$ 
+
+With Grassmann mainfolds we can define generalized Gauss maps $\wb{g} : M \to \tG$ by sending a point to its tangent space. However, Grassmann manifolds can absorb much more bundles. In some sense it behaves like a terminal object in a category. 
+
+\begin{lemma}
+\label{complemma}
+For any $n$-plane bundle $\xi$ over a compact base space $B$ there exists a bundle map $\xi \to \gamma^n(\IR^{n + k})$ provided that $k$ is sufficiently large. 
+\end{lemma}
+
+In order to generalize to common manifolds that do not happen to be compact, we do two things: replace ``compact" be ``paracompact" and introduce infinite Grassmann manifolds. A topological space is paracompact if it is Hausdorff and for every open cover, there is a locally finite refinement. Every metric space is paracompact, a direct limit of compact spaces is compact, and nearly all familiar topological spaces are paracompact. We realize the infinite Grassmann manifolds as a direct limit of the sequence 
+$$ G_n(\IR^n) \subset G_n(\IR^{n+1}) \subset G_n(\IR^{n + 1}) \subset \cdots $$
+To make sense of ``$\subset$": Define $\IR^\infty = \oplus_{i = 1}^\infty \IR_i$ and view each $\IR^n$ as a subset $\oplus_{i = 1}^n \IR_i$. We denote the above infinite Grassmann manifold as $G_n(\IR^\infty)$. As a special case, we have infinite projective space $\IP^\infty = G_1(\IR^\infty)$ is the direct limit of $\IP^1 \subset \IP^2 \subset \cdots$. 
+
+A canonical bundle $\gamma^n$ over $G_n$ can be constructed just as in the finite case, i.e. as a subset of $G_n \times \IR^\infty$ that consists of pairs of planes and vectors in the planes. It is topologized as a subset of the Catesian product. We will verify that it does satisfy the local triviality condition and is a $n$-plane bundle over $G_n$. Now Lemma~\ref{complemma} can be extended to the theorem:
+\begin{theorem}
+Any $\IR^n$-bundle $\xi$ over a paracompact base admits a bundle map $\xi \to \gamma^n$. Moreover, any two such bundle maps are homotopic. 
+\end{theorem}
+In particular, the homotopic bundle maps induce homotopic maps on base spaces. Therefore any $\IR^n$-bundle $\xi$ over a paracompact space $B$ determines a unique homotopy class of maps $\wb{f_\xi} : B \to G_n$. 
+
+\subsubsection{Cell Structure}
+In this section we use $D^p$ to denote the closed unit disk in $\IR^p$. 
+Let us recall the definition of a CW-complex:
+\begin{definition} A CW-complex is a Hausdorff space $K$, together with a partitiion of $K$ into disjoint subsets $\{ e_\alpha \}$, such that 
+\begin{enumerate}
+\item Each $e_\alpha$ is topologically an open cell of dimension $n(e)$. For each $e_\alpha$, there is a characteristic map $\varphi_\alpha : D^{n(\alpha)} \to K$ that carries $\intr D^{n(\alpha)}$ homeomorphically onto $e_\alpha$. 
+\item Each point $x \in \cl(e_\alpha) - e_\alpha$ must lie in a cell $e_\beta$ of lower dimension. 
+\item Each point of $K$ is contained in a finite subcomplex. 
+\item $K$ is topologized as a direct limit of its finite subcomplexes. 
+\end{enumerate}
+\end{definition}
+The last two conditions always hold if the complex is finite (i.e. has finitely many cells), so we only use them to deal with infinite complexes. 
+
+
+\section{Differential Geometry}
+
+\section{Algebraic Geometry}
+
+\end{document}
