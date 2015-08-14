@@ -3,5 +3,5 @@
 \contentsline {subsection}{\numberline {2.1}Grassmann Manifolds}{1}
 \contentsline {subsubsection}{\numberline {2.1.1}Universal bundle}{1}
 \contentsline {subsubsection}{\numberline {2.1.2}Cell Structure}{3}
-\contentsline {section}{\numberline {3}Differential Geometry}{3}
-\contentsline {section}{\numberline {4}Algebraic Geometry}{3}
+\contentsline {section}{\numberline {3}Differential Geometry}{4}
+\contentsline {section}{\numberline {4}Algebraic Geometry}{4}
