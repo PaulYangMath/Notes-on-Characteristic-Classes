@@ -298,6 +298,20 @@
 
 \section{Introduction}
 \section{Algebraic Topology}
+\subsection{A brief review of singular cohomology}
+\textbf{Cross product}
+Cross product is also called external cup product. The absolute version is 
+$$ \times : H^k(X; R) \times H^l(Y; R) \to H^{k + l}(X \times Y; R) $$
+and the relative version is 
+$$ \times : H^k(X, A; R) \times H^l(Y, B; R) \to H^{k + l}(X \times Y, A \times Y \cup X \times B; R)$$
+given by $a \times b = p_1^*(a) \cup p_2^*(b)$, where $p_1, p_2$ are projections from $X \times Y$ to $X$ and $Y$. \\\\
+\textbf{Cohomology sequence of a triple}\\
+Given a triple $A \subseteq B \subseteq X$, It is not hard to convince ourselves that the following sequence is exact:
+$$ 0 \to C^\bullet (B, A; G) \to C^\bullet (X, A; G) \to C^\bullet(X, B; G) \to 0 $$
+so by the snake lemma we obtain an exact sequence for a triple:
+$$ \cdots \to H^k(B, A; G) \to H^k(X, A; G) \to H^k(X, B; G) \to H^{k + 1}(B, A; G) \to \cdots $$
+In particular we obtain the exact sequence of pair as a special case by setting $A = \emptyset$. 
+
 \subsection{Grassmann Manifolds}
 \subsubsection{Universal bundle}
 We first explain the ideas in this section. Many proofs are pretty technical topological arguments and are delayed. 
@@ -345,9 +359,27 @@ Note that the closure of a cell need not be a cell. For example, $S^n$ can be co
 We first study the cell structure for $G_n(\IR^m)$. Any $n$-plane $X \subseteq \IR^m$ is filtrated by 
 $$0 \subseteq X \cap \IR^1 \subseteq X \cap \IR^2 \subseteq \cdots \subseteq X \cap \IR^m $$ 
 The dimension of spaces in the above filtration increases from $0$ and stabilizes at $n$. There are precisely $n$ jumps. We use a Schubert symbol $\sigma = ( \sigma_1, \cdots, \sigma_n)$ to record a jump type, i.e. $$ \dim X \cap \IR^{\sigma_i} = i, \, \dim X \cap \IR^{\sigma_{i-1}} = i - 1$$
-For each Schubert symbol $\sigma$, we use $e(\sigma)$ to denote the set of all $n$-planes with the same jump type. 
+For each Schubert symbol $\sigma$, we use $e(\sigma)$ to denote the set of all $n$-planes with the same jump type. We will show that $e(\sigma)$ is an open cell of dimension $d(\sigma) = (\sigma_1 - 1) + (\sigma_2 - 2) + \cdots + (\sigma_n - n)$. 
 
-Let us use the standard basis for $\IR^n$ and $\IR^\infty$. For each $n$-plane $X \subseteq \IR^m$ we can write down a $n \times m$ matrix whose row space is $X$, i.e. a generator matrix for $X$. Then we reduce the matrix to echelon form, then the columns with pivotal entries are in the support of $\sigma$. 
+Let us use the standard basis for $\IR^n$ and $\IR^\infty$. For each $n$-plane $X \subseteq \IR^m$ we can write down a $n \times m$ matrix whose row space is $X$, i.e. a generator matrix for $X$. Then we reduce the matrix to reduced echelon form, then the columns with pivotal entries are in the support of $\sigma$. With some linear algebra, it is not hard to show that each $n$-plane $X \in e(\sigma)$ possesses a unique othornormal basis $(x_1, \cdots, x_n) \in H^{\sigma_1} \times \cdots \times H^{\sigma_n}$. 
+
+Define $$\wt{e}(\sigma) = V_n^0 \cap (H^{\sigma_1} \times \cdots \times H^{\sigma_n})$$ and $$ \wb{e}(\sigma) = V_n^0 \cap (\wb{H}^{\sigma_1} \times \cdots \times \wb{H}^{\sigma_n})$$
+
+\begin{lemma}
+\end{lemma}
+
+\subsection{Orientation and Euler class}
+
+\subsection{Thom Isomorphism}
+For the first half of the section, $\IZ/2\IZ$ coefficients are assumed.
+For $n = 1$, the cohomology group $H^1(\IR, \IR_0) \iso \IZ/2\IZ$. Of course, this can be shown by abstract means, but in order to see what the generator $e^1$ looks like I decide to do it by hand. Recall that $$C^1(\IR, \IR_0)= \{ \varphi : \{ [a, b]: a, b \in \IR \} \to \IZ/2\IZ : \forall [a, b] \subseteq \IR_0, \varphi([a, b]) = 0 \}$$ If in addition $\varphi$ is a cocycle, then $\varphi([0, 0]) = 0$. In fact $\varphi$ is fixed once $\varphi([0, 1])$ is fixed. If $\varphi([0, 1]) = 0$, then $\varphi$ is trivial. If $\varphi([0, 1]) = 1$, then $$ \varphi([a, b]) = \begin{cases} 1, &\text{ if }ab = 0, a \neq b \\
+ 0,& \text{otherwise} \end{cases} $$ and in this case $e^1 = [\varphi]$. 
+
+When $n > 1$, then consider the long exact sequence of the pair $(\IR^n, \IR^n_0)$. Since $H^{n - 1}(\IR^n) = H^n(\IR^n) = 0$, we have that $$H^n(\IR^n, \IR^n_0) = H^{n - 1}(\IR^n_0) = \IZ / 2\IZ$$ 
+We set $e^n = e^1 \times \cdots e^1 \in H^n(\IR^n, \IR^n_0)$. It is not hard to check, using the explicit description of $e^1$, that $e^n \neq 0$. Taking $n = 2$ for example, we see that by the definition of cross product, then following simplex won't be mapped to $0$ by $e^2$. 
+
+
+
 
 \section{Differential Geometry}
 

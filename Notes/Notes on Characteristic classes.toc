@@ -1,7 +1,10 @@
 \contentsline {section}{\numberline {1}Introduction}{1}
 \contentsline {section}{\numberline {2}Algebraic Topology}{1}
-\contentsline {subsection}{\numberline {2.1}Grassmann Manifolds}{1}
-\contentsline {subsubsection}{\numberline {2.1.1}Universal bundle}{1}
-\contentsline {subsubsection}{\numberline {2.1.2}Cell Structure}{3}
-\contentsline {section}{\numberline {3}Differential Geometry}{4}
-\contentsline {section}{\numberline {4}Algebraic Geometry}{4}
+\contentsline {subsection}{\numberline {2.1}A brief review of singular cohomology}{1}
+\contentsline {subsection}{\numberline {2.2}Grassmann Manifolds}{2}
+\contentsline {subsubsection}{\numberline {2.2.1}Universal bundle}{2}
+\contentsline {subsubsection}{\numberline {2.2.2}Cell Structure}{4}
+\contentsline {subsection}{\numberline {2.3}Orientation and Euler class}{5}
+\contentsline {subsection}{\numberline {2.4}Thom Isomorphism}{5}
+\contentsline {section}{\numberline {3}Differential Geometry}{5}
+\contentsline {section}{\numberline {4}Algebraic Geometry}{5}
