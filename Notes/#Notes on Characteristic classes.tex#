@@ -9,8 +9,9 @@
 %\usepackage{epsfig}
 %\usepackage{graphicx}
 %\usepackage[dvips]{graphicx}
-
-
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{calc}
 
 
 \usepackage[matrix,tips,graph,curve]{xy}
@@ -272,8 +273,6 @@
 
 \newcommand{\sperp}{{\scriptscriptstyle \perp}}
 \newcommand{\tG}{G_n(\IR^{n + k})}
-\newcommand{\Ext}{\mathrm{Ext}}
-\newcommand{\proj}{\mathrm{proj}}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 
@@ -299,19 +298,6 @@
 
 \section{Introduction}
 \section{Algebraic Topology}
-\subsection{A brief review of singular cohomology}
-The algebraic topological view of characteristic classes is built upon singular cohomology. Therefore we brief recap some important facts about singular cohomology. Singular homology and singular cohomology are dual to each other. Indeed, cohomology groups can be computed once we know the homology groups, using \textit{universal coefficient theorem}, which says the following sequence 
-$$ 0 \to \Ext(H_{n - 1}(C), G) \to H^n(C; G) \to \Hom(H_n(C), G) \to 0 $$
-for a chain complex $C$ of free abelian groups. UCT is a basic fact in homological algebra and there is not much topology in it. However, singular cohomology has some advantage over homology in that there is a ring structure on $H^*(X; G)$.  \\\\
-\textbf{Long exact sequence of a pair}\\
-Then short exact sequence 
-$$ 0 \to C_n(A) \stackrel{i}{\to} C_n(X) \to C_n(X, A) \to 0 $$
-dualizes to 
-$$ 0 \to C^n(X, A; G) \to C^n(X; G) \stackrel{i^*}{\to} C^n(A; G) \to 0 $$
-Recall that the function $\Hom(\cdot, G)$ is always left exact, but since the above groups are all free abelian, we do have surjectivity onto $C^n(A; G)$. Indeed, given $\varphi \in C^n(A; G)$, we can extend it by $0$ on simplicies whose images are not contained in $A$. 
-
-$i^*$ is naturally interpreted as the restriction of a map on $C_n(X)$ to a map on $C_n(A)$, and the kernel consists of those maps that are zero on $C_n(A)$, which are naturally identified with maps in $\Hom(C_n(X)/C_n(A), G)$, which is precisely $C^n(X, A; G)$. In particular, unlike $C_n(X, A; G)$, $C^n(X, A; G)$ can be naturally viewed as a subgroup of $C^n(X; G)$, i.e. those that are zero on $C(A)$, and the boundary map $\delta : C^n(X, A; G) \to C^{n+1}(X, A; G)$ is simply the restriction of $\delta : C^n(X; G) \to C^{n+1}(X; G)$.
-
 \subsection{Grassmann Manifolds}
 \subsubsection{Universal bundle}
 We first explain the ideas in this section. Many proofs are pretty technical topological arguments and are delayed. 
@@ -332,11 +318,6 @@ With Grassmann mainfolds we can define generalized Gauss maps $\wb{g} : M \to \t
 \label{complemma}
 For any $n$-plane bundle $\xi$ over a compact base space $B$ there exists a bundle map $\xi \to \gamma^n(\IR^{n + k})$ provided that $k$ is sufficiently large. 
 \end{lemma}
-\begin{proof}
-It suffices to define a map $\wt{f} : E(\xi) \to \IR^m$ that is linear and injective on each fiber. Since we may then define a bundle map $f : E(\xi) \to \gamma^n(\IR^{n + k})$ by 
-$$ f(e) = ( \wt{f}(\text{fiber through }e), \wt{f}(e) )$$
-
-\end{proof}
 
 In order to generalize to common manifolds that do not happen to be compact, we do two things: replace ``compact" be ``paracompact" and introduce infinite Grassmann manifolds. A topological space is paracompact if it is Hausdorff and for every open cover, there is a locally finite refinement. Every metric space is paracompact, a direct limit of compact spaces is compact, and nearly all familiar topological spaces are paracompact. We realize the infinite Grassmann manifolds as a direct limit of the sequence 
 $$ G_n(\IR^n) \subset G_n(\IR^{n+1}) \subset G_n(\IR^{n + 1}) \subset \cdots $$
@@ -348,20 +329,7 @@ Any $\IR^n$-bundle $\xi$ over a paracompact base admits a bundle map $\xi \to \g
 \end{theorem}
 In particular, the homotopic bundle maps induce homotopic maps on base spaces. Therefore any $\IR^n$-bundle $\xi$ over a paracompact space $B$ determines a unique homotopy class of maps $\wb{f_\xi} : B \to G_n$. 
 
-\subsubsection{Grassmann manifolds}
-Now we take a closer loot at the structure of Grassmann manifolds. We verify that is indeed a manifold and give a decomposition into CW complex. Finally we talk about the cohomology of Grassmann manifolds. \\\\
-\textbf{A convenient open chart}\\
-Recall that when working with projective space we would like to choose an affine chart and work locally. At each point $p = (x_0 : \cdots : x_n) \in \IP^n$ there is some coordinate $x_j \neq 0$, say $j = 0$. Then we can choose $A_0 = \{x_0 \neq 0\}$ to be an open neighborhood containing $p$, which is invariably easier to work with. Therefore with Grassmann manifolds $\tG$ the first thing we do is to describe how to conveniently choose an open neighborhood of a point, which in our case is some $n$ plane $X \in \IR^{n + k}$. 
-Thanks to the natural inner product in $\IR^{n + k}$ we may consider the orthogonal projection map $\proj_X$ onto $X$ and let $U$ be the set of planes that project injectively onto $X$, i.e. 
-$$ U = \{ X' \in \tG : X' \cap \ker \proj_X = 0 \}$$
-We verify that $U$ is an open subset of $\tG$. Since the topology on $\tG$ is the quotient topology from $V_n(\IR^{n + k})$, it is equivalent to verifying that the preimage of $U$ in $V_n(\IR^{n + k})$ is open. Choose a basis $w_1, \cdots, w_k$ of $X^\perp = \ker \proj_X = 0$, a $n$-frame $(v_1, \cdots, v_n) \in V_n(\IR^{n + k})$ has a span disjoint from $X^\perp$ if and only if $\{v_1, \cdots, v_n, w_1, \cdots, w_k\}$ is a basis of $\IR^{n + k }$. Therefore we define a map $\det : V_n(\IR^{n + k}) \to \IR $ by sending $(v_1, \cdots, v_n)$ to $\det([v_1; \cdots; v_n; w_1; \cdots; w_k])$. The map is clearly continuous and $U$ is evidently $\det^{-1}(\IR - \{0\})$ and hence is open. Just as those standard affine charts on $\IP^n$, $U$ is also Zariski dense in $\tG$. 
-
-We can view planes in $U$ as the graph of some linear map $X \to X^\perp$, so there is a natural bijective correspondence between $U$ and $\Hom(X, X^\perp) \iso M^{n \times k} = \IR^{nk}$. Indeed, we verify that it is a homeomorphism. Actually this is clear once we write down such a correspondence $T : U \to M^{n \times k}$ explicitly using coordinates. Let $v_1, \cdots, v_n$ be an orthonormal basis for $X$. For each $X' \in U$, there is a unique basis $\{w_1, \cdots, w_n\}$ such that $\proj_X w_j = v_j$ for all $j$. Then we set $$T(X') = [ \proj_{X^\perp} w_1, \cdots, \proj_{X^\perp} w_n ]$$ i.e. the matrix whose columns are $\proj_{X^\perp} w_j$. $w_j$'s evidently depends continuously on $X'$ and vice versa, so $T$ is indeed a homeomorphism. In particular, it implies that $\tG$ is Hausdorff, which could easily shown independently as well. \\\\
-\textbf{Local trivialization of $\gamma^n(\IR^{n+k})$}\\
-With $U$ it is also not hard to show that $\gamma^n(\IR^{n + k})$ is a bundle. Of course, the only interesting thing to verify is local triviality. On $U$, $\gamma^n(\IR^{n + k})$ restricts to pairs
-$$ \{(X', v) : X' \cap \ker \proj_X = 0, v \in X'\}$$
-Therefore we may use $h: \pi^{-1}(U) \to U \times X$ defined by $h(X', v) = (X', \proj_X v)$ as a local trivialization. That $X' \in U$ guarantees that $v \to \proj_X v$ is injective. It is not hard to verify that it is indeed a homeomorphism. 
-
+\subsubsection{Cell Structure}
 In this section we use $D^p$ to denote the closed unit disk in $\IR^p$. 
 Let us recall the definition of a CW-complex:
 \begin{definition} A CW-complex is a Hausdorff space $K$, together with a partitiion of $K$ into disjoint subsets $\{ e_\alpha \}$, such that 
@@ -381,10 +349,7 @@ For each Schubert symbol $\sigma$, we use $e(\sigma)$ to denote the set of all $
 
 Let us use the standard basis for $\IR^n$ and $\IR^\infty$. For each $n$-plane $X \subseteq \IR^m$ we can write down a $n \times m$ matrix whose row space is $X$, i.e. a generator matrix for $X$. Then we reduce the matrix to echelon form, then the columns with pivotal entries are in the support of $\sigma$. 
 
-\subsection{Orientation and Euler class}
-
 \section{Differential Geometry}
-
 \section{Algebraic Geometry}
 
 \end{document}

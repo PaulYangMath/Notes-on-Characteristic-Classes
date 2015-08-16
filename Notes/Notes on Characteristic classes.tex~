@@ -9,9 +9,8 @@
 %\usepackage{epsfig}
 %\usepackage{graphicx}
 %\usepackage[dvips]{graphicx}
-\usepackage{tikz}
-\usepackage{tikz-cd}
-\usetikzlibrary{calc}
+
+
 
 
 \usepackage[matrix,tips,graph,curve]{xy}
@@ -298,6 +297,12 @@
 
 \section{Introduction}
 \section{Algebraic Topology}
+\subsection{A brief review of singular cohomology}
+The algebraic topological view of characteristic classes is built upon singular cohomology. Therefore we brief recap some important facts about singular cohomology. Singular homology and singular cohomology are dual to each other. Indeed, cohomology groups can be computed once we know the homology groups, using \textit{universal coefficient theorem}, which says the following sequence 
+$$ 0 \to \Ext(H_{n - 1}(C), G) \to H^n(C; G) \to \Hom(H_n(C), G) \to 0 $$
+for a chain complex $C$ of free abelian groups. 
+
+
 \subsection{Grassmann Manifolds}
 \subsubsection{Universal bundle}
 We first explain the ideas in this section. Many proofs are pretty technical topological arguments and are delayed. 
@@ -343,7 +348,11 @@ Let us recall the definition of a CW-complex:
 The last two conditions always hold if the complex is finite (i.e. has finitely many cells), so we only use them to deal with infinite complexes. 
 Note that the closure of a cell need not be a cell. For example, $S^n$ can be considered a cell conplex with with a $n$-cell and a $0$-cell, but the closure of the $n$-cell is the entire sphere. Every CW-complex is paracompact. 
 We first study the cell structure for $G_n(\IR^m)$. Any $n$-plane $X \subseteq \IR^m$ is filtrated by 
-$$ X \cap \IR^1 \subseteq X \cap \IR^2 \subseteq \cdots \subseteq X \cap \IR^m $$
+$$0 \subseteq X \cap \IR^1 \subseteq X \cap \IR^2 \subseteq \cdots \subseteq X \cap \IR^m $$ 
+The dimension of spaces in the above filtration increases from $0$ and stabilizes at $n$. There are precisely $n$ jumps. We use a Schubert symbol $\sigma = ( \sigma_1, \cdots, \sigma_n)$ to record a jump type, i.e. $$ \dim X \cap \IR^{\sigma_i} = i, \, \dim X \cap \IR^{\sigma_{i-1}} = i - 1$$
+For each Schubert symbol $\sigma$, we use $e(\sigma)$ to denote the set of all $n$-planes with the same jump type. 
+
+Let us use the standard basis for $\IR^n$ and $\IR^\infty$. For each $n$-plane $X \subseteq \IR^m$ we can write down a $n \times m$ matrix whose row space is $X$, i.e. a generator matrix for $X$. Then we reduce the matrix to echelon form, then the columns with pivotal entries are in the support of $\sigma$. 
 
 \section{Differential Geometry}
 
