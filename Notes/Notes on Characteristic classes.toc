@@ -5,7 +5,7 @@
 \contentsline {subsubsection}{\numberline {2.2.1}Universal bundle}{3}
 \contentsline {subsubsection}{\numberline {2.2.2}Grassmann manifolds}{5}
 \contentsline {subsection}{\numberline {2.3}Orientation and Euler class}{7}
-\contentsline {subsection}{\numberline {2.4}Thom Isomorphism}{7}
-\contentsline {subsection}{\numberline {2.5}Orientation and Euler class}{7}
-\contentsline {section}{\numberline {3}Differential Geometry}{7}
-\contentsline {section}{\numberline {4}Algebraic Geometry}{7}
+\contentsline {subsection}{\numberline {2.4}Thom Isomorphism}{8}
+\contentsline {subsubsection}{\numberline {2.4.1}With $\mathbb {Z}/2\mathbb {Z}$ coefficients}{8}
+\contentsline {section}{\numberline {3}Differential Geometry}{10}
+\contentsline {section}{\numberline {4}Algebraic Geometry}{10}

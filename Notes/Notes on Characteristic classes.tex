@@ -151,7 +151,7 @@
 \newcommand\quaternions{{\mathbb H}}
 
 
-\newcommand\iso{{\cong}} 
+\newcommand\iso{\,{\cong}\,} 
 \newcommand\tensor{{\otimes}}
 \newcommand\Tensor{{\bigotimes}} 
 \newcommand\union{\bigcup} 
@@ -274,7 +274,7 @@
 \newcommand{\tG}{G_n(\IR^{n + k})}
 \newcommand{\Ext}{\mathrm{Ext}}
 \newcommand{\proj}{\mathrm{proj}}
-
+\newcommand{\invlim}{\varprojlim}
 %%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -311,8 +311,7 @@ dualizes to
 $$ 0 \to C^n(X, A; G) \to C^n(X; G) \stackrel{i^*}{\to} C^n(A; G) \to 0 $$
 Recall that the function $\Hom(\cdot, G)$ is always left exact, but since the above groups are all free abelian, we do have surjectivity onto $C^n(A; G)$. Indeed, given $\varphi \in C^n(A; G)$, we can extend it by $0$ on simplicies whose images are not contained in $A$. 
 
-$i^*$ is naturally interpreted as the restriction of a map on $C_n(X)$ to a map on $C_n(A)$, and the kernel consists of those maps that are zero on $C_n(A)$, which are naturally identified with maps in $\Hom(C_n(X)/C_n(A), G)$, which is precisely $C^n(X, A; G)$. In particular, unlike $C_n(X, A; G)$, $C^n(X, A; G)$ can be naturally viewed as a subgroup of $C^n(X; G)$, i.e. those that are zero on $C(A)$, and the boundary map $\delta : C^n(X, A; G) \to C^{n+1}(X, A; G)$ is simply the restriction of $\delta : C^n(X; G) \to C^{n+1}(X; G)$. \\\\
-
+$i^*$ is naturally interpreted as the restriction of a map on $C_n(X)$ to a map on $C_n(A)$, and the kernel consists of those maps that are zero on $C_n(A)$, which are naturally identified with maps in $\Hom(C_n(X)/C_n(A), G)$, which is precisely $C^n(X, A; G)$. In particular, unlike $C_n(X, A; G)$, $C^n(X, A; G)$ can be naturally viewed as a subgroup of $C^n(X; G)$, i.e. those that are zero on $C(A)$, and the boundary map $\delta : C^n(X, A; G) \to C^{n+1}(X, A; G)$ is simply the restriction of $\delta : C^n(X; G) \to C^{n+1}(X; G)$. That the relative cochains form a subset of absolute cochains makes the relative cohomology conceptually easier than relative homology. \\\\
 \textbf{Cross product}
 Cross product is also called external cup product. The absolute version is 
 $$ \times : H^k(X; R) \times H^l(Y; R) \to H^{k + l}(X \times Y; R) $$
@@ -321,10 +320,15 @@ $$ \times : H^k(X, A; R) \times H^l(Y, B; R) \to H^{k + l}(X \times Y, A \times 
 given by $a \times b = p_1^*(a) \cup p_2^*(b)$, where $p_1, p_2$ are projections from $X \times Y$ to $X$ and $Y$. \\\\
 \textbf{Cohomology sequence of a triple}\\
 Given a triple $A \subseteq B \subseteq X$, It is not hard to convince ourselves that the following sequence is exact:
-$$ 0 \to C^\bullet (B, A; G) \to C^\bullet (X, A; G) \to C^\bullet(X, B; G) \to 0 $$
+$$ 0 \to C^\bullet (X, B; G) \to C^\bullet (X, A; G) \to C^\bullet(B, A; G) \to 0 $$
 so by the snake lemma we obtain an exact sequence for a triple:
-$$ \cdots \to H^k(B, A; G) \to H^k(X, A; G) \to H^k(X, B; G) \to H^{k + 1}(B, A; G) \to \cdots $$
+$$ \cdots \to H^k(X, B; G) \to H^k(X, A; G) \to H^k(B, A; G) \to H^{k + 1}(X, B; G) \to \cdots $$
 In particular we obtain the exact sequence of pair as a special case by setting $A = \emptyset$. 
+
+We also prepare some lemmas on commutivity of squares for future use. (cf. Hatcher p.210)
+
+\textbf{Excision}
+
 
 
 \subsection{Grassmann Manifolds}
@@ -402,19 +406,72 @@ Define $$\wt{e}(\sigma) = V_n^0 \cap (H^{\sigma_1} \times \cdots \times H^{\sigm
 \end{lemma}
 
 \subsection{Orientation and Euler class}
+An orientation of a vector space is a choice of an equivalence class of basis. Two basis are deemed as equivalent if the change of basis matrix has positive determinant, so there are exactly two orientations. 
+
+The first occasion in which I met the concept of orientation is in a differential geometric setting. An orientation means a consistent choice of basis of $T_p M$. A manifold is orientable if there exists a chart of open sets such that the transition functions on the overlaps have positive Jacobian determinants everywhere. From this point of view it does not take too much effort to show that $M$ is orientable if and only if its tangent bundle $TM$ is orientable. 
+
+There is also an algebraic topological description of orientation, using the concept of local cohomology/homology. Again we first deal with the orientation of a vector space. An orientation of $\IR^n$ is a choice of generator of $$H^n(\IR^n, \IR^n_0) \iso H^{n-1}(\IR^n_0) \iso H^{n - 1}(S^{n - 1}) = \IZ$$
+In order to connect to the previous definition, we give a rule to associate a homology class with a choice of basis. Take $\IR^3$ as an example, we place the barycenter of a tetrahedron as the origin. Suppose the vertices of the tetrahedron (which we should think of as a representative of a cocyle in $H^n(\IR^n_0)$), are labeled by $v_0, v_1, v_2, v_3$, then we take $v_1 - v_0, v_2 - v_1, v_3 - v_2$ as a basis for $\IR^3$. The case for other $\IR^n$ is entirely similar. 
+
+On a manifold $M$, we define the local orientation at a point $x_0 \in M$ as a choice of generator of $H^n(M, M-\{x_0\})$. Choose $U \iso \IR^n \subseteq M$ to be a neighborhood of $x_0$, by excision we have $H^n(M, M-\{x_0\}) = H^n(U, U-\{x_0\})$. If $\cl{V} \subseteq U$ is a smaller neighborhood, then by excision again the natural restriction $H^n(U, U-\{x_0\}) \to H^n(V, V-\{x_0\})$ is an isomorphism, so a generator restricts naturally to a generator. Now an orientation of $M$ is a consistent choice of local orientations such that if $x, y$ lie in a same neighborhood $\IR^n$, such that there is an open ball of finite radius $B$ containing both $x$ and $y$ and a generator of $H^n(\IR^n, \IR^n - B)$ restricts to the chosen generators at $x$ and $y$. 
+
+
+
 
 \subsection{Thom Isomorphism}
+\subsubsection{With $\IZ/2\IZ$ coefficients}
 For the first half of the section, $\IZ/2\IZ$ coefficients are assumed.
 For $n = 1$, the cohomology group $H^1(\IR, \IR_0) \iso \IZ/2\IZ$. Of course, this can be shown by abstract means, but in order to see what the generator $e^1$ looks like I decide to do it by hand. Recall that $$C^1(\IR, \IR_0)= \{ \varphi : \{ [a, b]: a, b \in \IR \} \to \IZ/2\IZ : \forall [a, b] \subseteq \IR_0, \varphi([a, b]) = 0 \}$$ If in addition $\varphi$ is a cocycle, then $\varphi([0, 0]) = 0$. In fact $\varphi$ is fixed once $\varphi([0, 1])$ is fixed. If $\varphi([0, 1]) = 0$, then $\varphi$ is trivial. If $\varphi([0, 1]) = 1$, then $$ \varphi([a, b]) = \begin{cases} 1, &\text{ if }ab = 0, a \neq b \\
- 0,& \text{otherwise} \end{cases} $$ and in this case $e^1 = [\varphi]$. 
+ 0,& \text{otherwise} \end{cases} $$ and in this case $e^1 = [\varphi]$. Technically we should have used $\sigma : [0,1] \to \IR$ instead of $[a, b]$. The correspondence is $a = \sigma(0), b = \sigma(1)$. There are many different continuous mappings with same endpoints, but in the end we may disregard this difference. 
 
 When $n > 1$, then consider the long exact sequence of the pair $(\IR^n, \IR^n_0)$. Since $H^{n - 1}(\IR^n) = H^n(\IR^n) = 0$, we have that $$H^n(\IR^n, \IR^n_0) = H^{n - 1}(\IR^n_0) = \IZ / 2\IZ$$ 
 We set $e^n = e^1 \times \cdots e^1 \in H^n(\IR^n, \IR^n_0)$. It is not hard to check, using the explicit description of $e^1$, that $e^n \neq 0$. Taking $n = 2$ for example, we see that by the definition of cross product, then following simplex won't be mapped to $0$ by $e^2$. 
 
+The proof of this version Thom isomorphism is rather analogous to that on differential forms that I have seen before. We deal with the trivial bundle first, and then use Mayer-Vietoris + five lemma to glue things up.  
 
+I feel the following assumes the role of Poincare lemma, but what exactly is the analogy of relative cohomology? We did not use relative cohomology that much in the differential geometric setting. 
+\begin{lemma}
+For any topological space $B$ and $n \ge 1$, the map $\times e^n : H^j(B) \to H^{n + j}(B \times \IR^n, B \times \IR^n_0)$ is an isomorphism. 
+\end{lemma}
+Note that the lemma says much more than that $H^j(B) \iso H^{n + j}(E, E_0)$, but there is an explicit one given by $\times e^n$. This is important since we may then use some of the commutative diagrams proved before. 
+\begin{proof}
+(commutative diagram to be found in page 267)
+\end{proof}
 
+\begin{theorem}
+\label{ThomIsoMod2}
+There is a unique class $u \in H^n(E, E_0)$ whose restriction to each $H^n(F, F_0)$ is nonzero for each fiber $F$. Furthermore the map $\cup u : H^j(E) \to H^{j + n}(E, E_0)$ is an isomorphism for each integer $j$. 
+\end{theorem}
+\begin{proof}
+\textbf{trivial}\\
+We first deal with the case that the bundle is trivial, i.e. $E \iso B \times \IR^n$. By the above lemma we have $$H^0(B) \stackrel{\times e^n}{\longrightarrow} H^{n}(B \times \IR^n, B \times \IR^n_0) = H^n(E, E_0)$$
+Let $b_0 \in B$ be a point and let $F$ be the fiber over it, we have a commutative diagram: 
 
-\subsection{Orientation and Euler class}
+Therefore that if $s \in H^0(B)$ corresponds to $u$ under the isomorphism $\times e^n$, we have that $s$ is nonzero on each point of $B$. Of course, there is only one such class (this is actually also true on the level of cocycles), i.e. $1 \in H^0(B)$. Any element in $H^j (B \times \IR^n)$ can be written uniquely as $y \times 1$ with $y \in H^j(B)$. Now we check that 
+$$ y \times 1 \mapsto (y \times 1)\cup (1 \times e) = y \times e$$
+is indeed an isomorphism $H^j(E) \to H^{j + n}(E, E_0)$ by the previous lemma. \\\\
+\textbf{compact}\\
+Now we assume $B$ is compact, so that $B$ can be covered by finitely many open sets $U_1, \cdots, U_2$ such that $E(U_i)$ is trivial for each $i$. Since we have shown that the conclusion holds for each $E(U_i)$, it suffices to show that in general if the conclusion holds for $E(A), E(B)$, where $A, B \subseteq B$ are open sets, then it holds for $E(A \cup B)$ as well. To simply notation, label $E(A) = E', E(B) = E'', E(A\cup B ) = E, E(A \cap B) = E^\cap$. There is a relative Mayer-Vietoris sequence:
+$$ \cdots \to H^n(E, E_0) \stackrel{\Psi}{\to} H^n(E', E'_0) \oplus H^n(E'', E''_0) \stackrel{\Phi}{\to} H^n(E^\cap, E^\cap_0) \to \cdots $$ 
+Let $u' \in H^n(E', E'_0), u'' \in H^n(E'', E''_0)$ be the unique classes as in the theorem. Then $u'|_{E^\cap}, u''|_{E^\cap}$ both work as the unique class in $H^n(E^\cap, E^\cap_0)$ as in the theorem since the condition is local. In particular, they are equal. Therefore $(u, v) \in \ker \Phi$, and by exactness of the sequence there exists $u \in H^n(E, E_0)$ that restricts to $u'$ on $A $ and to $u''$ on $B$. This $u$ is unique, since $H^{n - 1}(E^\cap, E^\cap_0) = 0$.
+
+To verify the second statement, consider the exact sequence: 
+$$ \cdots \to H^j(E) \to H^j(E') \oplus H^j(E'') \to H^j(E^\cap) \to \cdots $$
+Now apply $\cup u $ to each column, the above sequence maps to 
+$$ \cdots \to H^{n + j}(E, E_0) \stackrel{\Psi}{\to} H^{n + j}(E', E'_0) \oplus H^{n + j}(E'', E''_0) \stackrel{\Phi}{\to} H^{n + j}(E^\cap, E^\cap_0) \to \cdots $$ 
+$\cup u$ induces an isomorphism on the second and third column, and therefore also induces an isomorphism on the first. \\\\
+\textbf{limit}
+Now for a general topological space $B$, we have verified the conclusion for all compact subsets $C \subseteq B$. $B$ can be seen as the direct limit of all its compact subspaces. For each $C$, the inclusion $\iota : C \to B$ induces a map $H^j(B) \to H^j(C)$. The proof is complete by the following lemma. 
+\end{proof}
+\begin{lemma}
+The natural homomorphism $$ H^j(B) \to \invlim H^j(C) $$ is an isomorphism. 
+\end{lemma}
+\begin{proof}
+The corresponding statement for homology, i.e. $\varinjlim H_j(C) = H_j(B)$ is true for arbitrary coefficients. (Remember to come back to check this) Now apply UCT. Thanks to that fact that we are using field coefficients, there are no torsion groups and $H^j(\cdot) = \Hom(H_j(\cdot), \IZ/2\IZ)$.
+\end{proof}
+
+\subsection{Computations in a smooth manifold}
+
 
 \section{Differential Geometry}
 
