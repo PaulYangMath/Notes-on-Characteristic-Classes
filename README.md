@@ -1,2 +1,2 @@
 # Notes-on-Characteristic-Classes
-This folder contains the I files I am working on for my research project with Prof. Schoen. 
+This folder contains the notes I am writing on characteristic classes. References have not been added yet.  
