@@ -275,6 +275,11 @@
 \newcommand{\Ext}{\mathrm{Ext}}
 \newcommand{\proj}{\mathrm{proj}}
 \newcommand{\invlim}{\varprojlim}
+
+\newcommand{\Exp}{\mathrm{Exp}}
+\newcommand{\sm}{\varepsilon}
+\newcommand{\Ohm}{\Omega}
+\newcommand{\Sq}{\mathrm{Sq}}
 %%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -331,7 +336,7 @@ We also prepare some lemmas on commutivity of squares for future use. (cf. Hatch
 
 
 
-\subsection{Grassmann Manifolds}
+\subsection{Stiefel-Whitney classes}
 \subsubsection{Universal bundle}
 We first explain the ideas in this section. Many proofs are pretty technical topological arguments and are delayed. 
 
@@ -405,7 +410,29 @@ Define $$\wt{e}(\sigma) = V_n^0 \cap (H^{\sigma_1} \times \cdots \times H^{\sigm
 \begin{lemma}
 \end{lemma}
 
-\subsection{Orientation and Euler class}
+\subsubsection{Existence of Stiefel-Whitney classes}
+This section assumes Thom isomorphism. Recall that the Thom isomorphism $\phi : H^k(B) \to H^{k + n} (E, E_0)$ can be see as the composition: 
+$$ H^k(B) \stackrel{\pi^*}{\longrightarrow} H^k(E) \stackrel{\cup u}{\longrightarrow} H^{k + n}(E, E_0)$$ where $u \in H^n(E, E_0)$ is the fundamental cohomology class. 
+
+Now we introduce Steenrod squaring operations. In general, a cohomology operation is a \textit{natural transformation} betwenn cohomology functors, they do not need to be homomorphisms of graded rings. Steenrod squaring operations are characterized by four properties:
+\begin{enumerate}
+\item For each pair $Y \subseteq X$, integers $n, i \ge 0$ there is an additive homomorphism:
+$$ \Sq^i : H^n(X, Y) \to H^{n + i}(X, Y) $$
+\item \textit{Naturality} : If $f : (X, Y) \to (X', Y')$, then $\Sq^i \circ f^*  = f^* \circ \Sq^i$. Of course, this should be satisfied by all cohomology operations. 
+\item If $a \in H^n(X, Y)$, then $\Sq^0(a) = a$, $\Sq^n(a) = a \cup a$ and $\Sq^i(a) = 0$ for all $i > n$. Since higher squaring operations vanish, we define the total squaring operation as 
+$$ \Sq(a) = a + \Sq^1(a) + \cdots + \Sq^n(a) $$
+\item \textit{Cartan formula}, which says that cup products correspond to convolution:
+$$ \Sq^k (a \cup b) = \sum_{i + j = k} \Sq^i(a) \cup \Sq^j(b) $$ Or equivalently, 
+$$ \Sq(a \cup b) = \Sq(a) \cup \Sq(b) $$ Note that with naturality it is not hard to show that cross product also satisfies Cartan formula: 
+$$ \Sq(a \times b) = \Sq(a) \times \Sq(b) $$
+\end{enumerate}
+We will construct Steenrod squaring operations later. Now we may finally define the Stiefel-Whitney classes $w_i(\xi) \in H^i(B)$ using the property:
+$$ \phi(w_i(\xi)) = \Sq^i(u) $$
+
+
+
+
+\subsection{Orientation and Euler classes}
 An orientation of a vector space is a choice of an equivalence class of basis. Two basis are deemed as equivalent if the change of basis matrix has positive determinant, so there are exactly two orientations. 
 
 The first occasion in which I met the concept of orientation is in a differential geometric setting. An orientation means a consistent choice of basis of $T_p M$. A manifold is orientable if there exists a chart of open sets such that the transition functions on the overlaps have positive Jacobian determinants everywhere. From this point of view it does not take too much effort to show that $M$ is orientable if and only if its tangent bundle $TM$ is orientable. 
@@ -471,6 +498,20 @@ The corresponding statement for homology, i.e. $\varinjlim H_j(C) = H_j(B)$ is t
 \end{proof}
 
 \subsection{Computations in a smooth manifold}
+Let $M$ be a manifold of dimension $m$ smoothly embedded in a Riemannian manifold $A$ of dimension $m + k$. Let $\nu_k$ be the normal bundle of $M$ in $A$ and let $E$ be its total bundle. 
+We first introduce the tubular neighborhood lemma. 
+
+\begin{lemma}
+There exists an open neighborhood of $M$ in $A$ that is diffeomorphic to the total bundle $E$. 
+\end{lemma}
+\begin{proof}
+We only show the case when $M$ is compact. The lemma is also true for noncompact manifolds, but the proof is more technical. Let $(x, 0) \in E$ be a point. There is a neighborhood $U_x \subseteq E$ of $(x, 0)$ that is diffeomorphic to an open subset of $A$ containing $x$ under the exponential map. Recall how exponential map is defined: let $(x', v) \in U$ be a point, $\Exp(x', v) = \gamma(1)$ where $\gamma : [0, 1] \to A$ is the unique geodesic with $\gamma(0) = x', \gamma'(0) = v$ ($E \subseteq \tau_A$ so $\gamma'(0) = v$ makes sense). Since $M$ is compact, we can cover it with finitely many such neighborhoods $U_{x_1}, \cdots, U_{x_p}$ , and there exists a $\sm >0 $, such that 
+$$ E(\sm) : = \{(x, v) \in E : \| v\| < \sm \} \subseteq \union_{i = 1}^p U_{x_i}$$ 
+The above construction ensures that each $E(\sm) \cap U_{x_i}$ is diffeomorphic to its image. Now we show we can restrict $\sm$ to ensure that $E(\sm) \to A$ is injective. Suppose not, there for each $k$, we can find $(x_k, v_k), (x'_k, v'_k) \in E(1/k)$ such that $(x_k, v_k) \neq (x'_k, v'_k)$, but $\Exp(x_k, v_k) = \Exp(x'_k, v'_k)$. Since $M$ is compact, both sequences converge, say $(x_k, v_k) \to (x, 0)$ and $(x'_k, v'_k) \to (x', 0)$. Since $\Exp$ is in particular continuous, we have that $\Exp(x, 0) = \Exp(x', 0)$, but it contradicts the fact that $\Exp$ is a diffeomorphism near $\Exp(x, 0)$. It is not hard to see that $E(\sm) \iso E$. 
+\end{proof}
+The denote the tubular neighborhood (the image of $E(\sm)$) constructed above by $N_\sm$. By excision, the inclusion $\iota : (N_\sm, N_\sm - M) \to (A, A - M)$ induces an isomorphism $H^*(A, A - M; R) \to H^*(N_\sm, N_\sm - M; R)$. Now compose with the isomorphism induced by the diffeomorphism $E \iso N_\sm$ we have that 
+$$ H^*(E, E_0; R) \iso H^*(A, A - M; R) $$
+In addition, the isomorphism is canonical. 
 
 
 \section{Differential Geometry}
