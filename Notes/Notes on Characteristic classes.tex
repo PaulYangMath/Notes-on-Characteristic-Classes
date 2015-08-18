@@ -9,6 +9,8 @@
 %\usepackage{epsfig}
 %\usepackage{graphicx}
 %\usepackage[dvips]{graphicx}
+\usepackage{tikz}
+\usepackage{tikz-cd}
 
 
 
@@ -267,7 +269,7 @@
 \newcommand{\sint}{\int_{-\infty}^\infty}
 \newcommand{\intr}{\mathrm{int}\,}
 
-
+\newcommand{\st}{\mathrm{s.t.}\,}
 %%%%%%%%%%%%% new definitions for the positive mass paper %%%%%%%%%
 
 \newcommand{\sperp}{{\scriptscriptstyle \perp}}
@@ -280,6 +282,7 @@
 \newcommand{\sm}{\varepsilon}
 \newcommand{\Ohm}{\Omega}
 \newcommand{\Sq}{\mathrm{Sq}}
+\newcommand{\id}{\mathrm{id}}
 %%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -330,13 +333,23 @@ so by the snake lemma we obtain an exact sequence for a triple:
 $$ \cdots \to H^k(X, B; G) \to H^k(X, A; G) \to H^k(B, A; G) \to H^{k + 1}(X, B; G) \to \cdots $$
 In particular we obtain the exact sequence of pair as a special case by setting $A = \emptyset$. 
 
-We also prepare some lemmas on commutivity of squares for future use. (cf. Hatcher p.210)
+We also prepare some lemmas on commutivity of squares for future use. (cf. Hatcher p.210)\\\\
+\textbf{Excision}\\\\
+\textbf{Cohomology with compact support}\\
+For each $k$, define a subgroup of $C^k(X)$ by 
+$$ C_c^k(X; R) = \{ \varphi \in C^k(X; R) : \exists \textit{compact } K \subseteq X, \st \varphi(\sigma) = 0, \forall \sigma \subseteq X - K \} $$ 
+We say these cochains are \textit{compactly supported}. It is easy to see that the normal coboundary map $\delta : C^k(X; R) \to C^{k + 1}(X; R)$ restricts to $C^k_c(X; R) \to C^{k + 1}_c(X; R)$ so groups $C^k_c(X; R)$ form a \textit{subcomplex} of the complex $C^\bullet(X; R)$. Taking cohomology of the subcomplex, we obtain $H^k_c(X; R)$. Note that if we defined $C_c^k(X; R)$ instead as 
+$$ \{ \varphi \in C^k(X; R) : \exists \textit{compact } K \subseteq X, \st \varphi(\sigma) \neq 0, \Rightarrow \sigma \subseteq K \}$$
+then we would not have a subcomplex. For example, consider $\varphi \in C^0(\IR; R)$ that sends $0$ to $1$ and is zero elsewhere. $\delta \varphi$ will be nonzero for all nondegenerate intervals that contain $0$ as an endpoint. 
 
-\textbf{Excision}
-
+Alternatively, we can realize compactly supported cohomology using direct limit:
+$$ H^k_c(X; R) = \varinjlim H^k(X, X - K; R) $$
+where the limit is taken over all compact $K \subseteq X$. For example, to compute $H^1_c(\IR; R)$ we may let $K$ range over $\{[-n, n]\}$. The inclusion $\iota : (\IR, [-m, m]^c;R) \to (\IR, [-n, n]^c; R)$ induces an isomorphism $$H^1(\IR, [-m, m]^c; R) \iso H^1(\IR, [-n, n]^c; R) = R$$ and hence $H^1_c(\IR; R) = R$. 
 
 
 \subsection{Stiefel-Whitney classes}
+\subsubsection{Defining properties of Stiefel-Whitney classes}
+
 \subsubsection{Universal bundle}
 We first explain the ideas in this section. Many proofs are pretty technical topological arguments and are delayed. 
 
@@ -430,9 +443,10 @@ We will construct Steenrod squaring operations later. Now we may finally define 
 $$ \phi(w_i(\xi)) = \Sq^i(u) $$
 
 
+\subsubsection{Steenrod squares}
 
-
-\subsection{Orientation and Euler classes}
+\subsection{Euler classes}
+\subsubsection{Orientation}
 An orientation of a vector space is a choice of an equivalence class of basis. Two basis are deemed as equivalent if the change of basis matrix has positive determinant, so there are exactly two orientations. 
 
 The first occasion in which I met the concept of orientation is in a differential geometric setting. An orientation means a consistent choice of basis of $T_p M$. A manifold is orientable if there exists a chart of open sets such that the transition functions on the overlaps have positive Jacobian determinants everywhere. From this point of view it does not take too much effort to show that $M$ is orientable if and only if its tangent bundle $TM$ is orientable. 
@@ -440,9 +454,55 @@ The first occasion in which I met the concept of orientation is in a differentia
 There is also an algebraic topological description of orientation, using the concept of local cohomology/homology. Again we first deal with the orientation of a vector space. An orientation of $\IR^n$ is a choice of generator of $$H^n(\IR^n, \IR^n_0) \iso H^{n-1}(\IR^n_0) \iso H^{n - 1}(S^{n - 1}) = \IZ$$
 In order to connect to the previous definition, we give a rule to associate a homology class with a choice of basis. Take $\IR^3$ as an example, we place the barycenter of a tetrahedron as the origin. Suppose the vertices of the tetrahedron (which we should think of as a representative of a cocyle in $H^n(\IR^n_0)$), are labeled by $v_0, v_1, v_2, v_3$, then we take $v_1 - v_0, v_2 - v_1, v_3 - v_2$ as a basis for $\IR^3$. The case for other $\IR^n$ is entirely similar. 
 
-On a manifold $M$, we define the local orientation at a point $x_0 \in M$ as a choice of generator of $H^n(M, M-\{x_0\})$. Choose $U \iso \IR^n \subseteq M$ to be a neighborhood of $x_0$, by excision we have $H^n(M, M-\{x_0\}) = H^n(U, U-\{x_0\})$. If $\cl{V} \subseteq U$ is a smaller neighborhood, then by excision again the natural restriction $H^n(U, U-\{x_0\}) \to H^n(V, V-\{x_0\})$ is an isomorphism, so a generator restricts naturally to a generator. Now an orientation of $M$ is a consistent choice of local orientations such that if $x, y$ lie in a same neighborhood $\IR^n$, such that there is an open ball of finite radius $B$ containing both $x$ and $y$ and a generator of $H^n(\IR^n, \IR^n - B)$ restricts to the chosen generators at $x$ and $y$. 
+On a manifold $M$, we define the local orientation at a point $x_0 \in M$ as a choice of generator of $H^n(M, M-\{x_0\})$. Choose $U \iso \IR^n \subseteq M$ to be a neighborhood of $x_0$, by excision we have $H^n(M, M-\{x_0\}) = H^n(U, U-\{x_0\})$. If $\cl{V} \subseteq U$ is a smaller neighborhood, then by excision again the natural restriction $H^n(U, U-\{x_0\}) \to H^n(V, V-\{x_0\})$ is an isomorphism, so a generator restricts naturally to a generator. Now an orientation of $M$ is a consistent choice of local orientations such that if $x, y$ lie in a same neighborhood $\IR^n$, such that there is an open ball of finite radius $B$ containing both $x$ and $y$ and a generator of $H^n(\IR^n, \IR^n - B)$ restricts to the chosen generators at $x$ and $y$. Here is a picture:(add a picture, two points, circles)
 
+The algebraic topological way of defining orientation on a manifold does not allude to the tangent spaces. Therefore, although the following is somewhat built-in in the differential geometric way of doing things, it takes some care to prove in algebraic topology. 
+\begin{lemma}
+Any orientation for the tangent bundle $\tau_M$ gives rise to an orientation of the underlying topological manifold $M$, and vice versa. 
+\end{lemma}
 
+\subsubsection{Construction and properties}
+The Thom isomophism with $\IZ$ coefficients says that if $E$ is an oriented bundle, then there exists a unique class $u \in H^n(E, E_0; \IZ)$ that restricts to the preferred generator of $H^n(F, F_0; \IZ)$ for each fiber $F$, and that the map $\phi : H^k(B, \IZ) \to H^{k + n}(E, E_0; \IZ)$ given by 
+$$ \phi(x) = (\pi^* x) \cup u$$ is an isomorphism. 
+
+The long exact sequence of the pair $(E, E_0)$ gives us a map 
+$$ H^i(E, E_0; \IZ) \to H^i(E, \IZ) $$ for each $i$, which we denote by $y \mapsto y|_E$. When $i = n$, we have a composition of maps: 
+$$ H^n(E, E_0; \IZ) \to H^n(E; \IZ) \iso H^n(B; \IZ)$$
+
+The \textit{Euler class} of an oriented $n$-plane bundle $\xi$ is the unique cohomology class $e(\xi) \in H^n(B; \IZ)$ that corresponds to $u|_E$. Alternatively, under Thom isomorphism $\phi$ we see that 
+$$ \phi(e(\xi)) = \pi^* e(\xi) \cup u = (u|_E) \cup u = u \cup u$$ 
+In other words, $ e(\xi) = \phi^{-1}(u \cup u)$. 
+(Ok, $(u|_E) \cup u = u \cup u$ may cause some discomfort at first, but some thought shows that the commutivity of the diagram implicitly assumed here is already true on the level of cochains.)
+By the identity 
+$$ a \cup b = (-1)^{(\dim a)(\dim b)} b \cup a$$
+we see that if $n$ is odd, then $u \cup u$ is of order $2$, so $e(\xi) + e(\xi) = 0$. \\\\
+\textbf{Naturality}\\
+When $f : B \to B'$ is covered by a bundle map $\xi \to \xi'$, we have the following commutative diagram:
+\begin{center}
+\begin{tikzcd}
+H^n(E, E_0; \IZ) \arrow{r}{|_E} & H^n(E; \IZ) & \arrow[swap]{l}{\pi_E^*}  H^n(\IZ) \\
+H^n(E', E_0'; \IZ)  \arrow{u}{} \arrow{r}{|_{E'}} & H^n(E')  \arrow{u}{}  & H^n(B') \arrow{u}{} \arrow[swap]{l}{\pi_{E'}^*}
+\end{tikzcd}
+\end{center}
+If the map $\xi \to \xi'$ is orientation preserving, then the fundamental class $u'$ of $\xi'$ with respect to the given orientation  pulls back to $u$ of $\xi$, so we have $e(\xi) = f^* e(\xi')$. If the orientation of $\xi$ is reversed, then $e(\xi)$ changes sign. \\\\
+\textbf{Relation to Stiefel-Whitney classes}\\
+The change of coefficient $\IZ \to \IZ/2\IZ$ maps the cohomology class $u$ with integer coefficients evidently to the fundamental class $u$ with mod $2$ coefficients, since the image will have nonzero restriction to each fiber and the fundamental class is unique, and $u \cup u = \Sq^n(u)$. Therefore, the natural homomorphism $H^n(B; \IZ) \to H^n(B; \IZ/2\IZ)$ sends the Euler class $e(\xi)$ to the top Stiefel-Whitney class $w_n(\xi)$. \\\\
+\textbf{Whitney sum and Cartesian product}\\
+Let $\xi, \xi'$ be vector bundles over $B, B'$ of rank $m, n$ respectively. 
+For Cartesian products we have the following:
+$$ u(\xi \times \xi') = (-1)^{mn} u(\xi) \times u(\xi') $$ (Verify this later)
+Apply the restriction maps to both sides. We obtain 
+$$ e(\xi \times \xi') = (-1)^{mn} e(\xi) \times e(\xi')$$
+We may take off the sign, since if $mn$ is odd, then $e(\xi \times \xi')$ is of order $2$ anyways, so we have formula
+$$ e(\xi \times \xi') = e(\xi) \times e(\xi')$$
+for Cartesian products. Now pull back both sides via the diagonal embedding $\Delta : B \to B \times B$. On LHS, we have $\Delta^* e(\xi \times \xi) = e (\xi \oplus \xi')$ directly. On RHS, we have 
+\begin{align*}
+\Delta^*(e(\xi) \times e(\xi')) & = \Delta^*( p_1^* e(\xi) \cup p_2^* e(\xi))\\
+&= (\Delta^* p_1^* e(\xi) ) \cup (\Delta^* p_2^* e(\xi'))) \\
+&= e(\xi) \cup e(\xi') 
+\end{align*}
+since $\Delta^* p_i^* = (p_i \Delta)^* = \id_B^*$. Therefore we have a formula for Whitney sum:
+$$ e(\xi \oplus \xi') = e(\xi) \cup e(\xi')$$
 
 
 \subsection{Thom Isomorphism}
@@ -511,11 +571,22 @@ The above construction ensures that each $E(\sm) \cap U_{x_i}$ is diffeomorphic 
 \end{proof}
 The denote the tubular neighborhood (the image of $E(\sm)$) constructed above by $N_\sm$. By excision, the inclusion $\iota : (N_\sm, N_\sm - M) \to (A, A - M)$ induces an isomorphism $H^*(A, A - M; R) \to H^*(N_\sm, N_\sm - M; R)$. Now compose with the isomorphism induced by the diffeomorphism $E \iso N_\sm$ we have that 
 $$ H^*(E, E_0; R) \iso H^*(A, A - M; R) $$
-In addition, the isomorphism is canonical. 
+In addition, the isomorphism is canonical.
+\begin{lemma}
+\label{normaltofund}
+If $M \subseteq A$ is embedded as a closed subset, then composition of restriction maps 
+$$ H^k(A, A - M) \to H^k(A) \to H^k(M)$$
+maps the fundamental class $u'$ with $\mod 2$ coefficients to the top Stiefel-Whitney class $w_k(\nu^k)$ of the normal bundle. Similarly, if $\nu^k$ is oriented, then using $\IZ$ coefficients, $u'$ restricts to the Euler class $e(\nu^k)$. 
+\end{lemma}
+\begin{proof}
+
+\end{proof}
+\textbf{Diagonal cohomology class}\\
+\textit{Assume either that $M$ is oriented or that the coefficient ring is $\IZ/2\IZ$}.\\
+There is a fundamental cohomology class 
+$$ u' \in H^n(M \times M, M \times M - \Delta(M)) = H^n(E, E_0; R)$$
+where $E$ is the total space of the normal bundle $\nu^n$ of $Delta(M)$ in $M \times M$. By Lemma~\ref{normaltofund} 
 
 
-\section{Differential Geometry}
-
-\section{Algebraic Geometry}
 
 \end{document}
