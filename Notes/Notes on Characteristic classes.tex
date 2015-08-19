@@ -498,6 +498,7 @@ The corresponding statement for homology, i.e. $\varinjlim H_j(C) = H_j(B)$ is t
 \end{proof}
 
 \subsection{Computations in a smooth manifold}
+\subsubsection{Tubular neighborhood}
 Let $M$ be a manifold of dimension $m$ smoothly embedded in a Riemannian manifold $A$ of dimension $m + k$. Let $\nu_k$ be the normal bundle of $M$ in $A$ and let $E$ be its total bundle. 
 We first introduce the tubular neighborhood lemma. 
 
@@ -509,13 +510,38 @@ We only show the case when $M$ is compact. The lemma is also true for noncompact
 $$ E(\sm) : = \{(x, v) \in E : \| v\| < \sm \} \subseteq \union_{i = 1}^p U_{x_i}$$ 
 The above construction ensures that each $E(\sm) \cap U_{x_i}$ is diffeomorphic to its image. Now we show we can restrict $\sm$ to ensure that $E(\sm) \to A$ is injective. Suppose not, there for each $k$, we can find $(x_k, v_k), (x'_k, v'_k) \in E(1/k)$ such that $(x_k, v_k) \neq (x'_k, v'_k)$, but $\Exp(x_k, v_k) = \Exp(x'_k, v'_k)$. Since $M$ is compact, both sequences converge, say $(x_k, v_k) \to (x, 0)$ and $(x'_k, v'_k) \to (x', 0)$. Since $\Exp$ is in particular continuous, we have that $\Exp(x, 0) = \Exp(x', 0)$, but it contradicts the fact that $\Exp$ is a diffeomorphism near $\Exp(x, 0)$. It is not hard to see that $E(\sm) \iso E$. 
 \end{proof}
-The denote the tubular neighborhood (the image of $E(\sm)$) constructed above by $N_\sm$. By excision, the inclusion $\iota : (N_\sm, N_\sm - M) \to (A, A - M)$ induces an isomorphism $H^*(A, A - M; R) \to H^*(N_\sm, N_\sm - M; R)$. Now compose with the isomorphism induced by the diffeomorphism $E \iso N_\sm$ we have that 
-$$ H^*(E, E_0; R) \iso H^*(A, A - M; R) $$
-In addition, the isomorphism is canonical. 
+\begin{corollary}
+If $M \subseteq A$ is closed, then the cohomology ring $H^*(E, E_0; R)$ associated with the normal bundle of $M$ in $A$ is canonically isomorphic to the chomology ring $H^*(A, A-M; R)$.
+\end{corollary}
+\begin{proof}
+Apply excision to $A = N_\sm \cup A - M$, we have that 
+$$ H^*(A, A-M) \to H^*(N_\sm, N_\sm - M)$$ induced by the inclusion $(N, N - M) \subseteq (A, A-M)$ is an isomorphism. Then compose this isomorphism with $H^*(E, E_0; R) \iso H^*(N_\sm, (N_\sm)_0; R)$ induced by the diffeomorphism given by exponential map. 
+\end{proof}
+\begin{remark}
+The exponential map depends on a metric, for which there are many choices. How do we know the isomorphism induced by the exponential map is ``natural"?
+\end{remark}
 
 
-\section{Differential Geometry}
 
-\section{Algebraic Geometry}
+\subsubsection{Diagonal map}
+In algebraic geometry we often study the diagonal map $\Delta : X \to X \times X$. For example, we use it to define separatedness. 
+
+When $M$ is a Riemannian manifold, we make $M \times M$ into a Riemannian manifold as follows: For each point $(x, y) \in M \times M$, the tangent space is canonically isomorphic to $TM_x \oplus TM_y$. We define the norm in $TM_x \oplus TM_y$ by 
+$$ \|(v, w)\|^2 = \|v\|^2 + \|w\|^2 $$
+The norm is enough to define an inner product, which is simply
+$$ (v, w) \cdot (v', w') = v \cdot v' + w \cdot w'$$
+The diagonal map $\Delta : M \to M \times M$ given by $\Delta(x) = (x,x)$ naturally identifies $M$ as a closed submanifold of $M \times M$. (Closed since $M$ is Hausdorff. In an algebraic geometric setting, the situation is more sophisticated.) The embedding is almost an isometry except all lengths are rescaled by $\sqrt{2}$.   
+Diagonal map is an important tool for us to deal with the tangent bundle, as shown in the following lemma:
+\begin{lemma}
+The normal bundle $\nu_n$ associated with $M \subseteq M \times M$ is canonically isomorphic to $\tau_M$. 
+\end{lemma}
+\begin{proof}
+The diagonal map induces an isomorphism on tangent spaces in a natural way: if $v \in TM_x$, then $(v, v) \in T \Delta(M)_{(x, x)}$. If $(v, w)$ is orthogonal to the tangent plane, then the inner product formula implies $v + w = 0$. Therefore there is a natural bundle map $\tau_M \to \nu_n$ given by $(x, v) \mapsto ((x, x), (-v, v))$ which is evidently an isomorphism. 
+\end{proof}
+
+
+
+
+
 
 \end{document}

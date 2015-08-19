@@ -1,11 +1,13 @@
 \contentsline {section}{\numberline {1}Introduction}{1}
 \contentsline {section}{\numberline {2}Algebraic Topology}{1}
 \contentsline {subsection}{\numberline {2.1}A brief review of singular cohomology}{1}
-\contentsline {subsection}{\numberline {2.2}Grassmann Manifolds}{3}
+\contentsline {subsection}{\numberline {2.2}Stiefel-Whitney classes}{3}
 \contentsline {subsubsection}{\numberline {2.2.1}Universal bundle}{3}
 \contentsline {subsubsection}{\numberline {2.2.2}Grassmann manifolds}{5}
-\contentsline {subsection}{\numberline {2.3}Orientation and Euler class}{7}
-\contentsline {subsection}{\numberline {2.4}Thom Isomorphism}{8}
-\contentsline {subsubsection}{\numberline {2.4.1}With $\mathbb {Z}/2\mathbb {Z}$ coefficients}{8}
-\contentsline {section}{\numberline {3}Differential Geometry}{10}
-\contentsline {section}{\numberline {4}Algebraic Geometry}{10}
+\contentsline {subsubsection}{\numberline {2.2.3}Existence of Stiefel-Whitney classes}{7}
+\contentsline {subsection}{\numberline {2.3}Orientation and Euler classes}{8}
+\contentsline {subsection}{\numberline {2.4}Thom Isomorphism}{9}
+\contentsline {subsubsection}{\numberline {2.4.1}With $\mathbb {Z}/2\mathbb {Z}$ coefficients}{9}
+\contentsline {subsection}{\numberline {2.5}Computations in a smooth manifold}{11}
+\contentsline {subsubsection}{\numberline {2.5.1}Tubular neighborhood}{11}
+\contentsline {subsubsection}{\numberline {2.5.2}Diagonal map}{12}
