@@ -349,6 +349,31 @@ where the limit is taken over all compact $K \subseteq X$. For example, to compu
 
 \subsection{Stiefel-Whitney classes}
 \subsubsection{Defining properties of Stiefel-Whitney classes}
+To each vector bundle $\xi$ we assign a sequence of cohomology classes 
+$$ w_i(\xi) \in H^i(B(\xi); \IZ/2\IZ)$$
+called the Stiefel-Whitney classes. They are characterized by the following four axioms:
+\begin{enumerate}
+\item $w_0(\xi) = 1 \in H^0(B(\xi); \IZ/2\IZ)$ and $w_i(\xi) = 0$ for each $i > 0$.
+\item \textit{Naturality: }If a map $f : B \to B'$ is covered by a bundle map $\xi \to \xi'$, then $f^* w_i(\xi') = w_i(\xi)$. 
+\item \textit{Whitney product theorem: } If $\xi, \eta$ are two vector bundles with the same base space, then 
+$$ \w_k(\xi \oplus \eta) = \sum_{i + j = k} w_i(\xi) \cup w_j(\eta) $$
+\item \textit{Nontriviality: } For line bundle $\gamma^1_1$ over $\IP^1$, $w_1(\gamma^1_1) \neq 0$. 
+\end{enumerate}
+\textit{When talking about Stiefel-Whitney classes, we would assume that all coefficients are take from $\IZ/2\IZ$. }
+We will show the uniqueness and existence of such an assignment later. We first show some consequences of the axioms. It follows easily by naturality that if two vector bundles $\xi, \eta$ are isomorphic, then $w_i(\xi) = w_i(\eta)$. If $\xi$ is trivial, then the constant map that sends $B$ to a point is covered by a bundle map, and by naturality again, we see that 
+$w_i (\xi) = 0$ for all $i > 0$. 
+
+It is often convenient to use the total Stiefel-Whitney class, which is a formal sum defined by 
+$$ w(\xi) = w_0(\xi) + w_1(\xi) + \cdots w_n(\xi)$$
+The Whitney product theorem can be concisely written as $w(\xi \oplus \eta) = w(\xi)  \cup w(\eta)$. Let $\sm^1$ denote the trivial line bundle. It follows easily by Whitney product theorem that $w(\xi \oplus \sm^1) = w(\xi)$. Recall that it is always possible to put a Riemannian metric on the vector bundle. Therefore if $\eta \subseteq \xi$ is a sub-bundle, we can always decompose $\xi$ as a Whitney sum: $\xi  = \eta \oplus \eta^\perp$. In particular, if $\xi$ contains a nowhere vanishing cross section, then $\xi = \sm \oplus \sm^\perp$ and hence $w_n (\xi ) = 0$, since $w_n(\sm^\perp) = 0$. 
+
+Let $H^\Pi (B)$ denote the ring of all infinite series $a = a_0 + a_1 + \cdots$, where $a_i \in H^i(B)$. Recall that commutative algebra tells us that in general, $f  = \sum_{i = 0}^\infty a_i t^i \in k[[t]]$ is a unit if and only if $a_0 \neq 0$. Therefore, in  $H^\Pi (B)$ we can always compute the inverse of a total Stiefel-Whitney class $w$, which we denote by $\wb{w}$. 
+
+If $M \subseteq \IR^n$ is a submanifold of codimension $k$, then we often denote its normal bundle by $\nu^k$. Almost by definition $\nu^k \oplus \tau_M = \tau_{\IR^n}|_{M}$, which is clearly a trivial bundle. Therefore by Whitney product theorem $\wb{w}(\nu^k) = w(\tau_M)$. The relation will be very important to us. The normal bundle will be an important tool for us to study, say, when a manifold can be embedded into $\IR^n$ as a closed submanifold. 
+
+\paragraph{Results concerning projective spaces}
+
+
 
 \subsubsection{Universal bundle}
 We first explain the ideas in this section. Many proofs are pretty technical topological arguments and are delayed. 
@@ -600,7 +625,6 @@ The diagonal map induces an isomorphism on tangent spaces in a natural way: if $
 \end{proof}
 
 
-=======
 The denote the tubular neighborhood (the image of $E(\sm)$) constructed above by $N_\sm$. By excision, the inclusion $\iota : (N_\sm, N_\sm - M) \to (A, A - M)$ induces an isomorphism $H^*(A, A - M; R) \to H^*(N_\sm, N_\sm - M; R)$. Now compose with the isomorphism induced by the diffeomorphism $E \iso N_\sm$ we have that 
 $$ H^*(E, E_0; R) \iso H^*(A, A - M; R) $$
 In addition, the isomorphism is canonical.
@@ -663,10 +687,9 @@ $$ ( l \subseteq \IC^{k + 1}, v \neq 0 \in v)$$  and hence it is naturally ident
 
 \paragraph{Cohomology ring $H^*(G_n(\IC^\infty); \IZ)$}
 The above result on $H^*(\IP^k)$ generalizes to :
-\begin{theorem}
 $$H^*(G_n(\IC^\infty); \IZ) = \IZ \< c_1(\gamma^1), \cdots, c_n(\gamma^n) \>$$
 So $c_1(\gamma^1), \cdots, c_n(\gamma^n)$ generate $H^*(G_n(\IC^\infty); \IZ)$ and there are no polynomial relations between them. 
-\end{theorem}
+
 
 \paragraph{Universal bundle}
 Just as for real $n$-plane bundles, we have 
