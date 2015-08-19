@@ -581,12 +581,77 @@ maps the fundamental class $u'$ with $\mod 2$ coefficients to the top Stiefel-Wh
 \begin{proof}
 
 \end{proof}
-\textbf{Diagonal cohomology class}\\
+\paragraph{Diagonal cohomology class}
 \textit{Assume either that $M$ is oriented or that the coefficient ring is $\IZ/2\IZ$}.\\
 There is a fundamental cohomology class 
 $$ u' \in H^n(M \times M, M \times M - \Delta(M)) = H^n(E, E_0; R)$$
-where $E$ is the total space of the normal bundle $\nu^n$ of $Delta(M)$ in $M \times M$. By Lemma~\ref{normaltofund} 
+where $E$ is the total space of the normal bundle $\nu^n$ of $\Delta(M)$ in $M \times M$. By Lemma~\ref{normaltofund} 
 
+\subsection{Chern Classes}
+\textit{Assume $\IZ$ coefficients in this section.}
+\paragraph{Canonical orientation on $\w_\IR$}
+\begin{lemma}
+If $\w$ is a complex vector bundle, then the underlying real vector bundle $\w_\IR$ has a canonical preferred orientation. 
+\end{lemma}
+\begin{proof}
+Let $V$ be a vector space over $\IC$. Choose a basis $v_1, \cdots, v_n$ for $V$ over $\IC$, then $\{v_1, iv_1, \cdots, v_n, i v_n \}$ gives a basis for the underlying real vector space. In \cite{Milnor} they showed that the orientation given by this basis is independent of the choice of $v_1, \cdots, v_n$ by noting that $GL_n(\IC)$ is connected and hence we can pass from any complex basis to another by continuous deformation, which cannot alter the induced orientation. Alternatively, we can also see it is true by simply noting that any permutation of $v_1, \cdots, v_n$ induces an \textit{even} permutation of $\{v_1, i v_1, \cdots, v_n, i v_n \}$, which corresponds to a permutation matrix of determinant $1$. 
+\end{proof}
+Therefore for any complex $n$-plane bundle $\w$, the Euler class $e(\w_\IR) = H^{2n}(B; \IZ)$ of the underlying real vector bundle is defined. 
+
+
+\paragraph{Construction of $\w_0$ over $E_0$} Let $\w$ be a $n$-plane bundle over $B$ and $E = E(\w)$ be the total space. We construct a canonical $(n -1)$-plane bundle over $E_0$. Recall that each point in $E_0$ is represented by $(x, v)$ where $x \in B$ is a point and $v \in F_b$ is a nonzero vector. Given a Hermitian metric on $\w$, we define the fiber of $\w_0$ at $(x, v)$ to be the orthogonal complement of $v$ in $F_x$. Without resorting to a Hermitian metric, we can alternatively define the metric to be the quotient space $F_x/\< v \>$. 
+\paragraph{Gysin sequence} Recall that a real $2n$-plane bundle possesses an exact Gysin sequence
+$$ \cdots \longrightarrow H^{i - 2n}(B) \stackrel{\cup e}{\longrightarrow} H^i(B) \stackrel{\pi_0^*}{\longrightarrow} H^i(E_0) \longrightarrow H^{i - 2n + 1}(B) \longrightarrow \cdots $$
+For $i < 2n - 1$, $H^{i - 2n}(B) = H^{i - 2n + 1}(B) = 0$, and hence $\pi_0^*$ is an isomorphism. 
+
+\paragraph{Construction of Chern classes}
+Chern classes $c_i \in H^{2i}(B; \IZ)$ are defined inductively on $n$. The top Chern class $c_n(\w)$ is defined to be the Euler class of the underlying real $2n$-plane bundle $e(\w_\IR)$. For $i < n$, define 
+$$ c_i(\w) = (\pi^*_0)^{-1} c_i (\w_0)$$
+Finally, for $i > n$, define $c_i(\w) = 0$. 
+
+This definition makes sense that $\w_0$ is a $(n-1)$-plane bundle. By induction hypothesis, $c_i(\w_0)$ is defined. By Gysin sequence, when $i < n$, $\pi^*_0 : H^{2i}(B) \to H^{2i}(E_0)$ is an isomorphism since $2i < 2n - 1$. 
+
+We define total Chern class to be $c(\w) = 1 + c_1(\w) + \cdots c_n(\w)$ in the ring $H^*(B; \IZ)$. Note that by what we know about power series from commutative algebra, $c(\w)^{-1}$ can always be computed since $c(\w)$ has a unit as the constant term. 
+
+\paragraph{Naturality of Chern classes} If $f: B \to B'$ is covered by a bundle map $\w \to \w'$, then $f^* c_i(\w') = c_i(\w)$. Like its construction, naturality is also shown inductively, so we assume that this holds for all $(n -1)$-plane bundles. The top Chern class is natural since Euler class is. Now the key point is that a bundle map $\w \to \w'$ restricts to a map $f_0 : E_0(\w) \to E_0(\w')$, which certainly is covered by a bundle map $\w_0 \to \w_0'$. By induction hypothesis, $f^* c_i(\w_0') = c_i(\w_0)$. Now make use the following commutative diagram: 
+\begin{center}
+\begin{tikzcd}
+E_0(\w)  \arrow{r}{f_0} \arrow{d}{\pi_0} & E_0(\w') \arrow{d}{\pi_0'} \\
+B  \arrow{r}{f} & B'
+\end{tikzcd}
+\end{center}
+
+\paragraph{Stability under $\oplus \sm$}
+
+\subsubsection{Complex Grassmann manifolds} \textit{In this section all projective spaces and Grassmannians are assumed to be over $\IC$.}
+\paragraph{Complex projective space} A canonical line bundle $\gamma^1 = \gamma^1(\IC^{k + 1})$ is defined over $\IP_\IC^k$. Apply Gysin sequence, we get 
+$$ \cdots \longrightarrow H^{i+1}(E_0) \longrightarrow H^i(\IP_\IC) \stackrel{\cup c_1}{\longrightarrow} H^{i+2}(\IP_\IC^k) \stackrel{\pi_0^*}{\longrightarrow} H^{i + 2}(E_0) \longrightarrow \cdots $$
+Let $E_0 = E_0(\gamma^1)$ is the set of the all pairs
+$$ ( l \subseteq \IC^{k + 1}, v \neq 0 \in v)$$  and hence it is naturally identified with $C^{k + 1} - \{0\}$ and hence has the same homotopy type as $\IS^{2k+1}$. We have that for all $0 \le i \le 2k - 2$, $H^{i+1}(E_0) = H^{i+2}(E_0) = 0$. Therefore by Gysin sequence $\cup c_1 : H^i(\IP_\IC) \to H^{i+2}(\IP^k)$ is an isomorphism and $H^{2i}(\IP^k) \iso \IZ$ is generated by $c_1(\gamma^1)$. In fact, the cohomology ring $H^*(\IP^k)$ is generated by $c_1(\gamma^1)$. 
+
+\paragraph{Cohomology ring $H^*(G_n(\IC^\infty); \IZ)$}
+The above result on $H^*(\IP^k)$ generalizes to :
+\begin{theorem}
+$$H^*(G_n(\IC^\infty); \IZ) = \IZ \< c_1(\gamma^1), \cdots, c_n(\gamma^n) \>$$
+So $c_1(\gamma^1), \cdots, c_n(\gamma^n)$ generate $H^*(G_n(\IC^\infty); \IZ)$ and there are no polynomial relations between them. 
+\end{theorem}
+
+\paragraph{Universal bundle}
+Just as for real $n$-plane bundles, we have 
+\begin{theorem}
+Every $n$-plane bundle $\w$ over a paracompact space $B$ possesses a bundle map into the canonical complex $n$-bundle $\gamma^n$ over $G_n$. 
+\end{theorem}
+
+\subsubsection{The product theorem} 
+
+
+\begin{thebibliography}{9}
+
+\bibitem{Milnor}
+  J. Milnor, J. Stasheff, \textit{Characteristic classes}, Annals of mathematics studies, Princeton university press, Number 76, 1978
+  
+
+\end{thebibliography}
 
 
 \end{document}
