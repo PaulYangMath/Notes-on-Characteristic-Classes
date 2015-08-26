@@ -782,7 +782,32 @@ $$ c(\wb{\w}) = 1 - c_1(\w) + c_2(\w) - \cdots \pm c_n(\w) $$
 I find it a bit striking at first glance. After all, the Chern classes are constructed inductively using Euler classes, which forget the complex structure on a bundle. So why should Chern classes tell the difference between a conjugate pair? The key is to notice that the top Chern class is the Euler class of the underlying real vector bundle \textit{with the preferred orientation}, but conjugate bundles give opposite preferred orientations. Let $F$ be a fiber of $\w$ and choose a basis $v_1, \cdots, v_n$. Then the basis $\{v_1, iv_1, \cdots, v_n, iv_n\}$ gives the preferred orientation of $F$ on $\w_\IR$. If the action of $\IC$ is composed with conjugation, then $\{v_1, -iv_1, \cdots, v_n, -iv_n\}$ gives the preferred orientation for the conjugate vector space. Therefore we have that $$c_i(\w) = (-1)^n c_i(\wb{\w})$$ for $i = n$. However, the relation holds for all bundles, so it follows easily by induction that the above relation holds for $i < n$ as well. 
 
 
-\section{Differential Forms Approach}
+\section{Exercises}
+\subsection*{Chapter 1}
+
+
+
+\subsection*{Chapter 2}
+\subsection*{Chapter 3}
+\subsection*{Chapter 4}
+\paragraph{Problem 4-A} Let $p_1 : B(\xi) \times B(\eta) \to B(\xi), p_2 : B(\xi) \times B(\eta) \to B(\eta)$ be the natural projections. We have that 
+$$ w_k(\xi \times \eta) = w_k( p_1^*(\xi) \oplus p_2^*(\eta)) = \sum_{i = 0}^k w_i(p_1^*(\xi)) \cup w_{k-i}(p_2^*(\eta)) = \sum_{i = 0}^k w_i(\xi) \times w_{k - i}(\eta)$$
+In the last equation we implicitly used naturality. 
+
+\paragraph{Problem 4-B} The idea is the same as that of Corollary 4.6 in the book. There exist $2^r$ vector fields on $\IP^n$ that are everywhere linearly independent if and only if there exist $2^r$ sections of $\tau_{\IP^n}$ that are nowhere linearly dependent. If it is the case then Proposition 4 tells us that the last $ k - 1$ Stiefel-Whitney classes are all zero. In particular $ w_{n + 1 - 2^r} (\IP^n)= 0$. However 
+$$ { n + 1 \choose n+1-2^r } = \frac{ (2^r m)! }{(2^r m - 2^r)! (2^r) !} \equiv 1 \mod 2 $$ 
+To see that above simply count the numbers of even integers in the numerator and denominator. It is not hard to see that both equal to $2^r - 2^{r - 1}$. Therefore the fraction is odd.  
+
+\paragraph{Problem 4-C}
+We have shown that when $n$ is odd, the sphere $S^n$ permits a nowhere zero vector field $X \in \mathfrak{X}(\IS^n)$. Using our construction it is not hard to see that $X$ passes down to nowhere zero vector field on $\IP^n$ under the quotient map. Therefore when $n$ is odd, $\tau_{\IP^n}$ contains a copy of $\sm^1$. 
+
+Now suppose $n$ is even and there exists a sub-bundle $\xi$ of $\tau_{\IP^n}$ of rank $1$ such that $\tau_{\IP^n} = \xi \oplus \eta$ for some $(n - 1)$-bundle $\eta$. We see that $w(\xi)$ is either $1$ or $1 + a$, where $a \in H^1(\IP^n; \IZ/2\IZ)$ is the generator. If $w(\xi) = 1$, then $w(\eta) = (1 + a)^{n + 1}$. However, we have 
+$$ { n + 1 \choose n } = n + 1 \equiv 1 \mod 2 $$ Therefore $w_n (\eta) = a^n \neq 0$, which is impossible. Now suppose $w_n (\xi) = 1 + a$. We have in the case that $w(\eta) = (1 + a)^n$, which is again impossible since this will again imply $w_n(\eta) = a^n \neq 0$ for $\eta$. 
+Now we show that $\IP^4, \IP^6$ do not permit tangent 2-planes. We have that $w(\IP^4) = 1 + a + a^4$, where $a \neq 0 \in H^1(\IP^4; \IZ/2\IZ)$.
+
+
+
+
 
 \begin{thebibliography}{9}
 
