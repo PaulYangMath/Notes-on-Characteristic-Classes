@@ -283,6 +283,8 @@
 \newcommand{\Ohm}{\Omega}
 \newcommand{\Sq}{\mathrm{Sq}}
 \newcommand{\id}{\mathrm{id}}
+\newcommand{\fN}{\mathfrak{N}}
+\newcommand{\fm}{\mathfrak{m}}
 %%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -785,6 +787,11 @@ I find it a bit striking at first glance. After all, the Chern classes are const
 \section{Exercises}
 \subsection*{Chapter 1}
 
+\paragraph{Problem 1-C} We first deal with the case when $M$ is compact. Suppose there exists some maximal ideal $\fm \subset F$ such that $\fm \neq \fm_x$ for all $x \in M$. By maximality we have that for each $x \in M$, $\fm \not\subseteq \fm_x$, and hence there exists some $f_x \in F$ such that $f_x > 0$. Since $f_x$ is in particular continuous, we can pick a neighborhood $U_x$ of $x$ on which $f_x > 0$. Since $M$ is compact, it can be covered by finitely many such $U_x$'s. Let us label them by $U_{x_1}, \cdots, U_{x_k}$. Now consider the function $$f = \sum_{i = 1}^k f_{x_i}^2 $$
+Clearly $f \in F$ and $f > 0$ everywhere on $M$ by construction. However, $f$ is a unit in $F$, which cannot be contained in a maximal ideal. 
+\begin{remark}
+It is amusing that I was so algebraically minded that I spent so much time trying to figure out why the residue field cannot be $\IC$ until I realized the proof does not involve any algebraic geometry. 
+\end{remark}
 
 
 \subsection*{Chapter 2}
@@ -803,10 +810,31 @@ We have shown that when $n$ is odd, the sphere $S^n$ permits a nowhere zero vect
 
 Now suppose $n$ is even and there exists a sub-bundle $\xi$ of $\tau_{\IP^n}$ of rank $1$ such that $\tau_{\IP^n} = \xi \oplus \eta$ for some $(n - 1)$-bundle $\eta$. We see that $w(\xi)$ is either $1$ or $1 + a$, where $a \in H^1(\IP^n; \IZ/2\IZ)$ is the generator. If $w(\xi) = 1$, then $w(\eta) = (1 + a)^{n + 1}$. However, we have 
 $$ { n + 1 \choose n } = n + 1 \equiv 1 \mod 2 $$ Therefore $w_n (\eta) = a^n \neq 0$, which is impossible. Now suppose $w_n (\xi) = 1 + a$. We have in the case that $w(\eta) = (1 + a)^n$, which is again impossible since this will again imply $w_n(\eta) = a^n \neq 0$ for $\eta$. 
-Now we show that $\IP^4, \IP^6$ do not permit tangent 2-planes. We have that $w(\IP^4) = 1 + a + a^4$, where $a \neq 0 \in H^1(\IP^4; \IZ/2\IZ)$.
 
 
+\paragraph{Problem 4-D} 
+If a $n$-dimensional manifold $M$ can be immersed in $\IR^{n + 1}$, then the normal bundle $\nu$ has rank $1$. Therefore $w(\nu) = \overline{w}(M)$ is of the form $1 + a \in H^1(M; \IZ/2\IZ)$. By comparing the 1-dimensional terms in the equation:
+$$ (1 + a)( 1 + w_1(M) + \cdots + w_n(M)) = 1$$
+we see that $a = - w_1(M)$. Of course the sign can be neglected. Now compare the $2$-dimensional terms. We obtain $w_2(M) = w_1(M)^2$. It follows easily from induction that $w_i(M) = w_1(M)^i$. 
 
+Now we consider those projective spaces. If $w_1(\IP^n) = 0$, then $w_i(\IP^n) = 0$ for all $i > 0$. If $w_1(\IP^n) = 1$, then $w_i(\IP^n) = 1$ for all $i > 0$. By studying the Pascal triangle displayed on Page 46, it is not hard to observe from the geometry that if we have one row of $1$'s of length $n$, then the next appearance of a row of all $1$'s happens exactly at the $2n$th row. Then it is not hard to convince of ourselves that $w_i(\IP^n) = 0$ and $w_i(\IP^n) = 1$ for all $i > 0$ happen exactly when $n$ is of form $2^r - 1$ and $2^r - 2$ respectively.  
+
+\paragraph{Problem 4-E} Let $M_1$, $M_2$ be representatives of their unoriented cobordism classes. We simply define 
+$$ [M_1] + [M_2] = [ M_1 \coprod M_2 ]$$
+Corollary 4.11 says there is a bijective correspondence between unoriented cobordism classes and Stiefel-Whitney numbers. We can clearly compute the Stiefel-Whitney numbers of $M_1 \coprod M_2$ once we know those of $M_1, M_2$. Therefore the operations is well defined. 
+
+We have closure, associativity, and communtivity of the operation for free from the construction. $[\IS^n]$ is clearly the identity element since $\IS^n$ is evidently the boundary of a smooth compact $(n+1)$-dimensional manifold. Each element has a unique inverse, i.e. itself. 
+
+Since there are only finitely many possible combinations of Stiefel-Whitney numbers for $n$-dimensional manifolds, $\fN_n$ is finitely generated as a module (more precisely a vector space) over $\IZ/2\IZ$. 
+
+To show that $\IP^2 \times \IP^2$ and $\IP^4$ belong different cobordism classes it suffices to show that they have different Stiefel-Whitney numbers. Let $x \in H^1(\IP^2; \IZ/2\IZ)$ be the generator. Let $\pi_1, \pi_2 : \IP^2 \times \IP^2 \to \IP^2$ be projections to the first and second component respectively. Set $a = \pi_1^* x, b = \pi_2^* x$. Recall that $\tau_{\IP^2 \times \IP^2}$ is naturally identified with $\tau_{\IP^2} \times \tau_{\IP^2}
+$. Problem 4-A implies that 
+$$ w(\IP^2 \times \IP^2) = (1 + a + a^2)(1 + b + b^2) = 1 + (a + b) + (ab + a^2 + b^2 ) + (a^2 b + a b^2) + a^2 b^2$$
+Now note that 
+$$ \< w_1(\IP^2 \times \IP^2)^4, \mu_{\IP^2 \times \IP^2} \> = \< 0, \mu_{\IP^2 \times \IP^2} \> = 0$$
+but 
+$$ \< w_1(\IP^4)^4, \mu_{\IP^4} \> = 1 $$
+Hence $\IP^2 \times \IP^2$ and $\IP^4$ have different Stiefel-Whitney classes. 
 
 
 \begin{thebibliography}{9}
