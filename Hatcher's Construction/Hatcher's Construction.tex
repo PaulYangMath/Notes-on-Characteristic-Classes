@@ -1,0 +1,360 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{tikz} 
+\usepackage{esint} 
+%\usepackage{epsfig}
+%\usepackage{graphicx}
+%\usepackage[dvips]{graphicx}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+
+\usetikzlibrary{calc}
+
+
+\usepackage[matrix,tips,graph,curve]{xy}
+
+\newcommand{\mnote}[1]{${}^*$\marginpar{\footnotesize ${}^*$#1}}
+\linespread{1.065}
+
+\makeatletter
+
+\setlength\@tempdima  {5.5in}
+\addtolength\@tempdima {-\textwidth}
+%\addtolength\hoffset{-0.5\@tempdima}
+\addtolength\hoffset{-0.6\@tempdima}
+\setlength{\textwidth}{5.5in}
+\setlength{\textheight}{8.75in}
+%\addtolength\voffset{-0.625in}
+\addtolength\voffset{-1.2in}
+
+\makeatother
+
+\makeatletter 
+\@addtoreset{equation}{section}
+\makeatother
+
+
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem{corollary}[equation]{Corollary}
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{proposition}[equation]{Proposition}
+\newtheorem{conjecture}[equation]{Conjecture}
+\newtheorem{fact}[equation]{Fact}
+\newtheorem{facts}[equation]{Facts}
+\newtheorem*{theoremA}{Theorem A}
+\newtheorem*{theoremB}{Theorem B}
+\newtheorem*{theoremC}{Theorem C}
+\newtheorem*{theoremD}{Theorem D}
+\newtheorem*{theoremE}{Theorem E}
+\newtheorem*{theoremF}{Theorem F}
+\newtheorem*{theoremG}{Theorem G}
+\newtheorem*{theoremH}{Theorem H}
+
+\theoremstyle{definition}
+\newtheorem{definition}[equation]{Definition}
+\newtheorem{definitions}[equation]{Definitions}
+%\theoremstyle{remark}
+
+\newtheorem{remark}[equation]{Remark}
+\newtheorem{remarks}[equation]{Remarks}
+\newtheorem{exercise}[equation]{Exercise}
+\newtheorem{example}[equation]{Example}
+\newtheorem{examples}[equation]{Examples}
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{question}[equation]{Question}
+\newtheorem{assumption}[equation]{Assumption}
+\newtheorem*{claim}{Claim}
+\newtheorem{answer}[equation]{Answer}
+%%%%%% letters %%%%
+
+\newcommand{\IA}{\mathbb{A}}
+\newcommand{\IB}{\mathbb{B}}
+\newcommand{\IC}{\mathbb{C}}
+\newcommand{\ID}{\mathbb{D}}
+\newcommand{\IE}{\mathbb{E}}
+\newcommand{\IF}{\mathbb{F}}
+\newcommand{\IG}{\mathbb{G}}
+\newcommand{\IH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\IK}{\mathbb{K}}
+\newcommand{\IL}{\mathbb{L}}
+\newcommand{\IM}{\mathbb{M}}
+\newcommand{\IN}{\mathbb{N}}
+\newcommand{\IO}{\mathbb{O}}
+\newcommand{\IP}{\mathbb{P}}
+\newcommand{\IQ}{\mathbb{Q}}
+\newcommand{\IR}{\mathbb{R}}
+\newcommand{\IS}{\mathbb{S}}
+\newcommand{\IT}{\mathbb{T}}
+\newcommand{\IU}{\mathbb{U}}
+\newcommand{\IV}{\mathbb{V}}
+\newcommand{\IW}{\mathbb{W}}
+\newcommand{\IX}{\mathbb{X}}
+\newcommand{\IY}{\mathbb{Y}}
+\newcommand{\IZ}{\mathbb{Z}}
+
+%%%%%%% macros %%%%%
+
+%% my definitions %%%
+
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\tr}{\mathrm{tr}}
+%\newcommand{\ind}{\mathrm{ind}}
+
+\renewcommand{\index}{\mathrm{index \,}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Trace}{\mathrm{Trace}\,}
+\newcommand{\Res}{\mathrm{Res}\,}
+%\newcommand{\rank}{\mathrm{rank}}
+%\renewcommand{\dim}{\mathrm{dim}}
+
+\renewcommand{\deg}{\mathrm{deg}}
+\newcommand{\spin}{\rm Spin}
+\newcommand{\supp}{\mathrm{supp \,}}
+\newcommand{\Spin}{\rm Spin}
+\newcommand{\erfc}{\rm erfc\,}
+\newcommand{\sgn}{\rm sgn\,}
+\newcommand{\Spec}{\rm Spec\,}
+\newcommand{\diag}{\rm diag\,}
+\newcommand{\Fix}{\mathrm{Fix}}
+\newcommand{\Ker}{\mathrm{Ker \,}}
+\newcommand{\Coker}{\mathrm{Coker \,}}
+\newcommand{\Sym}{\mathrm{Sym \,}}
+\newcommand{\Hess}{\mathrm{Hess \,}}
+\newcommand{\grad}{\mathrm{grad \,}}
+\newcommand{\Center}{\mathrm{Center}}
+\newcommand{\Lie}{\mathrm{Lie}}
+\newcommand{\coker}{\mathrm{coker}}
+
+\newcommand{\ch}{\rm ch} % Chern Character
+
+\newcommand{\rank}{\rm rank} 
+%\renewcommand{\c}{\rm c}  % Chern class
+
+\newcommand\QED{\hfill $\Box$} %{\bf QED}} 
+
+\newcommand\Pf{\nonintend{\em Proof. }}
+
+
+\newcommand\reals{{\mathbb R}} 
+\newcommand\complexes{{\mathbb C}}
+\renewcommand\i{\sqrt{-1}}
+\renewcommand\Re{\mathrm Re}
+\renewcommand\Im{\mathrm Im}
+\newcommand\integers{{\mathbb Z}}
+\newcommand\quaternions{{\mathbb H}}
+
+
+\newcommand\iso{\,{\cong}\,} 
+\newcommand\tensor{{\otimes}}
+\newcommand\Tensor{{\bigotimes}} 
+\newcommand\union{\bigcup} 
+\newcommand\onehalf{\frac{1}{2}}
+%\newcommand\Sym[1]{{Sym^{#1}(\complexes^2)}}
+
+\newcommand\lie[1]{{\mathfrak #1}} 
+\newcommand\smooth{\mathcal{C}^{\infty}}
+\newcommand\trivial{{\mathbb I}}
+\newcommand\widebar{\overline}
+
+%%%%%Delimiters%%%%
+
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+
+%\renewcommand{\(}{\left(}
+%\renewcommand{\)}{\right)}
+
+
+%%%% Different kind of derivatives %%%%%
+
+\newcommand{\delbar}{\bar{\partial}}
+\newcommand{\pdu}{\frac{\partial}{\partial u}}
+%\newcommand{\pd}[1][2]{\frac{\partial #1}{\partial #2}}
+
+%%%%% Arrows %%%%%
+%\renewcommand{\ra}{\rightarrow}                   % right arrow
+\newcommand{\lra}{\longrightarrow}              % long right arrow
+%\renewcommand{\la}{\leftarrow}                    % left arrow
+\newcommand{\lla}{\longleftarrow}               % long left arrow
+\newcommand{\ua}{\uparrow}                     % long up arrow
+\newcommand{\na}{\nearrow}                      %  NE arrow
+\newcommand{\llra}[1]{\stackrel{#1}{\lra}}      % labeled long right arrow
+\newcommand{\llla}[1]{\stackrel{#1}{\lla}}      % labeled long left arrow
+%\newcommand{\lua}[1]{\stackrel{#1}{\ua}}      % labeled  up arrow
+%\newcommand{\lna}[1]{\stackrel{#1}{\na}}      % labeled long NE arrow
+\newcommand{\xra}{\xrightarrow}
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\tto}{\longmapsto}
+\def\llra{\longleftrightarrow}
+
+\def\d/{/\mspace{-6.0mu}/}
+\newcommand{\git}[3]{#1\d/_{\mspace{-4.0mu}#2}#3}
+\newcommand\zetahilb{\zeta_{{\text{Hilb}}}}
+\def\Fy{\sF \mspace{-3.0mu} \cdot \mspace{-3.0mu} y}
+\def\tv{\tilde{v}}
+\def\tw{\tilde{w}}
+\def\wt{\widetilde}
+\def\wtilde{\widetilde}
+\def\what{\widehat}
+
+%%%%%%%%%%%%%%%%%%% Mark's definitions %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\frakg}{\mbox{\frakturfont g}}
+\newcommand{\frakk}{\mbox{\frakturfont k}}
+\newcommand{\frakp}{\mbox{\frakturfont p}}
+\newcommand{\q}{\mbox{\frakturfont q}}
+\newcommand{\frakn}{\mbox{\frakturfont n}}
+\newcommand{\frakv}{\mbox{\frakturfont v}}
+\newcommand{\fraku}{\mbox{\frakturfont u}}
+\newcommand{\frakh}{\mbox{\frakturfont h}}
+\newcommand{\frakm}{\mbox{\frakturfont m}}
+\newcommand{\frakt}{\mbox{\frakturfont t}}
+\newcommand{\G}{\Gamma}
+\newcommand{\g}{\gamma}
+\newcommand{\fraka}{\mbox{\frakturfont a}}
+\newcommand{\db}{\bar{\partial}}
+\newcommand{\dbs}{\bar{\partial}^*}
+\newcommand{\p}{\partial}
+\renewcommand{\k}{\textbf{k}}
+\newcommand{\rH}{\widetilde{H}}
+\newcommand{\cH}{H^\ast}
+\newcommand{\ccH}{\check{H}^*}
+\newcommand{\ext}{\Lambda_{\IZ}}
+\newcommand{\rp}{\IR\IP}
+\newcommand{\hz}{\IZ/2\IZ}
+\newcommand{\tf}{\wt{f}}
+\newcommand{\form}{\Omega}
+\newcommand{\dr}{H_{DR}}
+\newcommand{\cdr}{H_{c}}
+\newcommand{\plane}{\IR^2}
+\newcommand{\pplane}{\IR^2 - \{0\}}
+\newcommand{\fU}{\mathfrak{U}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\sH}{\mathcal{H}_{cv}}
+\newcommand{\sO}{\mathcal{O}}
+
+%% Temporary Definitions %%
+\newcommand{\noi}{dx_1 \wedge \cdots \what{dx_i} \cdots \wedge dx_n}
+\newcommand{\ctsw}{dx_1 \wedge \cdots \wedge dx_n}
+\newcommand{\w}{\omega}
+\newcommand{\cp}{\IC\IP}
+\newcommand{\cf}{f^*}
+\newcommand{\Up}{U^{\pm}_i}
+\newcommand{\Vp}{V^{\pm}_i}
+\newcommand{\ppm}{\phi^{\pm}_i}
+\newcommand{\why}{\what{y}_i}
+\newcommand{\whx}{\what{x}_i}
+\newcommand{\whz}{\what{z}_i}
+\newcommand{\Wp}{W^{\pm}_i}
+
+
+\newcommand{\s}{\sigma}
+\newcommand{\lb}{\lambda}
+\newcommand{\hint}{\int_{\IH^n}}
+\newcommand{\hbint}{\int_{\p \IH^n}}
+\newcommand{\sint}{\int_{-\infty}^\infty}
+
+%%%%%%%%%%%%% new definitions for the positive mass paper %%%%%%%%%
+
+\newcommand{\sperp}{{\scriptscriptstyle \perp}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%
+\begin{document}
+%
+
+\title{Notes on Hatcher's Approach}
+\author{Ziquan Yang}
+
+
+\date{\today}
+
+\maketitle
+ 
+
+%\setcounter{secnumdepth}{1} 
+
+\setcounter{section}{0}
+
+
+The way that Stiefel-Whitney classes are treated in [MS] contains three steps:
+\begin{enumerate}
+\item Give the defining properties of Stiefe-Whitney classes. 
+\item Show that Stiefel-Whitney classes are unique, if exist. 
+\item Construct the classes using Steenrod squares and show that the construction meets the defining properties. 
+\end{enumerate}
+
+Interestingly, although Chern classes should behave in many ways analogous to Stiefel-Whitney classes, Chern classes are introduced in a way with very diffferently flavor. [MS] construced Chern classes inductively using Euler classes and then show they have such and such properties. In the end of the Chapter, there is an exercise saying that we could have defined Stiefel-Whitney classes inductively as well. 
+
+In [H], Stiefel-Whitney and Chern classes are defined in a single chapter, and their similarity is highlighted. Although I do not think this definition is entirely constructive, as it is hard to compute things directly from definition, but at least existence is no problem. Due to my lack of experience with Steenrod squares, I favor this approach. 
+
+The central piece in the machinery is Leray-Hirsch theorem, which we state as follows:
+\begin{theorem}
+Let $F \to E \stackrel{p}{\to} B$ be a fiber bundle, such that for some commutative ring $R$: 
+\begin{enumerate}
+\item $H^n(F; R)$ is a finitely generated free $R$-module for each $n$. 
+\item There exist classes $c_j \in H^{k_j}(E; R)$ whose restrictions $i^*(c_j)$ form a basis for $H^*(F; R)$ in each fiber $F$, where $i : F \to E$ is the inclusion. 
+\end{enumerate}
+Then the map
+$$ \Phi : H^*(B; R) \tensor_R H^*(F; R) \to H^*(E; R)$$
+given by 
+$$ \sum_{ij} b_i \tensor i^*(c_j) \mapsto \sum_{ij} p^*(b_i) \cup c_j $$
+$H^*(E; R)$ is a free module over the ring $H^*(B; R)$, which acts on $H^*(E; R)$ by $\alpha \beta = p^*(\alpha) \cup \beta, \alpha \in H^*(B; R), \beta \in H^*(E; R)$. In particular, a basis for $H^*(F; R)$ pull backs to a basis for this free module.
+\end{theorem}
+
+For $E \to B$ a rank $n$-vector bundle, we can projectivize each fiber to obtain a $\IR \IP^{n - 1}$-bundle over $B$, which we denote as $P(E)$. There is a map $g : E \to \IR^\infty$ that is a linear injection on each fiber. $g$ induces a map $P(g) : P(E) \to \IR \IP^\infty$. Let $\alpha \in H^1(\IR \IP^\infty, \IZ_2)$ and $x$ be its pullback onto $P(E)$. 
+
+We have commutative diagram
+
+\[
+\begin{tikzcd}
+{} & P(E) \arrow{dr}{P(g)} \\
+\IR \IP^{n - 1} \arrow{ur}{i} \arrow{rr}{\iota} && \IR \IP^\infty
+\end{tikzcd}
+\]
+where $i : \IR \IP^{n - 1} \to P(E)$ is inclusion of a fiber. Note that since $g$ is injective on each fiber, the composition $\iota$ is also an inclusion.
+By functoriality of cohomology, 
+
+\[
+\begin{tikzcd}
+{} & H^1(P(E); \IZ_2)  \arrow{dl}{i^*}\\
+H^1(\IR \IP^{n - 1}; \IZ_2)   && H^1(\IR \IP^\infty; \IZ_2) \arrow{ll}{\iota^*} \arrow{ul}{P(g)^*}
+\end{tikzcd}
+\]
+
+$\iota$ may not be the usual inclusion $\IR \IP^{ n - 1} \subseteq \IR \IP^\infty$. In fact, the inclusion $\iota$ varies from fiber to fiber. However, any two such inclusion are homotopic. Therefore we still have that the generator $\alpha$ restricts to a generator of $H^1(\IR \IP^{n - 1}; \IZ_2)$. Also note that the map $P(g)^*$ is also canonically defined since any two such $g$'s are homotopic through maps that are linear injections on fibers. 
+
+Now Leray Hirsch says that there is a unique relation of the form 
+$$ x^n + w_1(E) x^{n - 1} + \cdots + w_n(E) \cdot 1 = 0$$ where $w_i(E) \in H^i(B; \IZ_2)$. 
+Note that $x^n$ restricts to zero on each fiber and yet it is not necessarily zero in $H^*(E; \IZ_2)$. Intuition says that if the bundle is trivial, then whether $x^n$ is zero should be detected fiberwise. Therefore its failure measures to what extent the bundle is nontrivial. 
+
+
+
+
+
+
+
+
+
+\end{document}
