@@ -350,6 +350,30 @@ $$ H^k_c(X; R) = \varinjlim H^k(X, X - K; R) $$
 where the limit is taken over all compact $K \subseteq X$. For example, to compute $H^1_c(\IR; R)$ we may let $K$ range over $\{[-n, n]\}$. The inclusion $\iota : (\IR, [-m, m]^c;R) \to (\IR, [-n, n]^c; R)$ induces an isomorphism $$H^1(\IR, [-m, m]^c; R) \iso H^1(\IR, [-n, n]^c; R) = R$$ and hence $H^1_c(\IR; R) = R$. 
 
 
+\subsection{A brief introduction to higher homotopy groups}
+\paragraph{Construction}
+Higher homotopy groups are used when we discuss obstruction theory, so here we introduce some key facts about higher homotopy groups. 
+An element of $\pi_k(X, x_0)$ is a homotopy class of maps 
+$$ f : (I^k, \p I^k) \to (X, x_0) $$ The group operation is defined as 
+$$ fg(t_1, \cdots, t_n) = \begin{cases}
+f(2t_1, t_2, \cdots, t_k), & t_1 \le 1/2 \\
+g(2t_1 - 1, t_2, \cdots, t_k), & t \ge 1/2
+\end{cases}
+$$
+When $k \ge 2$, the group is abelian. And here is the standard picture to show this commutivity:
+
+In one of the intermediate steps we almost exchanged the roles of $t_1, t_2$. In fact, although in the definition we rescaled $t_1$, there is nothing special about $t_1$, as the permuation that switches $t_1, t_j, j \neq 1$ is homotopic to the identity. A map $\phi : (X, x_0) \to (Y, y_0)$ induces a natural map $\phi_* : \pi_k(X, x_0) \to \pi_k(Y, y_0)$ given by $f \mapsto f \circ \phi$. We can easily checks that $\pi_k$ is a functor. 
+
+Alternatively, we could have defined elements in $\pi_k(X, x_0)$ to be homotopy classes of maps $f : (\IS^k, s_0) \to (X, x_0)$ by shrinking $\p I_k$ to a point. $I^k$ makes it easier for us to work with coordinates, but $\IS^k$ is very handy to use in many occasions. 
+
+Homotopy groups behave well with respect to Cartesian products. Let $A$ be a a finite index set, and $X_\alpha$'s be path connected spaces. We have
+$$ \pi_k( \prod_{\alpha \in A} X_\alpha, (x_\alpha)) = \prod_{\alpha \in A} \pi_k(X_\alpha, x_\alpha) $$
+since a map $f : Y \to \prod_\alpha X_\alpha$ is naturally identified with a collection of maps $f_\alpha : Y \to X_\alpha$. Take $Y = \IS^k$, the identification gives us a surjective map $\pi_k( \prod_{\alpha \in A} X_\alpha, (x_\alpha)) \to \prod_{\alpha \in A} \pi_k(X_\alpha, x_\alpha)$. Now take $Y = \IS^k \times I$, so a collection of homotopies $\IS^k \times I \to X_\alpha$ gives a homotopy $\IS^k \times I \to \prod_{\alpha \in A} X_\alpha$. Therefore the map is also injective. 
+
+Let $q : \wt{X} \to X$ be a universal cover. The projection map $q$ induces a map $q_* : \pi_k(\wt{X}, \wt{x_0}) \to \pi_k(X, x_0)$. When $k > 1$, $\IS^k$ is simply connected. The Lifting criterion says we can lift maps $f : (\IS^k, s_0) \to (X, x_0)$ to $\wt{f} : (\IS^n, s_0) \to (\wt{X}, \wt{x_0})$, so $q_*$ is surjective, but it also says we can lift homotopies, so $q_*$ is injective. Therefore $\pi_k(\wt{X}, \wt{x_0}) \iso \pi_k(X, x_0)$. In particular, if the universal cover of a space $X$ is contractible, then all of its higher homotopy groups are zero. 
+
+\paragraph{Action of fundamental group} 
+
 \subsection{Stiefel-Whitney classes}
 \subsubsection{Defining properties of Stiefel-Whitney classes}
 To each vector bundle $\xi$ we assign a sequence of cohomology classes 
