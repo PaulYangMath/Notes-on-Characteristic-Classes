@@ -1,33 +1,58 @@
 \contentsline {section}{\numberline {1}Introduction}{2}
 \contentsline {section}{\numberline {2}Singular Cohomology Approach}{2}
 \contentsline {subsection}{\numberline {2.1}A brief review of singular cohomology}{2}
-\contentsline {subsection}{\numberline {2.2}Stiefel-Whitney classes}{4}
-\contentsline {subsubsection}{\numberline {2.2.1}Defining properties of Stiefel-Whitney classes}{4}
-\contentsline {paragraph}{Results concerning projective spaces}{5}
-\contentsline {subsubsection}{\numberline {2.2.2}Universal bundle}{5}
-\contentsline {subsubsection}{\numberline {2.2.3}Grassmann manifolds}{7}
-\contentsline {subsubsection}{\numberline {2.2.4}Existence of Stiefel-Whitney classes}{9}
-\contentsline {subsubsection}{\numberline {2.2.5}Steenrod squares}{10}
-\contentsline {subsection}{\numberline {2.3}Euler classes}{10}
-\contentsline {subsubsection}{\numberline {2.3.1}Orientation}{10}
-\contentsline {subsubsection}{\numberline {2.3.2}Construction and properties}{11}
-\contentsline {subsection}{\numberline {2.4}Thom Isomorphism}{13}
-\contentsline {subsubsection}{\numberline {2.4.1}With $\mathbb {Z}/2\mathbb {Z}$ coefficients}{13}
-\contentsline {subsection}{\numberline {2.5}Computations in a smooth manifold}{15}
-\contentsline {subsubsection}{\numberline {2.5.1}Tubular neighborhood}{15}
-\contentsline {subsubsection}{\numberline {2.5.2}Diagonal map}{16}
-\contentsline {paragraph}{Diagonal cohomology class}{18}
-\contentsline {subsection}{\numberline {2.6}Chern Classes}{18}
-\contentsline {paragraph}{Canonical orientation on $\omega _\mathbb {R}$}{18}
-\contentsline {paragraph}{Construction of $\omega _0$ over $E_0$}{18}
-\contentsline {paragraph}{Gysin sequence}{18}
-\contentsline {paragraph}{Construction of Chern classes}{19}
-\contentsline {paragraph}{Naturality of Chern classes}{19}
-\contentsline {paragraph}{Stability under $\oplus \varepsilon $}{19}
-\contentsline {subsubsection}{\numberline {2.6.1}Complex Grassmann manifolds}{19}
-\contentsline {paragraph}{Complex projective space}{19}
-\contentsline {paragraph}{Cohomology ring $H^*(G_n(\mathbb {C}^\infty ); \mathbb {Z})$}{20}
-\contentsline {paragraph}{Universal bundle}{21}
-\contentsline {subsubsection}{\numberline {2.6.2}The product theorem}{22}
-\contentsline {subsubsection}{\numberline {2.6.3}Dual and conjugate Bundles}{23}
-\contentsline {section}{\numberline {3}Differential Forms Approach}{24}
+\contentsline {subsection}{\numberline {2.2}A brief introduction to higher homotopy groups}{4}
+\contentsline {paragraph}{Construction}{4}
+\contentsline {paragraph}{Action of fundamental group}{5}
+\contentsline {subsection}{\numberline {2.3}Stiefel-Whitney classes}{5}
+\contentsline {subsubsection}{\numberline {2.3.1}Defining properties of Stiefel-Whitney classes}{5}
+\contentsline {paragraph}{Results concerning projective spaces}{6}
+\contentsline {subsubsection}{\numberline {2.3.2}Universal bundle}{6}
+\contentsline {subsubsection}{\numberline {2.3.3}Grassmann manifolds}{8}
+\contentsline {paragraph}{Cell decomposition of Grassmann manifolds}{9}
+\contentsline {subsubsection}{\numberline {2.3.4}Existence of Stiefel-Whitney classes}{11}
+\contentsline {subsubsection}{\numberline {2.3.5}Steenrod squares}{12}
+\contentsline {subsection}{\numberline {2.4}Euler classes}{12}
+\contentsline {subsubsection}{\numberline {2.4.1}Orientation}{12}
+\contentsline {subsubsection}{\numberline {2.4.2}Construction and properties}{13}
+\contentsline {subsection}{\numberline {2.5}Thom Isomorphism}{14}
+\contentsline {subsubsection}{\numberline {2.5.1}With $\mathbb {Z}/2\mathbb {Z}$ coefficients}{14}
+\contentsline {subsection}{\numberline {2.6}Computations in a smooth manifold}{17}
+\contentsline {subsubsection}{\numberline {2.6.1}Tubular neighborhood}{17}
+\contentsline {subsubsection}{\numberline {2.6.2}Diagonal map}{18}
+\contentsline {paragraph}{Diagonal cohomology class}{19}
+\contentsline {subsection}{\numberline {2.7}Chern Classes}{19}
+\contentsline {paragraph}{Canonical orientation on $\omega _\mathbb {R}$}{19}
+\contentsline {paragraph}{Construction of $\omega _0$ over $E_0$}{20}
+\contentsline {paragraph}{Gysin sequence}{20}
+\contentsline {paragraph}{Construction of Chern classes}{20}
+\contentsline {paragraph}{Naturality of Chern classes}{20}
+\contentsline {paragraph}{Stability under $\oplus \varepsilon $}{21}
+\contentsline {subsubsection}{\numberline {2.7.1}Complex Grassmann manifolds}{21}
+\contentsline {paragraph}{Complex projective space}{21}
+\contentsline {paragraph}{Cohomology ring $H^*(G_n(\mathbb {C}^\infty ); \mathbb {Z})$}{21}
+\contentsline {paragraph}{Universal bundle}{23}
+\contentsline {subsubsection}{\numberline {2.7.2}The product theorem}{23}
+\contentsline {subsubsection}{\numberline {2.7.3}Dual and conjugate Bundles}{25}
+\contentsline {subsection}{\numberline {2.8}Pontryagin Classes}{26}
+\contentsline {paragraph}{Example}{27}
+\contentsline {section}{\numberline {3}Exercises}{27}
+\contentsline {paragraph}{Problem 1-C}{27}
+\contentsline {paragraph}{Problem 4-A}{28}
+\contentsline {paragraph}{Problem 4-B}{28}
+\contentsline {paragraph}{Problem 4-C}{28}
+\contentsline {paragraph}{Problem 4-D}{29}
+\contentsline {paragraph}{Problem 4-E}{29}
+\contentsline {paragraph}{Problem 6-A}{30}
+\contentsline {paragraph}{Problem 6-B}{30}
+\contentsline {paragraph}{Problem 6-C}{30}
+\contentsline {paragraph}{Problem 9-A}{30}
+\contentsline {paragraph}{Problem 9-B}{31}
+\contentsline {paragraph}{Problem 9-C}{31}
+\contentsline {paragraph}{Problem 12-B}{32}
+\contentsline {paragraph}{Problem 12-C}{33}
+\contentsline {paragraph}{Problem 12-D}{33}
+\contentsline {paragraph}{Problem 14-A}{33}
+\contentsline {paragraph}{Problem 14-B}{33}
+\contentsline {paragraph}{Problem 14-C}{34}
+\contentsline {paragraph}{Problem 14-D}{35}

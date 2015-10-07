@@ -825,13 +825,45 @@ $$ c(\wb{\w}) = 1 - c_1(\w) + c_2(\w) - \cdots \pm c_n(\w) $$
 I find it a bit striking at first glance. After all, the Chern classes are constructed inductively using Euler classes, which forget the complex structure on a bundle. So why should Chern classes tell the difference between a conjugate pair? The key is to notice that the top Chern class is the Euler class of the underlying real vector bundle \textit{with the preferred orientation}, but conjugate bundles give opposite preferred orientations. Let $F$ be a fiber of $\w$ and choose a basis $v_1, \cdots, v_n$. Then the basis $\{v_1, iv_1, \cdots, v_n, iv_n\}$ gives the preferred orientation of $F$ on $\w_\IR$. If the action of $\IC$ is composed with conjugation, then $\{v_1, -iv_1, \cdots, v_n, -iv_n\}$ gives the preferred orientation for the conjugate vector space. Therefore we have that $$c_i(\w) = (-1)^n c_i(\wb{\w})$$ for $i = n$. However, the relation holds for all bundles, so it follows easily by induction that the above relation holds for $i < n$ as well. 
 
 \subsection{Pontryagin Classes}
-Pontryagin classes, as [MS] treated them, are constructed using Chern classes. Given a real vector space $V$, we define a complex vector space $V \tensor \IC$. Applying this to all fibers, we obtain a complex vector bundle $\xi \tensor \IC$ from a real one $\xi$. 
+Pontryagin classes, as [MS] treated them, are constructed using Chern classes. Given a real vector space $V$, we define a complex vector space $V \tensor \IC$. If we forget the complex structure of $V \tensor \IC$, then $V \tensor \IC = V \oplus V$. Conversely, we can recover $V \tensor \IC$ by letting $i$ act on $V \oplus V$ by $J(x, y) = (-y, x)$. Applying this to all fibers, we obtain a complex vector bundle $\xi \tensor \IC$ from a real one $\xi$. 
 
-Most of the proofs in this sections are based on linear algebraic observations. 
+As [MS] remarked, we have a cycle ``real" $\to$ ``complex" $\to$ ``oriented" $\to$ ``real" given by forgetting complex structures and complexification. After each cycle we obtain a bundle of the same type, but the dimension has doubled. Most of the proofs in this sections are based on linear algebraic observations. 
+
+Define the $i$-th Pontryagin class 
+$$ p_i (\xi) \in H^{4i}(B; \IZ) $$
+as $(-1)^i c_{2i} (\xi \tensor \IC)$ when $2i \le n$ and set the higher classes to zero. As usual we define the total Pontryagin class by 
+$$ p(\xi) = 1 + p_1(\xi) + p_2(\xi) + \cdots + p_{\lfloor n/2 \rfloor}(\xi) $$ 
+Of course, Pontryagin classes readily inherit stability under $\oplus \sm^k$ from Chern classes. Since we throw away the odd Chern classes, which are order 2 elements, the Whitney product formula $p(\xi \oplus \eta) = p(\xi) p(\eta)$ holds modulo order 2 elements. 
+
+We first study the effect of $\w \to \w_\IR \to \w_\IR \tensor \IC$. 
 
 \begin{lemma}
 For any complex vector bundle $\w$, $\w_\IR \tensor \IC$ is canonically isomorphic to $\w \oplus \overline{\w}$. 
 \end{lemma}
+\begin{proof}
+It suffices to study a single fiber $F$. Let $V = F_\IR$. We gave $V \oplus V$ a complex structure by letting $i$ act as $J$. We define two linear injections $g, h : F \to V \oplus V$ by 
+$$ g(x) = (x, -i x), \, h(x) = (x, ix) $$
+$V \oplus V$ splits as $\Im g \oplus \Im h$ since any $(x, y)$ has the form
+$$(x, y) = g(\frac{x + i y}{2}) + h(\frac{x - iy}{2})$$ 
+Therefore $V \tensor \IC = V \oplus V \iso F \oplus \overline{F}$. 
+\end{proof}
+
+If we start from a complex bundle $\w$, then $p(\w_\IR)$ is completely determined $c(\w)$. In fact, by the lemma, we have that $\w_{\IR} \tensor \IC = \w \oplus \overline{\w}$. Therefore 
+$$ 1 - p_1 + p_2 - \cdots \pm p_n = (1 + c_1 + c_2 + \cdots + c_n)(1 - c_1 + c_2 - \cdots \pm c_n)$$ 
+
+\paragraph{Example} Let $\tau$ be the tangent bundle of $\IP^n(\IC)$. Then by the above we have that $(1 - p_1 + p_2 - \cdots \pm p_n ) = (1 - a^2)^{n + 1}$ for some generator $a \in H^2(\IP^n; \IZ)$. Therefore
+$$ p_k(\IP^n) = { n + 1 \choose k } a^{2k} $$
+
+Now we study the effect of $\xi \to \xi \tensor \IC \to (\xi \tensor \IC)_\IR$. 
+
+\begin{lemma}
+$( \xi \tensor \IC)_\IR$ is isomorphic to $\xi \oplus \xi$ under an isomorphism which either preserves or reverses orientation according to whether $n(n-1)/2$ is even or odd. 
+\end{lemma}
+\begin{proof}
+Let $v_1, \cdots, v_n$ be a basis for $F$. Then $v_1, iv_1, \cdots, v_n, iv_n$ is the ordered basis that determines the orientation on $(F \tensor \IC)_\IR$, while $v_1, \cdots, v_n, iv_1, \cdots, iv_n$ determines the orientation of $F \oplus iF \iso F \oplus F$. The sign is given by the permutation that sends $v_1, iv_1, \cdots, v_n, iv_n$ to $v_1, \cdots, v_n, iv_1, \cdots, iv_n$. 
+\end{proof}
+
+
 
 
 \section{Exercises}
@@ -983,6 +1015,13 @@ The first equation is given by naturality of obstruction and the last equation h
 The long exact sequence of fibration implies that 
 the induced map $$p_* :  \pi_{2n - 3} V^0_2(\IC^n) \to \pi_{2n - 3} V^0_1(\IC^n) $$ is an isomorphism. 
 Now recall how cellular obstruction classes are defined. Note that with suitable orientations chosen, $\pi_{2n - 3} V^0_2(F_{\pi_0^* \w}), \pi_{2n - 3} V^0_2(F_{\w_0})$ can be naturally identified with $\pi_{2n - 3} V^0_2(\IC^n)$ and $\pi_{2n - 3} V^0_1(\IC^n)$. Let $\sigma : D^{2n - 2} \to E_0$ be a $(2n - 2)$-cell and choose a nowhere vanishing cross section $s : E_0^{2n - 3} \to \w_0|_{E_0^{2n - 3}}$ where $E_0^{2n - 3}$ denotes the $(2n-3)$-skeleton of $E_0$. Let $t : E_0^{2n - 3} \to \pi_0^* \w|_{E_0^{2n - 3}}$ be the tautological section. Under the natural identification of $\w_0$ with a subbundle of $\pi_0^* \w$, we see that $\{s, t\}$ is an orthogonal $2$-frame on $E_0^{2n - 3}$. Choose trivializations of $\sigma^*(\pi_0^* \w)$ and $\sigma^*(\w_0)$ such that we still have a natural inclusion $ \sigma^*(\w_0) \subseteq \sigma^*(\pi_0^* \w)$. We obtain two maps $\alpha : \p D^{2n - 2} \to V_2(\IC^n)$ given by $\alpha(P) = (\sigma^* s(P), \sigma^* t(P)$ and $\beta : \p D^{2n - 2} \to V_1(\IC^n)$ given by $\beta(P) = \sigma^* s(P)$. $\so_{2n - 2}(\pi_0^* \w)$ is represented by a cochain that assign a $(2n - 2)$-cell $\sigma$ the number $[\alpha] \in \IZ$ and $\so_{2n - 2}(\w_0)$ is represented by a  cochain that assigns $[\beta] \in \IZ$ to the same cell. However, the isomorphism $p_*$ exactly sends $[\alpha]$ to $[\beta]$. Hence we have completed the proof. 
+
+
+\paragraph{Problem 14-D}
+To do this exercise, it is very helpful to know the multiplication structure of $G_n$, which is interesting in its own right. Let $\sigma$ be a Schubert symbol. Clearly each cell $e(\sigma)$ represents a cellular homology class, since there are no cells in odd dimensions. We denote the dual basis by $\{ e(\sigma)^\# \}$. We already know that $H^*(G_n; \IZ)$ is generated by $c_1(\gamma^n), \cdots, c_n(\gamma^n)$. For each $2k$, we know that there are $p(k)$ cells, and the $p(k)$ monomials of degree $2k$ in $c_1(\gamma^n), \cdots, c_n(\gamma^n)$ are linearly independent. Therefore they have to correspond bijectively. 
+
+We are going to consider many Grassmann manifolds $G_n(\IC^k)$ at the same time. Denote the canonical bundle on $G_n(\IC^k)$ by $\gamma_k^n$. There are many inclusion relationships between these Grassmann manifolds that are covered by bundle maps. For example, $\IP^n \subseteq \IP^{n + 1}$ and $G_n(\IC^k) \subseteq G_{n + 1}(\IC^{k + 1})$ by $X \mapsto \IC \oplus X$. (Ref. Exercise 6-C) If $G_n(\IC^k) \subseteq G_{n'}(\IC^{k'})$ contains all the $(l-1)$-cells and $l$-cells of $G_{n'}(\IC^{k'})$. Then we may think of $c_l(\gamma^n_k)$ and $c_l(\gamma^{n'}_{k'})$ ``as the same". In this view, $c_l(\gamma^n_k)$ will stabilize when $n \ge l$ and $k$ sufficiently large we denote it by $c_l$. 
+
 
 
 
