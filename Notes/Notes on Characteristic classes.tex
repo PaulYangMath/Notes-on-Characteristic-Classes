@@ -102,6 +102,9 @@
 
 
 \newcommand{\so}{\mathfrak{o}}
+\newcommand{\sC}{\mathfrak{C}}
+\newcommand{\sK}{\mathfrak{K}}
+\newcommand{\cC}{\mathcal{C}}
 
 %%%%%%% macros %%%%%
 
@@ -288,6 +291,7 @@
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\fN}{\mathfrak{N}}
 \newcommand{\fm}{\mathfrak{m}}
+%\newcommand{\ch}{\mathrm{ch}}
 %%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -863,6 +867,250 @@ $( \xi \tensor \IC)_\IR$ is isomorphic to $\xi \oplus \xi$ under an isomorphism 
 Let $v_1, \cdots, v_n$ be a basis for $F$. Then $v_1, iv_1, \cdots, v_n, iv_n$ is the ordered basis that determines the orientation on $(F \tensor \IC)_\IR$, while $v_1, \cdots, v_n, iv_1, \cdots, iv_n$ determines the orientation of $F \oplus iF \iso F \oplus F$. The sign is given by the permutation that sends $v_1, iv_1, \cdots, v_n, iv_n$ to $v_1, \cdots, v_n, iv_1, \cdots, iv_n$. 
 \end{proof}
 
+\subsection{Chern Numbers and Pontryagin Numbers}
+Chern numbers are the numbers you can get by evaluating polynomials of Chern classes of correct degree at the fundamental homology class. More precisely, Let $I = i_1 \cdots i_r$ be a partition of $n$ and $K^n$ be a $n$-dimensional manifold with tangent bundle $\tau^n$, the Chern number indexed by $I$, which we denote as $c_I[K^n]$ is 
+$$ \< c_{i_1}(\tau^n) \cdots c_{i_r}(\tau^n), \mu_{2n} \> $$ 
+
+\paragraph{Example} Let $K^n = \IP^n(\IC)$. Then the $I$-th Chern number is 
+$$ c_I[\IP^n(\IC)] = {n + 1 \choose i_1} \cdots {n + 1 \choose i_r } $$ 
+
+Since Chern numbers are indexed by partitions, there are in general $p(n)$ Chern numbers. 
+
+[MS] remarked another way to think about Chern numbers. Let $\gamma^n$ over $G_n(\IC^\infty)$ be the universal $n$-plane bundle. For each $\tau^n$ over $K^n$ there is classifying map $f : K^n \to G_n(\IC^\infty)$ such that $f^* \gamma^n = \tau^n$. $f_*$ sends the fundamental homology class $\mu_{2n}$ to $H_{2n}(G_n(\IC^\infty); \IZ)$. Since $\{c_I(\gamma^n) : I \text{ is a partition of }n\}$ forms a basis for $H^{2n}(G_n(\IC^\infty); \IZ)$, we can identify this class $f_* \mu_{2n}$ by looking at its images under $c_I(\gamma^n)$: 
+$$ \< c_{i_1}(\gamma^n) \cdots c_{i_r}(\gamma^n), f_* \mu_{2n} \> $$
+However, we could also obtain these numbers by pulling everything back to $K^n$: 
+$$ \< f^*(c_{i_1}(\gamma^n) \cdots c_{i_r}(\gamma^n)), \mu_{2n} \> = \< c_{i_1}(\tau^n) \cdots c_{i_r}(\tau^n), \mu_{2n} \> $$
+
+
+Pontryagin numbers are defined similarly. Let $M^{4n}$ be a real $4n$ dimensional manifold. We define 
+$$ p_I[M^{4n}] = \< p_{i_1}(\tau^{4n}) \cdots p_{i_r}(\tau^{4n}), \mu_{4n} \> $$
+where $I = i_1 \cdots i_r$ is a partition of $n$. 
+
+\subsection{Cobordism Theory} 
+\subsubsection{Thom space}
+Let $\xi$ be a $k$-plane bundle with Euclidean metric and let $A \subset E(\xi)$ be the subset of the total space of all vectors $v$ with $|v| \ge 1$. Then Thom space is obtained by collapsing $A$ to a point, which becomes the preferred base point of Thom space. 
+
+\paragraph{Example} If $B = \IS^1$ and $\xi$ is the trivial line bundle, then the Thom space of $\xi$ is the space obtained by identifying the north pole and the south pole of a sphere. 
+
+We start by studying the CW-complex structure of $T(\xi)$: 
+\begin{lemma}
+If $B$ is a CW-complex, then the Thom space $T(\xi)$ is $(k - 1)$-connected, having one $(n + k)$-cell corresponding to each $n$-cell of $B$. In particular, if $B$ is a finite CW-complex, then $T(\xi)$ is also a finite CW-complex. 
+\end{lemma}
+\begin{proof}
+For each open cell $e_\alpha$ of $B$, $\pi^{-1}(e_\alpha) \cap (E - A)$ is an open cell of dimension $n + k$. (This is easy: $e_\alpha \iso \IR^{n}$, $\pi^{-1}(e_\alpha) \cap E - A \iso \IR^{n} \times \IR^{k} = \IR^{n + k}$.) These cells are mutually disjoint and cover $E - A \iso T - t_0$. In particular, there are no cells of dimensions $1$ through $k - 1$. 
+
+Let $f : D^n \to B$ be a characteristic map for the cell $e_\alpha$. Then $f^*(\xi)$ is trivial since $D^n$ is contractible, so vectors of length $\le 1$ in $E(f^*(\xi))$ form a topological product $D^n \times D^k$. The composition 
+$$ D^n \times D^k \subset E(f^*(\xi)) \to E(\xi) \to T(\xi) $$
+now forms the required characteristic map for the image of $\pi^{-1}(e_\alpha)$ in the Thom space $T(\xi)$. 
+\end{proof}
+
+
+\begin{lemma}
+(Assume $\IZ$ coefficients.) $H_{k + i}(T(\xi), t_0)$ is canonically isomorphic to $H_i(B)$. 
+\end{lemma}
+
+A homomorphism $h : A \to B$ between abelian groups is called a $\sC$-isomorphism if both the kernel and the cokernel belong to $\cC$. (I'd preferred to think of it as a homomophism of $\IZ$-modules that becomes an isomorphism of vector space once tensored with $\tensor_\IZ \IQ$.)
+
+\begin{theorem}
+Let $X$ be a finite complex which is $(k - 1)$-connected, $k \ge 2$. Then the Hurewicz homomorphism $\pi_r(X) \to \pi_r(X; \IZ)$ is $\cC$-isomorphism for $r < 2k - 1$. 
+\end{theorem}
+
+Therefore, if $T$ is the Thom space of an oriented $k$-plane bundle over the finite complex $B$, then there is a $\cC$-isomorphism $\pi_{n + k}(T) \to H_n(B; \IZ)$ for all dimensions $n < k - 1$. 
+
+Recall that if $f : M \to N$ ($\dim M = m, \dim N = n$) is a smooth map of manifolds, a point $y \in N$ is called a regular value if for all $x \in f^{-1}(y)$, then map $Df_x : TM_x \to TN_y$ is surjective. Sard's theorem tells us that the set of regular values is everywhere dense in $N$. 
+
+Suppose $Y \subseteq N$ is a submanifold of dimension $n - k$. $f : M \to N$ is said to be transverse to $Y$, if for every $x \in f^{-1}(Y)$ the composition 
+$$ TM_x \to TN_y \to TN_y/DY_y $$
+from the tangent space at $x$ to the normal space at $f(x) = y$ is surjective. If $f$ is transverse to $Y$, then by the implicit function theorem the inverse image $f^{-1}(Y)$ is a smooth manifold of dimension $m - k$. 
+
+
+\subsection{Multiplicative Sequences and the Signature Theorem}
+Let $R$ be a fixed commutative ring with unit. $A = \oplus_{d \ge 0} A^d$ is a graded $R$-algebra. Let $A^\Pi$ be the ring of formal sums $\sum a_i, a_i \in A^i$. We are particularly interested in the elements of the form $1 + \sum_{i \ge 1} a_i$. They form a multiplicative group, which we denote by $(A^\Pi)^*$. 
+
+Consider a sequence of polynomials $\{ K_n(x_1, x_2, \cdots, x_n) \}$ such that each $K_n$ is homogeneous of degree $n$ if $\deg x_i = i$. Each such sequence $\{ K_n \}$ gives rise to a map $K : (A^\Pi)^* \to (A^\Pi)^*$ given by 
+$$ K(a) = 1 + K_1(a_1) + K_2(a_1, a_2) + \cdots $$
+If such $K$ is a group homomorphism, then $\{ K_n \}$ is called a multiplicative sequence. Conversely, it is also often possible to recover such sequences given a group homomophism from the first place. 
+
+Multiplicative sequences are classified by Hirzebruch's lemma: 
+\begin{lemma}
+Given a formal power series $f(t) = 1 + \lambda_1 t + \lambda_2 t^2 + \cdots$ with coefficients in $\Lambda$, there is a unique multiplicative sequence $\{ K_n \}$ with coefficients in $\Lambda$ such that $K(1 + t) = f(t)$, or equivalent satisfying the condition that the coefficient of $x_1^n$ in each polynomial $K_n(x_1, \cdots, x_n)$ is equal to $\lambda_n$. 
+\end{lemma}
+\begin{proof}
+\textit{Uniqueness: }Let $A^* = \Lambda[t_1, \cdots, t_n]$, $\deg t_i = i$. Let $$\sigma = (1 + t_1) \cdots (1 + t_n) \in A^\Pi$$ Then 
+$$ K(\sigma) = K(1 + t_1) \cdots K(1 + t_n ) = f(t_1) \cdots f(t_n) $$
+Taking the homogeneous part of degree $n$, it follows that $K_n(\sigma_1, \cdots, \sigma_n)$ is completely determined by the power series $f(t)$, since the elementary symmetric functions $\sigma_1, \cdots, \sigma_n$ are algebraically independent. \\\\
+\textit{Existence: }For any partition $I = i_1 \cdots i_r$ of $n$, we denote the product $\lambda_{i_1} \cdots \lambda_{i_r}$ by $\lambda_I$. Define $K_n$ by 
+$$ K_n(\sigma_1, \cdots, \sigma_n) = \sum \lambda_I s_I(\sigma_1, \cdots, \sigma_n)$$ 
+where $s_I = \sum t_1^{i_1} \cdots t_r^{i_r}$. Recall that such $s_I$'s form an alternative basis for all symmetric polynomials of degree $n$. 
+We can check that such $\{ K_n \}$ is a solution to the problem. 
+\end{proof}
+
+\paragraph{Example} It can be easily checked that the map $K : (A^\Pi)^* \to (A^\Pi)^*$ given by $1 + \sum_{i \ge 1} a_i \mapsto 1 + \sum_{i \ge 1} \lambda a_i$ is a group homomorphism. The corresponding $\{ K_n \}$ is simply given by $K_n(x_1, \cdots, x_n) = \lambda^n x_n$. It belongs to the power series $f(t) = 1 + \lambda t$. 
+
+\paragraph{Example} $K(a) = a^{-1}$ is evidently a group homomorphism. It is given by the sequence $\{ K_n \}$ defined by 
+\begin{align*}
+K_1(x_1) &=  - x_1 \\
+K_2(x_1, x_2) &= x_1^2 - x_2 \\
+K_3(x_1, x_2, x_3) &= - x_1^3 + 2 x_1 x_2 - x_3 \\
+&\vdots
+\end{align*}
+It belongs to the power series $f(t) = 1 - t + t^2 - t^3 + \cdots $. 
+
+\paragraph{Example} The polynomials $K_{2n + 1} = 0$ and $K_{2n}(x_1, \cdots, x_{2n} ) = x_n^2 - 2 x_{n - 1} x_{n + 1} + \cdots \mp 2 x_1 x_{2n - 1} \pm 2 x_{2n}$ gives a homomorphism $K : (A^\Pi)^* \to (A^\Pi)^*$ which can be used to describe the relationship between the Chern classes of a complex vector bundle $\w$ and the Pontryagin classes of $\w_\IR$: $K(c(\w)) = p(\w_\IR)$. It belongs to the power series $f(t) = 1 + t^2$. 
+
+Now cosider some multiplicative sequence $\{ K_n(x_1, \cdots, x_n) \}$ with rational coefficients. 
+
+\begin{definition}
+The $K$-genus $K[M^m]$ is zero if $m$ does not divide $4$, and is equal to the rational number 
+$$ K_n[M^{4n}] = \< K_n(p_1, \cdots, p_n), \mu_{4n} \> $$
+if $m = 4n$. In particular, $K[M^m]$ is a certain rational linear combination of the Pontryagin numbers of $M^m$. 
+\end{definition}
+
+\begin{lemma}
+The map $M \mapsto K[M]$ defines a ring homomorphism $\Ohm_* \to \IQ$, or equivalently an algebra homomorphism $\Ohm_* \tensor \IQ \to \IQ$. 
+\end{lemma}
+\begin{proof}
+Since we are using $\IQ$ coefficients, torsion is killed. Therefore we have that $p(M \times M') = p(M) p(M')$. $K$ is a homomorphism, so 
+$$ \< K(p(M \times M')), \mu \times \mu' \> = (-1)^{mm'} \< K(p(M)), \mu\> \< K(p(M')), \mu' \> $$
+Since $m,m'$ are both divisible by $4$. The sign is clearly positive. Therefore $K[M \times M'] = K[M]K[M']$. 
+\end{proof}
+
+\begin{definition}
+The signature $\sigma$ of a compact oriented manifold $M^m$ is defined to be zero if $m$ is not a multiple of $4$, and when $m = 4k$, it is defined as follows: Choose a basis $a_1, \cdots, a_r$ for $H^{2k}(M^{4k}; \IQ)$ so that the symmetric matrix $$[\< a_i \cup a_j, \mu \>]$$ is diagonal. Then $\sigma(M^{4k})$ is the number of positive entries minus the number of negative ones. 
+\end{definition}
+Alternatively, $\sigma(M^{4k})$ is the signature of the rational quadratic form $a \mapsto \< a \cup a, \mu \>$. 
+
+
+\begin{proof}
+Since the correspondence $M \mapsto \sigma(M)$ and $M \mapsto L[M]$ both give rise to algebra homomorphisms $\Ohm_* \tensor \IQ \to \IQ$, it suffices to check this theorem on a set of generators for the algebra $\Ohm_* \tensor \IQ$. We know that the projective spaces $\IP^{2k}(\IC)$ provide such a set of generators. 
+
+To compute the signature of $\IP^{2k}(\IC)$, we only need to note that $H^{2k}(\IP^{2k}(\IC); \IQ)$ is generated by a single element $a^k$ with 
+$$ \< a^k \cup a^k, \mu \> = 1$$
+Hence the signature of $\sigma(\IP^{2k}(\IC)) = 1$. 
+
+To compute $L_k[\IP^{2k}(\IC)]$, recall that $p(\IP^{2k}(\IC)) = (1 + a^2)^{2k + 1}$. Since $\{ L_k \}$ belongs to the power series $f(t) = \sqrt{t}/\tanh \sqrt{t}$, we have that 
+$$ L(1 + a^2) = \frac{\sqrt{a^2}}{\tanh \sqrt{a^2}} = \frac{a}{\tanh a} $$
+Therefore 
+$$ L(p) = L((1 + a^2)^{2k + 1}) = L(1 + a^2)^{2k + 1} = (\frac{\sqrt{a^2}}{\tanh \sqrt{a^2}})^{2k + 1} $$
+Thus the $L$-genus $\< L(p), \mu \>$ is equal to the coefficient of $a^{2k}$ in this power series. Now the question becomes one in complex analysis. Replace $a^2$ by $z^2$, we see that the coefficient can be computed by 
+$$ \frac{1}{2 \pi i} \int_\gamma \frac{(z/ \tanh z)^{2k + 1}}{z^{2k}} dz $$
+where $\gamma$ is, say, the unit circle oriented counterclockwise. 
+Use $u$-substitution with $u = \tanh z$, we see that $dz = (1 + u^2 + u^4 + \cdots) du$, 
+$$ \frac{1}{2 \pi i} \int_\gamma \frac{dz}{(\tanh z)^{2k + 1}} = \frac{1}{2 \pi i} \int_\gamma \frac{1 + u^2 + \cdots}{u^{2k + 1}} du = 1$$ 
+\end{proof}
+
+\begin{corollary}Hirzebruch index theorem readily implies: 
+\begin{enumerate}
+\item The $L$-genus of any manifold is an integer. It follows, for example, that $3 \mid p_1[M^4]$ for all $M^4$ and $45 \mid 7 p_2[M^8] - p_1^2[M^8]$. 
+\item The $L$-genus depends only on the oriented homotopy type of $M$. 
+\end{enumerate}
+\end{corollary}
+
+
+
+\section{Differential Geometry Approach}
+
+We first review some differential geometry, as outlined in [MS]. 
+\begin{definition}
+A connection on $\zeta$ is a $\IC$-linear mapping 
+$$ \nabla : C^\infty(\zeta) \to C^\infty (\tau^*_\IC \tensor \zeta) $$
+which satisfies the Leibniz formula $\nabla (fs) = df \tensor s + f \nabla (s)$ for every $s \in C^\infty(\zeta), f \in C^\infty(M, \IC)$. $\nabla(s)$ is called the covariant derivative of $s$. 
+\end{definition}
+
+The connection $\nabla$ is a local operator, i.e. it makes sense to talk about the restriction $\nabla$ to an open subset of $M$, since with a bump function it is easy to show that if a section $s$ vanishes on an open subset $U \subset M$, then $\nabla (s)$ vanishes throughout $U$ also. 
+
+If we choose $U$ that locally trivializes $\zeta$, we may find local frames $s_1, \cdots, s_n$. By Leibniz rule, $\nabla$ is completely determined by $\nabla(s_1), \cdots, \nabla(s_n)$, which can be completely aribitrary smooth sections of the bundle $\tau_\IC^* \tensor \zeta |_U$. There is a matrix $[\w_{ij}]$ of 1-forms on $U$ such that $\nabla (s_i) = \sum_j \w_{ij} \tensor s_j$.
+
+If $s = \sum_i f_i s_i$, then $\nabla (s) = \sum (df_i \tensor s_i + f_i \nabla (s_i))$. There is a unique connection such that the covariant derivatives $\nabla(s_1), \cdots, \nabla(s_n)$ are all zero, or equivalently the connection matrix $[\w_{ij}] = 0$. For such a connection, we have $\nabla(\sum_i f_i s_i) = \sum df_i \tensor s_i$. 
+
+The collection of all connections on $\zeta$ does not have any natural vector space structure. However, if $\nabla_1, \nabla_2$ are both connections on $\zeta$, then for each $g \in C^\infty(M, \IC)$, $g \nabla_1 + (1 - g) \nabla_2$ is again a well defined connection on $\zeta$. Every smooth complex vector bundle with paracompact base space possesses a connection, since we can always patch up a global connection using local connections and a partition of unity. 
+
+Now we consider how connections behaves under pullbacks. Let $g : M' \to M$ be a smooth map and we obtain a pullback bundle $g^* \zeta$ on $M'$. Clearly there is natural pullback map of sections $C^\infty(\zeta) \to C^\infty(\zeta')$, $C^\infty(\tau_\IC^* (M) \tensor \zeta) \to C^\infty(\tau_\IC^* (M) \tensor \zeta')$. To each connection $\nabla$ on $\zeta$, there corresponds a unique connection $\nabla' = g^* \nabla$ on the induced bundle $\zeta'$ so that the diagram 
+\begin{center}
+\begin{tikzcd}
+C^\infty(\zeta)  \arrow{r}{\nabla} \arrow{d}{} & C^\infty(\tau_\IC^* (M) \tensor \zeta) \arrow{d}{} \\
+C^\infty(\zeta')  \arrow{r}{\nabla'} & C^\infty(\tau_\IC^* (M) \tensor \zeta')
+\end{tikzcd}
+\end{center}
+We define this connection to the pullback of $\nabla$. Evidently 
+$$ \nabla' (s_i ') = \sum \w_{ij}' \tensor s_j' $$ 
+
+Given a connection $\nabla$ on $\zeta$, let us try to construct something like a connection on the bundle $\tau_\IC^* \tensor \zeta$. (\textit{This sounds like differentiate the bundle once again.}) Recall that we have an exterior differentiation operator $d : C^\infty(\tau_\IC^*) \to C^\infty(\Lambda^2 \tau_\IC^*)$. Given $\nabla$, there is a unique $\IC$-linear map $\what{\nabla} : C^\infty(\tau_\IC^* \tensor \zeta) \to C^\infty(\Lambda^2 \tau_\IC^* \tensor \zeta)$. 
+
+The value of $K(s) = \what{\nabla} \nabla (s)$ at $x$ depends only on $s(x)$, not on the values of $s$ at other points on $M$ (in particular, you do not need the values of $s$ at a neighborhood.) The key is that $K =  \what{\nabla} \circ \nabla$ is $C^\infty(M, \IC)$-linear: 
+$$ K(fs) =  \what{\nabla} \nabla(fs) = 0 - df \wedge \nabla(s) + df \wedge
+\nabla(s) + f  \what{\nabla} \nabla(s) =  f \what{\nabla} \nabla(s) = fK(s)$$
+In terms of a local frame $s_1, \cdots, s_n$ of $\zeta|_U$, with $\nabla(s_i) = \sum \w_{ij} \tensor s_j$, then 
+$$ K(s_i) = \what{\nabla}(\sum \w_{ij} \tensor s_j) = \sum \Ohm_{ij} \tensor s_j $$ 
+where 
+$$ \Ohm_{ij} = d \w_{ij} - \sum_\alpha \w_{i \alpha} \wedge \w_{\alpha j} $$
+Therefore $K$ can be described locally by the $n \times n$ matrix $[\Ohm_{ij}]$ of 2-forms in the same way that $\nabla$ can be described locally by the matrix $[\w_{ij}]$. In terms of matrix notation, they are related by $$ \Ohm = d \w - \w \wedge \w $$
+
+$K$ is called the curvature tensor, and if $K = K_\nabla$ is zero, then the connection $\nabla$ is called flat. 
+
+We may start construct characteristic classes from the curvature tensor $K$. 
+
+An invariant polynomial on $M_n(\IC)$ is a function $P : M_n(\IC) \to \IC$ which can be expressed as a complex polynomial in the entries of the matrix such that $P(XY) = P(YX)$, or equivalently $P(TXT^{-1}) = P(X)$ for every nonsingular matrix $T$. The latter condition implies the former by continuity, since singular matrices form a Zariski closed subset of $M_n(\IC)$. 
+
+Trace and determinant are evidently invariant polynomials on $M_n(\IC)$. But note that they are of different degrees. Trace is of degree $1$ and determinant is of degree $n$. The invariant polynomials on $M_n(\IC)$ can all be expressed as a polynomial function of $\sigma_1, \cdots, \sigma_n$. It is easy to observe: It suffices to consider those diagonalizable matrices in $M_n(\IC)$, which form a Zariski open subset. By continuity, if an invariant function agrees with another on these diagonalizable matrices, then they have to be equal. Now we consider $M = \diag[\lambda_1, \cdots, \lambda_n]$, then $$ \det(I + tM) = \prod_{i = 1}^n (1 + t\lambda_i) = 1 + t \sigma_1  + \cdots + t^n \sigma_n$$ where $\sigma_i$ is the $i$th symmetric polynomial in $\lambda_1, \cdots, \lambda_n$, they clearly extends to invariant function on all of $M_n(\IC)$. 
+
+If $P$ is an invariant polynomial, then the exterior form $P(K)$ is defined as follows. Choose a local frame $s_1, \cdots, s_n$ near a point $x$, we have $K(s_i) = \sum \Ohm_{ij} \tensor s_j$. $P(\Ohm)$ will be a sum of exterior forms of various even degrees. $P(\Ohm)$ does not depend on the frame chosen, so they patch up a global form in $\oplus C^\infty(\Lambda^r \tau_\IC^*)$, which we denote by $P(K)$. 
+
+\begin{lemma}
+\emph{(Fundamental Lemma)} For any invariant polynomial $P$, the exterior form $P(K)$ is closed, i.e. $d P(K) = 0$. 
+\end{lemma}
+\begin{proof}
+I am confused by the notation $\p$ 2-form. 
+
+\end{proof}
+
+Therefore $P(K)$ represents a cohomology class in the total De Rham cohomology ring $\oplus H^i(M; \IC)$.
+\begin{lemma} $P(K) = P(K_\nabla)$ is independent of the connection. 
+\end{lemma}
+\begin{proof}
+I think the key idea is that any two connections are homotopic (do we say so?) Let $\nabla_0, \nabla_1$ be two connections on $\zeta$. Consider the trivial bundle $p : M \times \IR \to M$. Set $\nabla_i' = p^* \nabla_i$. Define a new connection $\nabla$ on $\zeta' = p^* \zeta$ by $$\nabla = t \nabla_1' + (1 - t) \nabla_0'$$ Let $ \iota_i : M \to M \to M \times \IR$ be the embedding by the $0$ and $1$ sections. Then evidently 
+$$ (\iota_i)^* P(K_\nabla) = P(K_{\nabla_i}) $$
+Since $\iota_0, \iota_1$ are homotopic, they induce the same map on cohomology. Therefore $P(K_{\nabla_0}) = P(K_{\nabla_1})$. 
+\end{proof} 
+
+Thus $P$ determines a characteristic cohomology class in $H^*(M; \IC)$, depending only on the isomorphism class of the vector bundle $\zeta$. This assignment is natural, in the sense that if $g : M \to M'$ induces a bundle $\zeta' = g^* \zeta$, then $P(K_{\nabla'}) = g^* P(K_\nabla)$. 
+
+Now we look at the real vector bundles. Let $s_1, \cdots, s_n$ be an orthonormal frame on $\zeta|_U$. Then a connection $\nabla$ on $\zeta|_U$ is compatible with the metric if and only if the associated connection matrix $[\w_{ij}]$ is skew-symmetric. For if $\nabla$ is compatible, then $$0 = d\< s_i, s_j \> = \< \nabla s_i, s_j \> + \< s_i, \nabla s_j \> = \< \sum \w_{ik} \tensor s_k, s_j \> + \< s_i, \sum \w_{jk} \tensor s_k \> = \w_{ij} + \w_{ji}$$
+Convsersely, to verify that $d \< s, s' \> = \< \nabla s, s'\> + \< s, \nabla s' \>$, it suffices to verify it on a basis $s_i \tensor s_j$. 
+
+A connection $\nabla$ on $\tau^*$ is called symmetric if the composition 
+$$ C^\infty(\tau^*) \stackrel{\nabla}{\to} C^\infty(\tau^* \tensor \tau^*) \stackrel{\wedge}{\to} C^\infty(\tau^* \wedge \tau^*) $$
+is equal to the exterior derivative $d$. 
+In terms of local coordinates $x^1, \cdots, x^n$, setting
+$$ \nabla(dx^k) = \sum \Gamma^k_{ij} dx^i \tensor dx^j $$
+If $\sum \Gamma^k_{ij} dx^i \wedge dx^j  = 0$, then the Christoffel symbols $\Gamma^k_{ij}$ must be symmetric in $i,j$. Given a metric, there is a unique symmetric connection which is compatible with the metric. (Levi-Civita connection)
+
+Now we specialize to the case of $2$-dimensional oriented Riemannian manifold. With respect to an oriented local orthonormal basis $\theta_1, \theta_2$ for 1-forms, the connection and curvature matrices take the form (recall they have to be skew-symmetric since we are using Levi-Civita)
+$$\begin{bmatrix}
+0 & \w_{12} \\ - \w_{12} & 0 
+\end{bmatrix} \text{ and }
+\begin{bmatrix}
+0 & \Ohm_{12} \\ - \Ohm_{12} & 0 
+\end{bmatrix}
+$$
+We can easily verify that the exterior 2-form is independent of the choice of oriented orthonormal basis. Hence it gives rise to a well defined global 2-form. It is called the Gauss-Bonnet 2-form on the oriented surface. Denote $dA = - \theta_1 \wedge \theta_2$, we obtain function $\sK$, a scalar function called the Gaussian curvature, such that $\Ohm_{12} = \sK dA$. 
+
+
+
+
+\begin{theorem}
+Let $\zeta$ be a complex vector bundle with connection $\nabla$. Then the cohomology class $\sigma_r(K_\nabla)$ is equal to $(2 \pi i)^r c_r(\zeta)$.  
+\end{theorem}
+\begin{proof}
+We have shown that in the case of complex line bundle, $\sigma_1(K) = 2 \pi i c_1(\zeta)$. Define invariant polynomial $\underline{c}$ by 
+$$ \underline{c}(A) = \det(I + \frac{A}{2 \pi i }) = \sum_k \frac{\sigma_k(A)}{(2 \pi i)^k} $$ 
+
+The rest of the work is essentially splitting principle in disguise. We first show that the relation holds for a direct sum of line bundles. Choose connection $\nabla_j$ on $\zeta_j$. There is evidently a ``Whitney sum" connection on $\zeta$. (There are natural identifications $C^\infty(\oplus \zeta_j) = \oplus C^\infty(\zeta_j), C^\infty(\tau_\IC^* \tensor (\oplus \zeta_j)) = \oplus C^\infty(\tau_\IC^* \tensor \zeta_j)$) Choose a local section $s_j$ for $\zeta_j$ near $x$. Consider $s_1, \cdots, s_n$ as sections of $\zeta$. The corresponding curvature matrix is diagonal: $\Ohm = \mathrm{diag}[\Ohm_1, \cdots, \Ohm_n]$. A straightforward computation shows that $$\underline{c}(K) = \underline{c}(K_1) \cdots \underline{c}(K_n)$$. RHS represents the total Chern class $$c(\zeta) = c(\zeta_1) \cdots c(\zeta_n)$$
+Thus $c(\zeta) = \underline{c}(K)$ is true for any direct sum of line bundles. 
+
+Now the splitting principle argument begins. If $\gamma^1$ denotes the universal line bundle over $\IP(\IC^m)$ with $m$ large, then $$c(\gamma^1 \times \cdots \times \gamma^1) = \underline{c}(K(\gamma^1 \times \cdots \times \gamma^1))$$
+The cohomology of the base sapce $G_n(\IC^\infty)$ of the universal bundle maps injectively to $\IP(\IC^m) \times \cdots \IP(\IC^m)$ in dimensions $\le 2m$. (Recall that $H^i(G_n(\IC^\infty)) \into H^i(\IP(\IC^\infty) \times \cdots \times \IP(\IC^\infty))$ always, and $H^i(\IP(\IC^m) \times \cdots \times \IP(\IC^m)) \iso H^i(\IP(\IC^\infty) \times \cdots \times \IP(\IC^\infty))$ when $i \le 2m$.) It follows that $c(\gamma^n) = \underline{c}(K(\gamma^n))$. 
+\end{proof}
 
 
 
@@ -1022,8 +1270,79 @@ To do this exercise, it is very helpful to know the multiplication structure of 
 
 We are going to consider many Grassmann manifolds $G_n(\IC^k)$ at the same time. Denote the canonical bundle on $G_n(\IC^k)$ by $\gamma_k^n$. There are many inclusion relationships between these Grassmann manifolds that are covered by bundle maps. For example, $\IP^n \subseteq \IP^{n + 1}$ and $G_n(\IC^k) \subseteq G_{n + 1}(\IC^{k + 1})$ by $X \mapsto \IC \oplus X$. (Ref. Exercise 6-C) If $G_n(\IC^k) \subseteq G_{n'}(\IC^{k'})$ contains all the $(l-1)$-cells and $l$-cells of $G_{n'}(\IC^{k'})$. Then we may think of $c_l(\gamma^n_k)$ and $c_l(\gamma^{n'}_{k'})$ ``as the same". In this view, $c_l(\gamma^n_k)$ will stabilize when $n \ge l$ and $k$ sufficiently large we denote it by $c_l$. 
 
+\subsection*{Chapter 16}
+
+\paragraph{Problem 16-A}
+Set we set $x = - t_i$, we see that 
+$$ (-t_i)^n + \sigma_1 (-t_i)^{n - 1} + \cdots + \sigma_n = 0 $$
+Now sum over $i$, and note that $s_k(\sigma_1, \cdots, \sigma_k) = \sum_i t_i^k$, we obtain the Newton's formula. Alternatively, recall that 
+$$ \log(1 + x) = x - \frac{1}{2} x^2 + \frac{1}{3} x^3 - \cdots = \sum_{k} \frac{(-1)^k}{k!} x^k $$
+Now take logarithm of both sides of the identity $(1 + t_1) \cdots (1 + t_n) = 1 + (\sigma_1 + \cdots + \sigma_n)$, we have 
+$$ \sum_{i = 1}^n \log(1 + t_i) = \log(1 + ((\sigma_1 + \cdots + \sigma_n)))$$
+Take power series of both sides
+$$\sum_{k = 1}^\infty (\frac{(-1)^k}{k!} \sum_{i = 1}^n t_i^k) = \sum_{k = 1}^\infty \frac{(-1)^k}{k!} (\sum_{i = 1}^n \sigma_i)^k $$
+The result will follow by comparing terms of the same degree (details to be filled in)
+
+\paragraph{Problem 16-B}
+That the Chern character is additive is a straightforward from Corollary 16.3 in the book. As the hint suggests, we first verify that $\ch(\eta \tensor \eta') = \ch(\eta) \ch(\eta')$ for line bundles $\eta, \eta'$: 
+$$ \ch(\eta \tensor \eta') = e^{c_1(\eta \tensor \eta')} = e^{c_1(\eta) + c_1(\eta')} = e^{c_1(\eta)} e^{c_1(\eta')} = \ch(\eta)\ch(\eta') $$
+ By the splitting principle, we may assume that $\w = \oplus_i \eta_i$, $\w' = \oplus_j \eta_j'$, where $\eta_i, \eta_j'$ are line bundles. Now 
+$$\ch(\w \tensor \w') = \ch(\oplus_{i,j} \eta_i \tensor \eta_j') = \sum_{i, j} \ch(\eta_i \tensor \eta_j') = (\sum_i \ch(\eta_i))(\sum_j \ch(\eta_j')) = \ch(\w)\ch(\w')$$
+
+\paragraph{Problem 16-C}
+Recall that $p(\w_\IR) = c(\w)c(\overline{\w})$. Again we are to verify some polynomial relationships between Chern classes. Therefore we can apply splitting principle and assume that $\w= \oplus_{i = 1}^n \eta_i$ where each $\eta_i$ is a complex line bundle. Now the conclusion is close to obvious: 
+$$ c_k(\w) = \sigma_k(c_1(\eta_1), \cdots, c_1(\eta_n))$$
+Set $t_i = c_1(\eta_i)$. Then 
+$$ s_{2i_1, \cdots, 2i_r}(c(\w)) = s_{2i_1, \cdots, 2i_r}(\sigma_1, \cdots, \sigma_{2k}) = \sum t_1^{2i_1} \cdots t_r^{2i_r}$$
+And similarly 
+$$ s_{i_1, \cdots, i_r}(p(\w_\IR)) = $$
+ 
 
 
+\paragraph{Problem 16-D}
+Recall how we obtained the dual cohomology class: The composition of two restriction homomorphisms 
+$$ H^2(E(\nu^1), E(\nu^1)_0) \iso H^2(K^{n + 1}, K^{n + 1} - K^n) \to H^{2}(K^{n + 1}) \to H^2(K^n) $$
+maps to fundamental class $u'$ to $c_1(\nu^1)$, where $\nu^1$ is the normal bundle of $K^n \subseteq K^{n + 1}$. The image of $u'$ in $H^2(K^{n + 1})$ is the dual cohomology class to $K^n$, i.e. $u'|_{K^{n + 1}} = u$. 
+Now consider the short exact sequence of vector bundles over $K^n$:
+$$ 0 \to \tau^n \to \tau^{n + 1}|_{K^n}  \to \nu^1 \to 0 $$
+where $\tau^n$ denotes the tangent bundle of $K^n$ and $\tau^{n + 1}$ denotes that of $K^{n  + 1} = \IP^{n + 1}$. Therefore we have $$c(\tau^{n + 1}|_{K^n}) = c(K^{n + 1})|_{K^n} =  c(K^n)c(\nu^1) = c(K^n)(1 + c_1(\nu^1))$$
+which we may rearrange to 
+$$ c(K^n) = \frac{c(K^{n + 1})}{1 + u}|_{K^n} $$
+To obtain the normal bundle of $K^n \subseteq K^{n + 1}$, we note that $K^n$ is the zero section of $L^d$, where $L \iso \gamma^1$ corresponds to $\mathcal{O}_{\IP^{n + 1}}(1)$, so $\nu^1 = L^d|_{K^n}$ (c.f. [BT] 12.7). Therefore 
+$$ u|_{K^n} = c_1(\nu^1) = c_1(L^d)|_{K^n} = d c_1(\gamma^1)|_{K^n} $$
+Let $a =  - c_1(\gamma^1)$. Then 
+$$ c(K^n) = \frac{(1 + a)^{n + 2}}{1 - da}|_{K^n} $$
+The equation $\< x|_{K^n}, \mu_{2n} \> = \< xu, \mu_{2n + 2}\>$ follows directly from Problem 11-C: 
+$$ \< xu, \mu_{2n + 2}\> = x \cup u(\mu_{2n + 2}) = x(u \cap \mu_{2n + 2}) = x(i_*(\mu_{2n})) = \< x|_{K^{n}}, \mu_{2n} \> $$
+The sign disappears since we are dealing with even dimensions. 
+Now to compute $s_n[K^{n + 1}]$, we again use the above short exact sequence of vector bundles over $K^n$. Hence we note that
+$$ s_n(c(K^{n + 1}))|_{K^n} = s_n(c(K^n)) + s_n(c(\nu^1)) $$
+Apply $\< \cdot, \mu_{2n}\>$ to both sides of the equation. 
+$$ \< s_n(c(K^{n + 1}))|_{K^n}, \mu_{2n} \> = \< s_n(c(K^{n + 1})) \cup u, \mu_{2n + 2} \> = d(n + 2)$$
+$$ \< s_n(c(\nu^1)), \mu_{2n} \> = \< s_n(c(L^d)) \cup u, \mu_{2n + 2} \> = \< d^{n + 1} a^{n + 1}, \mu_{2n + 2} \> = d^{n + 1} $$
+Together we obtain that $s_n[K^n] = d(n + 2 - d^n)$. 
+
+
+\paragraph{Problem 16-E}
+Let $\tau^{m + n}$ be the tangent bundle of $\IP^m \times \IP^n$ and $\tau^{m + n - 1}$ be that of $H_{m, n}$. Let $\nu^1$ be the normal bundle of $H_{m, n} \subseteq \IP^m \times \IP^n$. Again consider the short exact sequence 
+$$ 0 \to \tau^{m + n - 1} \to \tau^{m + n}|_{H_{m, n}} \to \nu^1 \to 0 $$
+We see that 
+$$ s_{m + n - 1}[H_{m, n}] = \< s_{m + n -1}(c(\tau^{m + n}))|_{H_{m, n}}, \mu_{2m + 2n - 2} \> - \< s_{m + n - 1}(c(\nu^1)), \mu_{2m + 2n - 2}\> $$
+Let $\pi_1 : \IP^m \times \IP^n \to \IP^m$ $\pi_2 : \IP^m \times \IP^n \to \IP^n$ be projections and $\gamma^1_m, \gamma^1_n$ (resp. $\tau^m, \tau^n$) be the canonical (resp. tangent) bundles of $\IP^m, \IP^n$. 
+\begin{align*}
+s_{m + n - 1}(c(\tau^{m + n - 1})) &= s_{m + n - 1}(c(\pi_1^* \tau^m \oplus \pi_2^* \tau^n)) \\ &= \pi_1^* s_{m + n - 1}(c(\tau^m)) + \pi_2^* s_{m + n - 1}(c(\tau^n)) \\ &= 0 
+\end{align*} 
+since $m, n \ge 2$. Let $a = \pi_1^* c_1(\gamma_m^1), b = \pi_2^* c_1(\gamma_n^1)$. Let $u \in H^{2}(\IP^m \times \IP^n; \IZ)$ denote the dual cohomology class to $H_{m, n}$. Then from the same arguments as before, we see that 
+$$ u|_{H_{m, n}} = c_1(\nu^1) = c_1(\pi_1^*(\gamma_m^1) \oplus \pi_2^*(\gamma_n^1))|_{H_{m, n}} = (a + b)|_{H_{m, n}} $$ 
+
+\begin{align*}
+\< s_{m + n - 1}(c(\nu^1)), \mu_{2m + 2n - 2}\> &= \< s_{m + n - 1}(a + b, 0, \cdots, 0)|_{H_{m, n}}, \mu_{2m + 2n - 2}\> \\
+&= \< s_{m + n - 1}(a + b, 0, \cdots, 0) \cup u, \mu_{2m + 2n}\> \\
+&= \< (a + b)^{m + n - 1}(a + b), \mu_{2m + 2n}\> \\
+&= \< (a + b)^{m + n}, \mu_{2m + 2n }\> 
+\end{align*} 
+K{\"u}nneth theorem implies that $H^{2m + 2n}(\IP^m \times \IP^n; \IZ)$ is freely generated by $a^m b^n$, so $\< \cdot, \mu_{2m + 2n}\>$ is simply taking the coefficient of $a^m b^n$ of an element in $H^{2m + 2n}(\IP^m \times \IP^n; \IZ)$. Therefore 
+$$s_{m + n - 1}[H_{m, n}] = -\< s_{m + n - 1}(c(\nu^1)), \mu_{2m + 2n - 2}\> = -\frac{(m + n)!}{m! n !} $$
 
 \begin{thebibliography}{9}
 
