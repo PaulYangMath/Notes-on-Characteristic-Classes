@@ -1,0 +1,674 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathrsfs} 
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{tikz} 
+\usepackage{esint} 
+%\usepackage{epsfig}
+%\usepackage{graphicx}
+%\usepackage[dvips]{graphicx}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+
+\usepackage{enumitem}
+
+
+\usepackage[matrix,tips,graph,curve]{xy}
+
+\newcommand{\mnote}[1]{${}^*$\marginpar{\footnotesize ${}^*$#1}}
+\linespread{1.065}
+
+\makeatletter
+
+\setlength\@tempdima  {5.5in}
+\addtolength\@tempdima {-\textwidth}
+%\addtolength\hoffset{-0.5\@tempdima}
+\addtolength\hoffset{-0.6\@tempdima}
+\setlength{\textwidth}{5.5in}
+\setlength{\textheight}{8.75in}
+%\addtolength\voffset{-0.625in}
+\addtolength\voffset{-1.2in}
+
+\makeatother
+
+\makeatletter 
+\@addtoreset{equation}{section}
+\makeatother
+
+
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem{corollary}[equation]{Corollary}
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{proposition}[equation]{Proposition}
+\newtheorem{conjecture}[equation]{Conjecture}
+\newtheorem{fact}[equation]{Fact}
+\newtheorem{facts}[equation]{Facts}
+\newtheorem*{theoremA}{Theorem A}
+\newtheorem*{theoremB}{Theorem B}
+\newtheorem*{theoremC}{Theorem C}
+\newtheorem*{theoremD}{Theorem D}
+\newtheorem*{theoremE}{Theorem E}
+\newtheorem*{theoremF}{Theorem F}
+\newtheorem*{theoremG}{Theorem G}
+\newtheorem*{theoremH}{Theorem H}
+
+\theoremstyle{definition}
+\newtheorem{definition}[equation]{Definition}
+\newtheorem{definitions}[equation]{Definitions}
+%\theoremstyle{remark}
+
+\newtheorem{remark}[equation]{Remark}
+\newtheorem{remarks}[equation]{Remarks}
+\newtheorem{exercise}[equation]{Exercise}
+\newtheorem{example}[equation]{Example}
+\newtheorem{examples}[equation]{Examples}
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{question}[equation]{Question}
+\newtheorem{assumption}[equation]{Assumption}
+\newtheorem*{claim}{Claim}
+\newtheorem{answer}[equation]{Answer}
+%%%%%% letters %%%%
+
+\newcommand{\IA}{\mathbb{A}}
+\newcommand{\IB}{\mathbb{B}}
+\newcommand{\IC}{\mathbb{C}}
+\newcommand{\ID}{\mathbb{D}}
+\newcommand{\IE}{\mathbb{E}}
+\newcommand{\IF}{\mathbb{F}}
+\newcommand{\IG}{\mathbb{G}}
+\newcommand{\IH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\IK}{\mathbb{K}}
+\newcommand{\IL}{\mathbb{L}}
+\newcommand{\IM}{\mathbb{M}}
+\newcommand{\IN}{\mathbb{N}}
+\newcommand{\IO}{\mathbb{O}}
+\newcommand{\IP}{\mathbb{P}}
+\newcommand{\IQ}{\mathbb{Q}}
+\newcommand{\IR}{\mathbb{R}}
+\newcommand{\IS}{\mathbb{S}}
+\newcommand{\IT}{\mathbb{T}}
+\newcommand{\IU}{\mathbb{U}}
+\newcommand{\IV}{\mathbb{V}}
+\newcommand{\IW}{\mathbb{W}}
+\newcommand{\IX}{\mathbb{X}}
+\newcommand{\IY}{\mathbb{Y}}
+\newcommand{\IZ}{\mathbb{Z}}
+
+
+\newcommand{\so}{\mathfrak{o}}
+\newcommand{\sC}{\mathfrak{C}}
+\newcommand{\sK}{\mathfrak{K}}
+\newcommand{\cC}{\mathcal{C}}
+
+%%%%%%% macros %%%%%
+
+%% my definitions %%%
+
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\tr}{\mathrm{tr}}
+%\newcommand{\ind}{\mathrm{ind}}
+
+\renewcommand{\index}{\mathrm{index \,}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Trace}{\mathrm{Trace}\,}
+\newcommand{\Res}{\mathrm{Res}\,}
+%\newcommand{\rank}{\mathrm{rank}}
+%\renewcommand{\dim}{\mathrm{dim}}
+
+\renewcommand{\deg}{\mathrm{deg}\,}
+\newcommand{\spin}{\rm Spin}
+\newcommand{\supp}{\mathrm{supp \,}}
+\newcommand{\Spin}{\rm Spin}
+\newcommand{\erfc}{\rm erfc\,}
+\newcommand{\sgn}{\rm sgn\,}
+\newcommand{\Spec}{\rm Spec\,}
+\newcommand{\diag}{\rm diag\,}
+\newcommand{\Fix}{\mathrm{Fix}}
+\newcommand{\Ker}{\mathrm{Ker \,}}
+\newcommand{\Coker}{\mathrm{Coker \,}}
+\newcommand{\Sym}{\mathrm{Sym \,}}
+\newcommand{\Hess}{\mathrm{Hess \,}}
+\newcommand{\grad}{\mathrm{grad \,}}
+\newcommand{\Center}{\mathrm{Center}}
+\newcommand{\Lie}{\mathrm{Lie}}
+\newcommand{\coker}{\mathrm{coker}}
+
+\newcommand{\ch}{\rm ch} % Chern Character
+
+\newcommand{\rank}{\rm rank} 
+%\renewcommand{\c}{\rm c}  % Chern class
+
+\newcommand\QED{\hfill $\Box$} %{\bf QED}} 
+
+\newcommand\Pf{\nonintend{\em Proof. }}
+
+
+\newcommand\reals{{\mathbb R}} 
+\newcommand\complexes{{\mathbb C}}
+\renewcommand\i{\sqrt{-1}}
+\renewcommand\Re{\mathrm Re}
+\renewcommand\Im{\mathrm Im}
+\newcommand\integers{{\mathbb Z}}
+\newcommand\quaternions{{\mathbb H}}
+
+
+\newcommand\iso{\,{\cong}\,} 
+\newcommand\tensor{{\otimes}}
+\newcommand\Tensor{{\bigotimes}} 
+\newcommand\union{\bigcup} 
+\newcommand\onehalf{\frac{1}{2}}
+%\newcommand\Sym[1]{{Sym^{#1}(\complexes^2)}}
+
+\newcommand\lie[1]{{\mathfrak #1}} 
+\newcommand\smooth{\mathcal{C}^{\infty}}
+\newcommand\trivial{{\mathbb I}}
+\newcommand\widebar{\overline}
+
+%%%%%Delimiters%%%%
+
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+
+%\renewcommand{\(}{\left(}
+%\renewcommand{\)}{\right)}
+
+
+%%%% Different kind of derivatives %%%%%
+
+\newcommand{\delbar}{\bar{\partial}}
+\newcommand{\pdu}{\frac{\partial}{\partial u}}
+%\newcommand{\pd}[1][2]{\frac{\partial #1}{\partial #2}}
+
+%%%%% Arrows %%%%%
+%\renewcommand{\ra}{\rightarrow}                   % right arrow
+\newcommand{\lra}{\longrightarrow}              % long right arrow
+%\renewcommand{\la}{\leftarrow}                    % left arrow
+\newcommand{\lla}{\longleftarrow}               % long left arrow
+\newcommand{\ua}{\uparrow}                     % long up arrow
+\newcommand{\na}{\nearrow}                      %  NE arrow
+\newcommand{\llra}[1]{\stackrel{#1}{\lra}}      % labeled long right arrow
+\newcommand{\llla}[1]{\stackrel{#1}{\lla}}      % labeled long left arrow
+%\newcommand{\lua}[1]{\stackrel{#1}{\ua}}      % labeled  up arrow
+%\newcommand{\lna}[1]{\stackrel{#1}{\na}}      % labeled long NE arrow
+\newcommand{\xra}{\xrightarrow}
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\tto}{\longmapsto}
+\def\llra{\longleftrightarrow}
+
+\def\d/{/\mspace{-6.0mu}/}
+\newcommand{\git}[3]{#1\d/_{\mspace{-4.0mu}#2}#3}
+\newcommand\zetahilb{\zeta_{{\text{Hilb}}}}
+\def\Fy{\sF \mspace{-3.0mu} \cdot \mspace{-3.0mu} y}
+\def\tv{\tilde{v}}
+\def\tw{\tilde{w}}
+\def\wt{\widetilde}
+\def\wtilde{\widetilde}
+\def\what{\widehat}
+
+%%%%%%%%%%%%%%%%%%% Mark's definitions %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\frakg}{\mbox{\frakturfont g}}
+\newcommand{\frakk}{\mbox{\frakturfont k}}
+\newcommand{\frakp}{\mbox{\frakturfont p}}
+\newcommand{\q}{\mbox{\frakturfont q}}
+\newcommand{\frakn}{\mbox{\frakturfont n}}
+\newcommand{\frakv}{\mbox{\frakturfont v}}
+\newcommand{\fraku}{\mbox{\frakturfont u}}
+\newcommand{\frakh}{\mbox{\frakturfont h}}
+\newcommand{\frakm}{\mbox{\frakturfont m}}
+\newcommand{\frakt}{\mbox{\frakturfont t}}
+\newcommand{\G}{\Gamma}
+\newcommand{\g}{\gamma}
+\newcommand{\fraka}{\mbox{\frakturfont a}}
+\newcommand{\db}{\bar{\partial}}
+\newcommand{\dbs}{\bar{\partial}^*}
+\newcommand{\p}{\partial}
+\renewcommand{\k}{\textbf{k}}
+\newcommand{\rH}{\widetilde{H}}
+\newcommand{\cH}{H^\ast}
+\newcommand{\ccH}{\check{H}^*}
+\newcommand{\ext}{\Lambda_{\IZ}}
+\newcommand{\rp}{\IR\IP}
+\newcommand{\hz}{\IZ/2\IZ}
+\newcommand{\tf}{\wt{f}}
+\newcommand{\form}{\Omega}
+\newcommand{\dr}{H_{DR}}
+\newcommand{\cdr}{H_{c}}
+\newcommand{\plane}{\IR^2}
+\newcommand{\pplane}{\IR^2 - \{0\}}
+\newcommand{\fU}{\mathfrak{U}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\sH}{\mathcal{H}}
+
+%% Temporary Definitions %%
+\newcommand{\noi}{dx_1 \wedge \cdots \what{dx_i} \cdots \wedge dx_n}
+\newcommand{\ctsw}{dx_1 \wedge \cdots \wedge dx_n}
+\newcommand{\w}{\omega}
+\newcommand{\cp}{\IC\IP}
+\newcommand{\cf}{f^*}
+\newcommand{\Up}{U^{\pm}_i}
+\newcommand{\Vp}{V^{\pm}_i}
+\newcommand{\ppm}{\phi^{\pm}_i}
+\newcommand{\why}{\what{y}_i}
+\newcommand{\whx}{\what{x}_i}
+\newcommand{\whz}{\what{z}_i}
+\newcommand{\Wp}{W^{\pm}_i}
+\newcommand{\wb}{\overline}
+\newcommand{\cl}{\mathrm{cl}}
+
+\newcommand{\s}{\sigma}
+\newcommand{\lb}{\lambda}
+\newcommand{\hint}{\int_{\IH^n}}
+\newcommand{\hbint}{\int_{\p \IH^n}}
+\newcommand{\sint}{\int_{-\infty}^\infty}
+\newcommand{\intr}{\mathrm{int}\,}
+
+\newcommand{\st}{\mathrm{s.t.}\,}
+%%%%%%%%%%%%% new definitions for the positive mass paper %%%%%%%%%
+
+\newcommand{\sperp}{{\scriptscriptstyle \perp}}
+\newcommand{\tG}{G_n(\IR^{n + k})}
+\newcommand{\Ext}{\mathrm{Ext}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\invlim}{\varprojlim}
+
+\newcommand{\Exp}{\mathrm{Exp}}
+\newcommand{\sm}{\varepsilon}
+\newcommand{\Ohm}{\Omega}
+\newcommand{\Sq}{\mathrm{Sq}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\fN}{\mathfrak{N}}
+\newcommand{\fm}{\mathfrak{m}}
+%\newcommand{\ch}{\mathrm{ch}}
+
+
+\newcommand{\bI}{\mathbf{I}}
+\newcommand{\vol}{\mathrm{vol}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\sM}{\mathcal{M}}
+\newcommand{\res}{\mathrm{res}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\Bs}{\mathrm{Bs}}
+\newcommand{\Num}{\mathrm{Num}}
+\newcommand{\numequiv}{\equiv_{\mathrm{num}}}
+\newcommand{\red}{\mathrm{red}}
+\newcommand{\pr}{\mathrm{pr}}
+
+\newcommand{\cNE}{\overline{\mathrm{NE}}}
+\newcommand{\NE}{\mathrm{NE}}
+\newcommand{\Nef}{\mathrm{Nef}}
+\newcommand{\sL}{\mathcal{L}}
+
+
+\newcommand{\Div}{\mathrm{Div}}
+\newcommand{\shI}{\mathscr{I}}
+\newcommand{\shF}{\mathscr{F}}
+\newcommand{\shG}{\mathscr{G}}
+\newcommand{\sing}{\mathrm{sing}}
+\newcommand{\ord}{\mathrm{ord}}
+
+\newcommand{\bz}{\overline{z}}
+\newcommand{\ba}{\overline{a}}
+\newcommand{\bp}{\overline{\p}}
+
+\newcommand{\sT}{\mathcal{T}}
+\newcommand{\sA}{\mathcal{A}}
+
+
+\newcommand{\hH}{\mathcal{H}}
+\newcommand{\bwedge}{\mbox{\Large $\wedge$}}
+
+\newcommand{\bpL}{\Delta_{\overline{\p}}}
+\newcommand{\pL}{\Delta_{\p}}
+
+\newcommand{\spl}{\mathfrak{sl}}
+
+\newcommand{\shH}{\mathscr{H}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\begin{document}
+\title{Notes on Complex Manifolds}
+\author{Ziquan Yang}
+\date{\today}
+\maketitle
+
+\section{Linear Operators}
+
+
+There are there relations among $L, \Lambda$ and $H$: 
+\begin{enumerate}
+\item $[H, L] = 2L$
+\item $[H, \Lambda] = - 2 \Lambda$
+\item $[L, \Lambda] = H$
+\end{enumerate}
+\begin{proof}
+The first two equations come from direct computations. Let $\alpha \in \bwedge^k V^*$. We have that 
+$$ [H, L](\alpha) = (k + 2 - n)(\w \wedge \alpha) - \w \wedge (k - n) \alpha = 2 \w \wedge \alpha$$
+The proof of the second equation is similar. To prove the third equation, we proceed by induction. The point is: If $V = W_1 \oplus W_2$ is an orthogonal decomposition that respects the almost complex structures, then that both $W_1$ and $W_2$ satisfy the equation would imply that $V$ also satisfy the equation. Therefore it suffices to show the equation holds for $V$ of complex dimension $1$. In this case, we have 
+$$ \bwedge^* V^* = \bwedge^0 V^* \oplus \bwedge^1 V^* \oplus \bwedge^2 V^* = \IR \oplus (x^1 \IR \oplus y^1 \IR) \oplus \w \IR $$
+where $x_1, y_1$ give a basis of $V$. $L : \bwedge^0 V^* \to \bwedge^2 V^*$ and $\Lambda : \bwedge^2 V^* \to \bwedge^0 V^*$ are given by $1 \mapsto \w$ and $\w \mapsto 1$ respectively. Therefore it is easy to see that 
+$$ [L, \Lambda]|_{\wedge^0 V^*} = -1, \, \, [L, \Lambda]|_{\wedge^1 V^*} = 0, \, \, [L, \Lambda]|_{\wedge^2 V^*} = 1, $$
+\end{proof}
+
+These relations of $L, \Lambda, H$ give a $\spl(2)$ representation on $\bwedge^* V^*$. $\spl(2)$ is generated by $X, Y, B$, where 
+$$ X = \begin{bmatrix}
+0 & 1 \\ 0 & 0 
+\end{bmatrix} \, \, Y = \begin{bmatrix}
+0 & 0 \\ 1 & 0
+\end{bmatrix} \, \, B = \begin{bmatrix}
+1 & 0 \\ 0 & -1 
+\end{bmatrix}$$
+And these generators satisfy the relations $[B, X] = 2X, [B, Y] = -2 Y$ and $ [X, Y] = B$. 
+
+
+For all $\alpha \in P^k$, we have 
+$$ * L^j \alpha = (-1)^{k(k+1)/2} \frac{j!}{(n - k - j)!} L^{n - k - j} \bI(\alpha) $$
+Recall how $\bI$ is defined: On $\bwedge^k V_\IC$ or $\wedge^k V_\IC^*$,  
+$$ \bI = \sum_{p + q = k} i^{p - q} \Pi $$
+
+We prove the equation by induction. The base case is $n = 1$, i.e. $\dim_\IC V = 1$. Choose an orthonormal basis $V = x_1 \IR \oplus y_1 \IR$ such that $I(x_1) = y_1$. Thus $\w = x^1 \wedge y^1$. The primitive part of $\bwedge^2 V^*$ is $\bwedge^0 V^* \oplus \bwedge^1 V^*$.  Let $z = x_1 + i y_1$. 
+$$ \bI(x^1) = \bI(\frac{1}{2}(z + \bz)) = \frac{1}{2} (iz + i^{-1} \bz) = - y^1 $$ 
+Therefore $*1 = \w, *\w = 1, * x^1 = y^1$ allow us to verify the base case. 
+
+For the induction process, let us write $V = W_1 \oplus W_2$ and assume that $\dim_\IC W_2 = 1$. Let $W_2 = x_1 \IR \oplus y_1 \IR$. Any $\alpha \in \bwedge^k V^*$ can be written as 
+$$ \alpha = \beta_k + \beta_{k-1}' \tensor x^1 + \beta_{k - 1}'' \tensor y^1 + \beta_{k - 2} \tensor \w $$
+where the supscript indicates the degree of the element. Recall that $\Lambda = \Lambda_1 \tensor 1 + 1 \tensor \Lambda_2$, so we have 
+$$ \Lambda \alpha = \Lambda_1 \beta_k +(\Lambda_1 \beta_k') \tensor x^1 + (\Lambda_1 \beta_{k-1}'') \tensor y^1 + (\Lambda_1 \beta_{k - 2}) \tensor \w + \beta_{k - 2} $$
+By comparing bidegrees, we see that $\Lambda \alpha = 0$ if and only if $\beta_{k -1}', \beta_{k - 1}', \beta_{k -2}$ are primitive and $\Lambda_1 \beta_k + \beta_{k - 2} = 0$.
+
+Suppose $$\beta_k = \gamma_k + L_1 \gamma_{k - 2} + L_1^2 \gamma_{k - 4} + \cdots $$ in Lefschetz decomposition. Note that 
+$$ [L_1^2, \Lambda] \gamma_{k - 4} = L_1^2 \Lambda_1 \gamma_{k - 4} - \Lambda_1 L_1^2 \gamma_{k - 4} = \textit{scalar} \cdot L_1 \gamma_{k - 4} $$ 
+and similarly the $ \Lambda_1 L_1^j \gamma_{k - 2j}$ can be written in the form of $\textit{scalar} \cdot L_1 \gamma$
+
+Since $W_2$ is one-dimensional, $L^j = (L_1 \tensor 1 + 1 \tensor L_2)^j = L_1^j \tensor 1 + j L_1^{j - 1} \tensor L_2$ and, therefore, 
+
+
+
+\section{Differential Forms}
+Let $X$ be a complex manifold. There exists a direct sum decomposition 
+$$ T_\IC X = T^{1, 0} X \oplus T^{0, 1} X $$
+of complex vector bundles on $X$. $T^{1, 0}X$ can be identified with the holomorphic tangent bundle $\sT_X$. 
+Define 
+$$ \bwedge^{k}_\IC X := (T_\IC X)^* \text{ and } \bwedge^{p, q} X:= \bwedge^{p} (T^{1,0} X)^* \tensor_\IC \bwedge^q (T^{0, 1} X)^* $$
+The sheaves of sections are denoted by $\sA^k_{X, \IC}$ and $\sA^{p, q}_{X}$. 
+Locally we differentiate a function as 
+$$ df = \sum_{i} \frac{\p f}{\p z_i} dz_i + \sum_{i} \frac{\p f}{\p \bz_i} d\bz_i $$
+$d$ extends to a map $\sA_{X, \IC}^k \to \sA_{X, \IC}^{k + 1}$. $\p : \sA_X^{p, q} \to \sA_X^{p + 1, q}$, $\bp : \sA_X^{p, q} \to \sA_X^{p, q + 1}$ are restrictions of $d$. Moreover, $d = \p + \bp$. $\p, \bp$ are subject to following relations on complex manifolds:
+\begin{enumerate}
+\item $\p^2 = \bp^2 = 0 $
+\item $\p \bp = - \bp \p$
+\end{enumerate} 
+If $f : X \to Y$ is a holomorphic map between complex manifolds, the pullback map $f^*$ respects the above decompositions and restricts to $f^* : \sA^{p, q}(Y) \to \sA^{p, q}(X)$, which commutes with $\p, \bp$. There exist the natural sheaf homorphisms $\sT_X \to f^* \sT_Y$ and $f^* \Ohm_Y \to \Ohm_X$.
+
+\begin{definition}
+A holomorphic map $f : X \to Y$ is \textit{smooth} at a point $x \in X$ if the induced map $\sT_X(x) \to f^* \sT_Y(x) = \sT_Y(y)$ is surjective. 
+\end{definition}
+\begin{definition}
+The $(p, q)$-\textit{Dolbeault cohomology} is the vector space 
+$$ H^{p, q}(X) = H^q(\sA^{p, *}(X), \bp) $$
+\end{definition}
+$\sA^{p, q}$'s are fine sheaves. That is, their global sections can be written using partition of unity and local sections. Or equivalent, their Cech cohomology groups are zero for all $i > 0$. In other words, $\sA^{p, q}$ are \textit{acyclic}. Recall that cohomology is used to measure ``lack of sections". 
+Consider the sequence of sheave morphisms
+$$ 0 \to \Ohm^{p, 0} \stackrel{\bp}{\to} \sA^{p, 0} \stackrel{\bp}{\to} \sA^{p, 1} \stackrel{\bp}{\to} \sA^{p, 2} \stackrel{\bp}{\to} \cdots $$
+The $\bp$-Poincare lemma says that the above sequence is exact on the level of stalks, and hence is exact. Recall that cohomology can be computed by acyclic resolutions. We have obtain the isomorphism
+$$ H^{p, q}(X) \iso H^q(X, \Ohm_X^p) $$
+Let $E$ be a complex vector bundle over $X$. Let $\sA^{p, q}(E)$ denote the sheaf
+$$ U \mapsto \sA^{p, q}(E) : = \Gamma(U, \bwedge^{p, q} X \tensor E)$$
+Suppose $E$ is holomorphic and let $s = (s_1, \cdots, s_r)$ be a local trivialization. We write a section $\alpha \in \sA^{p, q}(E)$ as 
+$$ \alpha = \sum \bp(\alpha_i) \tensor s_i $$
+One important difference between $C^\infty$ and holomorphic vector bundles is: while there is no naturally defined exterior derivative $d$ on the space of sections of a vector bundle, on a holomorphic bundle $E$ the $\bp_E$-operator 
+$$ \bp_E : \sA^{p, q}(E) \to \sA^{p, q + 1}(E) $$ 
+give by 
+$$ \bp_E \alpha = \sum \bp(\alpha_i) \tensor s_i $$
+is well defined. 
+\begin{proof}
+The point is that the above definition is independent of the local trivialization chosen. Suppose we choose a different holomorphic trivialization $s' = (s_1', \cdots, s_r')$ we obtain an operator $\bp_E'$. If $(\varphi_{ij})$ is the transition matrix, i.e. 
+$$ s_i = \sum_{j} \varphi_{ij} s_j'$$
+Note that $\bp(\alpha_i \varphi_{ij}) = \bp(\alpha_i) \varphi_{ij}$ as $\varphi_{ij}$ are holomorphic. Now 
+$$ \bp_E' \alpha = \bp_E' (\sum_{i, j} \alpha_i \tensor \varphi_{ij} s_j') = \sum_{i, j} \bp(\alpha_i \varphi_{ij}) \tensor s_j' = \sum_{i, j} \bp(\alpha_i)\varphi_{ij} \tensor s_j' = \bp_E \alpha   $$
+\end{proof}
+As before, one has isomorphisms
+$$ H^{p, q}(X, E)  = H^q(X, E \tensor \Ohm_X^p) $$
+
+\section{K{\"a}hler Identities}
+Recall that a Riemannian metric $g$ is an hermitian structure on $X$ if and only if for every point $x \in X$ the scalar product $g_x$ is compatible with the almost complex structure $I_x$. The induced $(1, 1)$-form $\w := g(I(\cdot), \cdot)$ is called the \textit{fundamental form}. 
+We define three linear operators:
+\begin{enumerate}
+\item The \textit{Lefschetz operator}: 
+$$ L : \bwedge^k X \to \bwedge^{k + 2} X, \, \alpha \mapsto \alpha \wedge \w $$
+\item The \textit{Hodge *-operator}: 
+$$ * : \bwedge^k X \to \bwedge^{2n - k} X $$
+\item The \textit{dual Lefschetz operator}: 
+$$ \Lambda : *^{-1} \circ L \circ * : \bwedge^k X \to \bwedge^{k - 2} X $$
+\end{enumerate}
+There exists a direct sum decomposition of vector bundles 
+$$ \bwedge^k X = \bigoplus_{i \ge 0} L^i(P^{k - 2 i} X) $$
+where 
+$$ P^{k - 2i} X = \ker(\Lambda : \bwedge^{k - 2i} X \to \bwedge^{k - 2i - 2} X) $$
+
+A K{\"a}hler structure is an hermitian structure $g$ for which the fundamental form $\w$ is closed, i.e. $d \w = 0$. In this case the fundamental form $\w$ is called the K{\"a}hler form. 
+
+\paragraph{Local description of K{\"a}hler metric}
+Let $U \subseteq \IC^n$ be an open subset and let $g$ be a Riemmanian metric on $U$ compatible with the natural complex structure on $U$. Recall that $h : = g - i \w$ defines a positive hermitian form on $(T_x U, g_x, I)$ as a complex vector space. Suppose $g$ is the constant standard metric such that 
+$$ \frac{\p}{\p x_1}, \cdots, \frac{\p}{\p x_n}, \frac{\p}{\p y_1}, \cdots, \frac{\p}{\p y_n} $$
+is an orthonormal basis. The fundamental form $\w$ in this case is 
+$$ \w = \frac{i}{2} \sum_{i = 1}^n dz_i \wedge d \bz_i $$
+An arbitrary metric $g$ on $U$ compatible with the natural complex structure is uniquely determined by the matrix 
+$$ h_{ij}(z) = h(\frac{\p}{\p x_i}, \frac{\p}{\p y_i}) $$
+and the fundamental form can be written as 
+$$ \w = \frac{i}{2} \sum_{i, j = 1}^n h_{ij} dz_i \wedge d\bz_j $$
+Since the fundamental form is uniquely determined by the metric, we may naturally ask how to characterize those metrics that produce closed fundamental forms. 
+\begin{definition}
+The metric $g$ osculates in the origin to order two to the standard metric if $(h_{ij}) = \id + O(|z|^2)$. 
+\end{definition}
+The above condition is equivalent to 
+$$ \frac{\p h_{ij}}{\p z_k}(0) = \frac{\p h_{ij}}{\p \bz_k}(0) = 0, \forall i, j, k $$
+If this holds, then we can easily see that $d \w (0) = 0$. If we want $d \w = 0$ everywhere in $U$, we may require that for each point $x \in U$, we may change the local coordiantes at $x$ to one centered at $x$ using a biholomophism, such that the metric on the new coordinates osculates in the origin to order two to the standard metric. (See Proposition 1.3.12)
+Conversely, given the natural complex structure, we may recover the matrix from the fundamental form, ir it is positive definite. Therefore the set of closed positive real $(1, 1)$-forms $\w \in \sA^{1, 1}(X)$ is the set of all K{\"a}hler forms. 
+
+If $\w_1, \w_2$ are K{\"a}hler metrics, then $\w_1 + \w_2$ and $\lambda w_1$, where $\lambda \in \IR_{> 0}$ are also K{\"a}hler metrics. In other words, teh set of all K{\"a}hler forms on a compact complex manifold $X$ is an open convex cone in the linear space $\sA^{1, 1}(X) \cap \sA^2(X) \cap \ker d$. 
+
+
+\paragraph{Fubini-Study Metric}
+The Fubini-Study metric is a canonical K{\"a}hler metric on $\IP^n$. Let $\IP^n = \union_{i = 1}^n U_i$ be the standard open covering. Then we define 
+$$ \w_i = \frac{i}{2 \pi} \p \bp \log(\sum_{\ell = 0}^n |\frac{z_\ell}{z_i}|^2) \in \sA^{1, 1}(U_i) $$
+
+
+\section{Hodge Theory on K{\"a}hler Manifolds}
+Recall that we can extend the inner product on an Euclidean vector space $(V, \< \cdot, \cdot \>)$ to a positive definite hermitian form on its complexification:
+$$ \< v \tensor \lambda, w \tensor \mu \>_\IC = (\lambda \overline{\mu}) \< v, w \> $$ 
+Suppose $V$ has a compatible almost complex structure $I$. The hermitian positive definite form $(\cdot, \cdot) = \< \cdot, \cdot \> - i \w$ on $(V, I)$ is related to $\< \cdot, \cdot \>_\IC$ by 
+$$ \frac{1}{2}(\cdot, \cdot) = \< \cdot, \cdot \>_\IC|_{V^{1, 0}} \text{ under isomorphism } (V, I) \iso V^{1, 0} $$
+Now if $X$ is a complex manifold with an hermitian structure $g$, we denote the hermitian extension of $g$ by $g_\IC$. $g_\IC$ naturally induces hermitian products on all form bundles. 
+
+\begin{definition}
+Suppose $X$ is compact. Then for $\alpha, \beta \in \sA^*_\IC(X)$
+$$ (\alpha, \beta) : = \int_X g_\IC(\alpha, \beta) * 1 $$ 
+\end{definition}
+
+\begin{definition}
+Let $(X, g)$ be a compact hermitian manifold. Then one defines an hermitian product on $\sA^*_\IC(X)$ by 
+$$ (\alpha, \beta) = \int_X g_\IC(\alpha, \beta) * 1 = \int_X \alpha \wedge * \overline{\beta} $$
+\end{definition}
+Clearly the hermitian product can be nonzero only when $\alpha, \beta \in \sA^l_\IC(X)$. Otherwise the integrand is not even a top form. Another way to say this is that the degree decomposition $\sA_\IC^* = \oplus_k \sA^k_\IC(X)$ is orthogonal. Moreover, the decomposition $\sA_\IC^k = \oplus_{p + q = k} \sA^{p, q}(X)$ is also orthogonal. As $\alpha \wedge * \overline{\beta} = (\alpha, \beta) \vol$ by definition, but if $\alpha, \beta$ have different bidegree $\alpha \wedge *\overline{\beta} = 0$. 
+
+With respect to the hermitian product, the operators $\p^*, \bp^*$ are formal adjoints of $\p, \bp$ respectively. 
+\begin{align*}
+(\p \alpha, \beta) &= \int_X g_\IC(\p \alpha, \beta) *1 = \int_X \p \alpha \wedge * \overline{\beta} \\
+&= \int_X \p(\alpha \wedge * \overline{\beta})  - (-1)^{p + q - 1} \int_X \alpha \wedge \p (* \overline{\beta}) 
+\end{align*}
+Define 
+\begin{align*}
+\sH_{\overline{\p}}^k(X, g) &= \sA^k_\IC(X) \cap \ker \Delta_{\overline{\p}} \\
+\sH_{\overline{\p}}^{p, q}(X, g) &= \sA^{p, q}_\IC(X) \cap \ker \Delta_{\overline{\p}}
+\end{align*} We say forms in $\ker \Delta_{\bp}$ are $\bp$-harmonic. Of course, similar definitions are made for $\p$.
+A form $\alpha$ is $\bp$-harmonic if and only if $\bp \alpha = \bp^* \alpha = 0$. Note that the latter is a clearly stronger than the former, but a very interesting and fundamental property is that the converse is also true, since $$ (\bpL(\alpha), \alpha) = ( \bp^* \bp + \bp \bp^* \alpha, \alpha) = (\bp \alpha, \bp \alpha) + (\bp^* \alpha, \bp^* \alpha) = \| \bp \alpha \|^2 + \| \bp^* \alpha \|^2 $$
+A similar assertion holds for $\pL$. 
+If $(X, g)$ is K{\"a}hler then $\sH^k(X, g)_\IC = \sH_{\bp}^k(X, g) = \sH_{\p}^k(X, g)$ since $\bpL = \pL = \frac{1}{2} \Delta $. 
+
+There is a natural decomposition 
+$$ \sH^k_{\bp} (X, g) = \bigoplus_{p + q = k} \sH^{p, q}_{\bp} (X, g) $$
+since the decomposition $\sA^k(X) = \sA^{p, q}(X)$ is direct. The same is true for $\p$. 
+
+If in addition $(X, g)$ is K{\"a}hler then both decompositions coincide with $$\sH^k(X, g)_\IC = \bigoplus_{p + q = k} \sH^{p, q}(X, g)$$
+since ``$d$-harmonic", ``$\p$-harmonic", and ``$\bp$-harmonic" are equivalent conditions. 
+
+Let $(X, g)$ be a compact connected hermitian manifold. Then the pairing 
+$$ \sH_{\bp}^{p, q}(X, g) \times \sH_{\bp}^{n - p, n - q}(X, g) \to \IC \text{ given by } (\alpha, \beta) \mapsto \int_X \alpha \wedge \beta $$
+is non-degenerate. Indeed, if $0 \neq \alpha \in \sH_{\bp}^{p, q}(X, g)$, then $* \overline{\alpha} \in \sH_{\bp}^{n - p, n - q}(X, g)$ and 
+$$ \int_X \alpha \wedge * \overline{\alpha} = \| \alpha \|^2 > 0 $$
+Recall that $\sH_{\bp}^{p, q}(X, g)$ and $\sH_{\bp}^{n - p, n - q}(X, g)$ have the same dimension. Therefore we obtain 
+\begin{theorem}
+\emph{(Serre Duality)}
+$$ \sH_{\bp}^{p, q}(X, g) = \sH^{n -p, n - q}_{\bp}(X)^* $$
+\end{theorem}
+
+If $(X, g)$ is K{\"a}hler of dimension $n$, then for any $k \le n$ and any $0 \le p \le k$ the Lefschetz operator defines an isomorphism 
+$$ L^{n -k} : \sH^{p, k - p} (X, g) \iso \sH^{n + p - k, n - p}(X, g) $$
+Since $L$ commutes with $\Delta$, it maps harmonic forms to harmonic forms. Since $L^{n - k}$ is bijective on $\sA^k(X)$, the induced map $\sH^{p, k - p} (X, g) \iso \sH^{n + p - k, n - p}(X, g)$ is injective (\textit{again we used the fact that the set of harmonic forms is a subspace, not a quotient}). The surjective is deduced from the same argument applied to $\Lambda$, which also commutes with $\Delta$. 
+
+
+\begin{theorem}
+\emph{(Hodge Decomposition)}
+Let $(X, g)$ be a compact hermitian manifold. Then there exist two natural orthogonal decompositions. 
+$$ \sA^{p, q}(X) = \p \sA^{p - 1, q}(X) \oplus \sH_\p^{p, q}(X, g) \oplus \p^* \sA^{p + 1, q}(X) $$
+and $$ \sA^{p, q}(X) = \bp \sA^{p - 1, q}(X) \oplus \sH_{\bp}^{p, q}(X, g) \oplus \bp^* \sA^{p + 1, q}(X) $$
+\end{theorem}
+
+\begin{corollary}
+Let $(X, g)$ be a compact hermitian manifold. Then the canonical projection 
+$$ \sH^{p, q}_{\bp} (X, g) \to H^{p, q}(X) $$
+is an isomorphism. 
+\end{corollary}
+\begin{proof}
+Recall that a harmonic form is $\bp$-closed. Hence we have the above natural projection map. Note that $\bp \bp^* \beta = 0$ if and only if $\bp^* \beta = 0$. Indeed, 
+$$ (\bp \bp^* \beta, \beta) = (\bp^* \beta, \bp^* \beta) = \| \bp^* \beta \|^2 $$
+Together with Hodge decomposition, we have 
+$$ \ker(\bp : \sA^{p, q}(X) \to \sA^{p, q + 1}(X)) = \bp \sA^{p - 1, q}(X) \oplus \sH_{\bp}^{p, q}(X, g) $$
+Now we obtain the desired isomorphism by moding out $\bp \sA^{p - 1, q}(X)$ on both sides. 
+\end{proof}
+
+When $(X, g)$ is K{\"a}hler, we know that $\sH_\p^{p, q} (X, g) = \sH_{\bp}^{p, q} (X, g)$.  Therefore the space of harmonic $(p, q)$-forms appear in two different orthogonal decompositions. The following is a prominent example for the use of this fact.  
+\begin{corollary}
+Let $X$ be a compact manifold. Then for a $d$-closed form $\alpha$, TFAE
+\begin{enumerate}[label=\roman*.]
+\item $\alpha$ is $d$-exact. 
+\item $\alpha$ is $\p$-exact.
+\item $\alpha$ is $\bp$-exact. 
+\item $\alpha$ is $\p \bp$-exact. 
+\item $\alpha$ is orthogonal to $\sH^{p, q}(X, g)$ for an arbitrary K{\"a}hler metric $g$ on $X$.  
+\end{enumerate}
+\end{corollary}
+Note that to define operators $d, \p$ and $\bp$, we do not need an hermitian metric. We need an hermitian metric to define their formal adjoints, since to define the Hodge $*$-operator we need hermitian product on tangent spaces. If we do not invoke K{\"a}hler identities, we do not need to assume that $X$ is K{\"a}hler.
+
+\begin{proof}
+The Hodge decomposition implies that (v) is implied by other conditions. Recall that $\p \bp = - \bp \p$ on an hermitian manifold. We see that (iv) implies the other conditions. Therefore it suffices to show that (v) $\Rightarrow$ (iv).  
+
+Since $\alpha$ is $d$-closed, it is in particular $\p$-closed. If it is orthogonal to $\sH^{p, q}(X, g)$, then Hodge decomposition with respect to $\p$ implies that $\alpha = \p \gamma$. Note that $\alpha$ does not have a component in $\p^* \sA^{p + 1, q}(X) $ since $\p \p^* \gamma' = 0$ if and only if $\p^* \gamma' = 0$. Now apply Hodge decomposition with respect to $\bp$ to the form $\gamma$. This yields $\gamma = \bp \beta + \bp^* \beta' + \beta''$ for some harmonic $\beta''$. Therefore 
+$$  \alpha = \p \bp \beta + \p \bp^* \beta' $$
+Since $\bp^* \p = - \p \bp^*$ and a standard norm argument shows that $\bp \bp^* = 0$ iff $\bp^* = 0$ on a form, we see that $\p \bp^* \beta' = 0$. Hence $\alpha = \p \bp \beta$. 
+\end{proof} 
+
+
+\begin{corollary}
+Let $(X, g)$ be a compact K{\"a}hler manifold. Then there exists a decomposition 
+$$ H^k(X, \IC) = \bigoplus_{p + q = k} H^{p, q}(X) $$
+This decomposition does not depend on the chosen K{\"a}hler structure. 
+\end{corollary}
+\begin{proof}
+The decomposition is induced by 
+$$ H^k(X, \IC) = \sH^k(X, g)_\IC = \bigoplus_{p + q = k} \sH^{p, q}(X, g) = \bigoplus_{p + q = k} H^{p, q}(X) $$
+\end{proof}
+
+One may ask why the decomposition for $\sH^k$ is so natural, and yet that for $H^k$ needs to go through all these trouble. I think the key idea is that $\sH^k$ is defined as the kernel of some operator in $\sA^k_\IC(X)$. Therefore $\sH^{p, q}$'s are naturally viewed as subspaces of $\sH^k$. However, $H^k$'s and $H^{p, q}$ are defined as cohomology groups. On the cocycle level, there is also an obvious similar decomposition. Yet, since we are moding out different groups with different subgroups ($d$-exact forms for $H^k$ and $\bp$-exact forms for $H^{p, q}$), the decomposition is obscured. 
+
+\section{Hodge Theorem}
+\begin{theorem}
+$\dim \sH^{p, q}(X) < \infty$. Therefore we can define a projection operator $\sH : \sA^{p, q}(X) \to \sH^{p, q}(X)$ and there exists a unique operator $G$ (the \textit{Green's} operator) that vanishes on $\sH^{p, q}(X)$ and commutes with $\bp, \bp^*$, and we have 
+$$ I = \sH + \Delta G $$ on $\sA^{p, q}(X)$
+\end{theorem}
+The equation $I = \sH + \Delta G$ is often interpreted as: given $0 \neq \eta \in \sA^{p, q}(X)$, then the equation 
+$$ \Delta \psi = \eta $$
+has a solution $\psi$ if and only if $\sH(\eta) = 0$. This is simply by definition, since $\sH^{p, q}(X) = \ker \Delta$. The equation is solved by $\psi = G(\eta)$ and this is the unique solution such that $\sH(\psi) = 0$. Therefore in effect we will try to solve the Laplace equation on a compact manifold. We will first solve it in the weak sense, i.e. in the Hilbert space completion $\sL^{p, q}(M)$ of $\sA^{p, q}(X)$ to find a $\psi$ such that 
+$$ (\psi, \Delta \varphi) = (\eta, \varphi) $$ 
+Then we show that $\psi$ is actually smooth. 
+
+Let $T$ be the real torus $(\IR/(2\pi \IZ))^n$ with coordinates $x = (x_1, \cdots, x_n)$. Denote by $\shF$ the space of formal Fourier series 
+$$ u = \sum_{\xi \in \IZ^n} u_\xi e^{i\< \xi, x \>} $$
+
+The Sobolev $s$-norm is given by 
+$$ \| u \|_s^2 = \sum_{\xi} (1 + \| \xi \|^2)^s |u_\xi|^2 $$ and the Sobolev spaces $H_s$ are defined by 
+$$ H_s = \{ u \in \shF : \| u \|_s < \infty \} $$
+We clearly have a sequence of inclusions 
+$$ \cdots \supseteq H_{-n} \supseteq H_{-n + 1} \supseteq \cdots \supseteq H_{-1} \supseteq H_{0} \supseteq H_{1} \cdots \supseteq H_n \supseteq \cdots $$
+
+\begin{lemma}\emph{(Sobolev Lemma)} $H_{s + [n/2] + 1} \subseteq C^s(T)$; that is, every $u \in H_{s + [n/2] + 1}$ is the Fourier series of a function $\varphi \in C^s(T)$, and this series converges uniformly to $\varphi$. 
+\end{lemma}
+
+The Fourier series mapping $C^0(T) \to \shF$ leads to inclusions $C^s(T) \subseteq H_s, H_{s + [n/2] + 1} \subseteq C^s(T)$ and $C^\infty(T) = H_\infty$. 
+The proof of the Sobolev lemma gives an estimate 
+$$ \sup_{x \in T} |D^\alpha \varphi(x)| \le C_\alpha \| \varphi \|_{s + [n/2] + 1} $$ 
+
+\begin{lemma}\emph{(Rellich)} 
+For $s > r$, the inclusion $H_s \subset H_r$ is compact. 
+\end{lemma}
+\begin{proof}
+Given a bounded sequence $\{ u_k \}$ in $H_s$, we want to find a subsequence that is convergent in $H_r$ norm. Suppose $\| u_k \|_s < C$ for all $k$. We have 
+$$ \sum_\xi (1 + \| \xi \|^2)^r |u_{k, \xi}|^2 \le \sum_\xi (1 + \| \xi \|^2)^s |u_{k, \xi}|^2 < C $$
+Therefore for each fixed $\xi$, the sequence 
+\begin{equation}\tag{*} \{ (1 + \| \xi \|^2)^{r/2} u_{k, \xi} \}_k \end{equation}
+has a convergent subsequence. Therefore by diagonal trick, we can find a subsequence of $\{ u_k \}$ such that (*) converges for each $\xi$. Replace $\{ u_k \}$ with this subsequence. Now we want to prove that $\{ u_k \}$ converges in $H_r$-norm. Sobolev spaces are complete so it suffices to show that the sequence is Cauchy. For each $R$ we have 
+\begin{align*}
+\| u_n - u_m \|_r^2 = \sum_{\| \xi \| < R} (1 + \| \xi \|^2)^r |u_{n, \xi} - u_{m, \xi}|^2 + \sum_{\| \xi \| \ge R} \frac{(1 + \| \xi \|^2)^s}{(1 + \| \xi \|^2)^{s - r}} |u_{n, \xi}|^2  
+\end{align*}
+We first choose $R$ such that 
+$$ \frac{1}{(1 + \| \xi \|^2)^{s - r}} < \frac{\sm}{8 C} $$ Therefore $$ \sum_{\xi} \frac{(1 + \| \xi \|^2)^s}{(1 + \| \xi \|^2)^{s - r}} |u_{n, \xi} - u_{m, \xi}|^2 \le \frac{\sm}{8 C} \sum_{\xi} (1 + \| \xi \|^2)^s (2 |u_{n, \xi}|^2 + 2 |u_{m, \xi}|^2 ) \le \frac{\sm}{2}$$
+Since there are only finitely many $\xi$ such that $\| \xi \| < R$, we may choose $N$ large enough such that when $n, m \ge N$, we have 
+$$ \sum_{\| \xi \| < R} (1 + \| \xi \|^2)^r |u_{n, \xi} - u_{m, \xi}|^2 < \frac{\sm}{2} $$
+Combined with the previous inequality, we have completed the proof that $\{ u_k \}$ is complete. 
+\end{proof}
+
+On a compact Riemannian manifold $M$ we are interested in the Laplacian operator $\Delta_d = d d^* + d^* d$. The formalism for $d$ on Riemannian manifolds is the same as that for $\bp$ on complex manifolds. For $\varphi \in C^\infty(T)$ the Laplacian is 
+$$ \Delta_d \varphi = \sum_{i} D_i^2 \varphi = - \sum_i \frac{\p^2 \varphi}{\p x_i^2} = - \sum_i \varphi_\xi \| \xi \|^2 e^{i \< \xi, x \>} $$
+
+We will discuss the equation $\Delta_d \varphi = \psi$. A function $\varphi \in L^2(T) = H_0$ is called a weak solution if 
+$$ (\Delta_d \eta, \varphi) = (\eta, \psi ) $$ 
+for all $\eta \in C^\infty(T)$. If $\varphi$ is in additional smooth, then $\Delta_d$ is self-adjoint, and we have $(\eta, \Delta_d \varphi) = (\eta, \psi)$ in the usual sense. 
+
+We first note that the weak solutions of the homogeneous equation 
+$$ \Delta_d \varphi = 0 $$ 
+satisfy $(\| \xi \|^2 e^{i \< \xi, x \>}, \varphi) = 0$ for all $\xi$. (Then implicitly used symmetry here?)
+
+
+For $\psi \in L^2(T)$, if we define the Green's operator by 
+$$ G(\psi) = - \sum_{\xi \neq 0} \frac{1}{\| \xi \|^2} \psi_\xi e^{i \< \xi, x \>} $$, then $$ G : H_s \to H_{s + 2} $$
+is a dbounded linear operator. If $\psi$ is perpendicular to the harmonic space, then $\varphi = G(\psi)$ gives weak solution (*). By the Sobolev lemma, if $\psi \in C^\infty(T)$ then $\varphi \in C^\infty(T)$ and $\varphi$ is a solution of (*) in the usual sense. 
+
+Finally, by the Rellich lemma, $G : L^2(T) \to L^2(T)$ is a compact, self-adjoint operator. The spectral decomposition for $G$ on $L^2(T)$ is just Fourier series. 
+
+
+
+
+
+
+
+\end{document}
